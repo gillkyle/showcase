@@ -1,9 +1,25 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: `Song Showcase`,
+    description: `Best music in one place.`,
+    author: `Kyle Gill`,
+  },
+  plugins: [
+    `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-theme-ui`,
+    {
+      resolve: `gatsby-source-prismic`,
+      options: {
+        repositoryName: `songshowcase`,
+        accessToken: `${process.env.GATSBY_PRISMIC_KEY}`,
+        linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+      },
+    },
+  ],
 }
