@@ -1,4 +1,5 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 
 const SpotifyEmbed = ({ id }) => (
   <iframe

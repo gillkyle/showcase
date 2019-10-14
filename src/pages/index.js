@@ -3,8 +3,10 @@ import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 
+import Layout from "../components/layout"
+
 export default ({ data }) => (
-  <div>
+  <Layout>
     <div>Song Showcase</div>
     <div
       style={{
@@ -46,7 +48,7 @@ export default ({ data }) => (
         </Link>
       ))}
     </div>
-  </div>
+  </Layout>
 )
 
 export const query = graphql`

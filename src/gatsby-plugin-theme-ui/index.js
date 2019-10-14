@@ -1,4 +1,6 @@
 export default {
+  initialColorMode: "dark",
+  useColorSchemeMediaQuery: true,
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body: "system-ui, sans-serif",
@@ -13,15 +15,24 @@ export default {
   },
   radii: [4, 8],
   colors: {
-    text: "#f0f0f5",
-    background: "#030734",
-    primary: "#328dff",
-    secondary: "#0030d3",
-    muted: "#8f97c1",
-    highlight: "#ccf1ff",
-    gray: "#b3b3b3",
-    accent: "#ffff34",
-    darken: "#bbbbbb",
+    text: "#222",
+    background: "#EDEDED",
+    border: "#EEE",
+    primary: "#00caff",
+    secondary: "#008bff",
+    gradient: theme =>
+      `linear-gradient(-180deg, ${theme.colors.primary},${theme.colors.secondary})`,
     shadow: "rgba(50, 50, 93, 0.17)",
+    modes: {
+      dark: {
+        text: "#DDD",
+        background: "#1b1b1b",
+        border: "#333",
+        primary: "#00caff",
+        secondary: "#008bff",
+        gradient: theme =>
+          `linear-gradient(-180deg, ${theme.colors.primary},${theme.colors.secondary})`,
+      },
+    },
   },
 }
