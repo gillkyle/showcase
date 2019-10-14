@@ -1,9 +1,10 @@
 export default {
   initialColorMode: "dark",
+  initialColorModeName: "light",
   useColorSchemeMediaQuery: true,
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
-    body: "system-ui, sans-serif",
+    body: "Roboto, system-ui, sans-serif",
     heading: "inherit",
     monospace: "Menlo, monospace",
   },

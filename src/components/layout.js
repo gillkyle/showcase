@@ -2,6 +2,8 @@
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 
+import Container from "../components/container"
+
 const Layout = ({ children }) => (
   <div
     sx={{
@@ -16,9 +18,13 @@ const Layout = ({ children }) => (
         borderBottomColor: `border`,
       }}
     >
-      <Link to="/">Music</Link>
+      <Container>
+        <Link to="/">Music</Link>
+      </Container>
     </header>
-    <main>{children}</main>
+    <main>
+      <Container>{children}</Container>
+    </main>
   </div>
 )
 
