@@ -7,19 +7,11 @@ import Layout from "../components/layout"
 import AlbumArt from "../components/album-art"
 import SpotifyEmbed from "../components/spotify-embed"
 import Tag from "../components/tag"
-import { useMousePosition } from "../hooks/useMousePosition"
-import { useWindowSize } from "../hooks/useWindowSize"
 
 const Post = ({ data }) => {
   const { data: song } = data.prismicSong
   const authorName = get(song, `author.document[0].data.name`)
   const tags = get(song, `tag_list[0].all_tags.document`)
-  const position = useMousePosition()
-  const size = useWindowSize()
-  const a = 0.99 + (position.x / size.width) * 0.025
-  const b = 0.07 + (position.y / size.height) * 0.025
-  const c =
-    -0.11 + (((position.x / size.height) * position.y) / size.width) * 0.025
 
   return (
     <Layout>
@@ -40,7 +32,7 @@ const Post = ({ data }) => {
               position: `absolute`,
               right: 64,
               bottom: 32,
-              transform: `matrix(${a}, ${b}, ${c}, 1, 0, 0)`,
+              borderRadius: `1`,
             }}
           >
             <AlbumArt fixed={song.album_art.localFile.childImageSharp.fixed} />
