@@ -8,6 +8,7 @@ import Layout from "../components/layout"
 import AlbumArt from "../components/album-art"
 import SpotifyEmbed from "../components/spotify-embed"
 import Tag from "../components/tag"
+import PlayAnimation from "../components/play-animation"
 
 const Post = ({ data }) => {
   const { data: song } = data.prismicSong
@@ -70,15 +71,25 @@ const Post = ({ data }) => {
           }}
         >
           <div sx={{ mt: `5` }}>
-            <div>
-              <FiPlayCircle size={36} />
-            </div>
             <div>{authorName}</div>
           </div>
           <div>
             <div sx={{ fontSize: `4`, mt: `5`, mb: `4` }}>
               RÜFÜS DU SOL show no signs of stopping with a dozen amazing songs
               out, and more to come.
+            </div>
+            <div
+              sx={{
+                mb: `3`,
+                display: `grid`,
+                gridGap: `3`,
+                gridTemplateColumns: `auto 1fr`,
+              }}
+            >
+              <div>
+                <FiPlayCircle sx={{ strokeWidth: 1 }} size={64} />
+              </div>
+              <PlayAnimation playing={false} />
             </div>
             <div
               sx={{
@@ -116,7 +127,6 @@ export const pageQuery = graphql`
         spotify_id
         content {
           html
-          text
         }
         album_art {
           localFile {
