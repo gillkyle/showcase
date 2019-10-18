@@ -4,8 +4,8 @@ import { jsx } from "theme-ui"
 const Tag = ({ tag }) => (
   <span
     sx={{
-      py: `2`,
-      px: `4`,
+      py: `1`,
+      px: `3`,
       backgroundColor: tag.data.bg_color,
       color: tag.data.text_color,
       borderRadius: `0`,

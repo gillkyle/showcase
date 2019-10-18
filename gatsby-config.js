@@ -29,7 +29,19 @@ module.exports = {
             family: `Roboto`,
             variants: [`100`, `300`, `400`, `500`, `700`],
           },
+          {
+            family: `PT Sans`,
+            variants: [`400`, `700`],
+          },
         ],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
       },
     },
   ],

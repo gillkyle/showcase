@@ -3,7 +3,7 @@ export default {
   useColorSchemeMediaQuery: true,
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
-    body: "Roboto, system-ui, sans-serif",
+    body: "PT Sans, system-ui, sans-serif",
     heading: "inherit",
     monospace: "Menlo, monospace",
   },
@@ -14,7 +14,8 @@ export default {
     heading: 700,
     bold: 700,
   },
-  radii: [4, 8, 16],
+  // radii: [4, 8, 16],
+  radii: [2, 0, 0],
   colors: {
     text: "#DDD",
     background: "#1b1b1b",

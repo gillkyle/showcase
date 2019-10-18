@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
 import { get } from "lodash"
+import { FiPlayCircle } from "react-icons/fi"
 
 import Layout from "../components/layout"
 import AlbumArt from "../components/album-art"
@@ -30,7 +31,8 @@ const Post = ({ data }) => {
           <div
             sx={{
               position: `absolute`,
-              right: 64,
+              height: 250,
+              right: 32,
               bottom: 32,
               borderRadius: `1`,
             }}
@@ -64,15 +66,37 @@ const Post = ({ data }) => {
         <div
           sx={{
             display: `grid`,
-            gridTemplateColumns: `minmax(80px, 150px) 1fr minmax(80px, 150px)`,
+            gridTemplateColumns: `minmax(80px, 220px) 1fr minmax(80px, 220px)`,
           }}
         >
-          <div>{authorName}</div>
+          <div sx={{ mt: `5` }}>
+            <div>
+              <FiPlayCircle size={36} />
+            </div>
+            <div>{authorName}</div>
+          </div>
           <div>
-            <div dangerouslySetInnerHTML={{ __html: song.content.html }}></div>
+            <div sx={{ fontSize: `4`, mt: `5`, mb: `4` }}>
+              RÜFÜS DU SOL show no signs of stopping with a dozen amazing songs
+              out, and more to come.
+            </div>
+            <div
+              sx={{
+                lineHeight: `2`,
+                "& > p:first-child::first-letter": {
+                  float: `left`,
+                  fontSize: `8`,
+                  lineHeight: `48px`,
+                  mt: `4`,
+                  mr: `2`,
+                  fontWeight: 700,
+                },
+              }}
+              dangerouslySetInnerHTML={{ __html: song.content.html }}
+            />
             <SpotifyEmbed id={song.spotify_id} />
           </div>
-          <div>asdf</div>
+          <div />
         </div>
       </div>
     </Layout>
@@ -92,6 +116,7 @@ export const pageQuery = graphql`
         spotify_id
         content {
           html
+          text
         }
         album_art {
           localFile {
