@@ -3,6 +3,7 @@ import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
 import { get } from "lodash"
 import { FiPlayCircle } from "react-icons/fi"
+import { formatDistance } from "date-fns"
 
 import Layout from "../components/layout"
 import AlbumArt from "../components/album-art"
@@ -70,14 +71,26 @@ const Post = ({ data }) => {
             gridTemplateColumns: `minmax(80px, 220px) 1fr minmax(80px, 220px)`,
           }}
         >
-          <div sx={{ mt: `5` }}>
-            <div>{authorName}</div>
+          <div
+            sx={{
+              mt: `5`,
+              color: `textMuted`,
+              "*+*": {
+                mt: `3`,
+              },
+            }}
+          >
+            <div>
+              by: <span sx={{ color: `text` }}>{authorName}</span>
+            </div>
+            <div>
+              {formatDistance(new Date(song.timestamp), new Date())} ago
+            </div>
           </div>
           <div>
-            <div sx={{ fontSize: `4`, mt: `5`, mb: `4` }}>
-              RÜFÜS DU SOL show no signs of stopping with a dozen amazing songs
-              out, and more to come.
-            </div>
+            {song.excerpt && (
+              <div sx={{ fontSize: `4`, mt: `5`, mb: `4` }}>{song.excerpt}</div>
+            )}
             <div
               sx={{
                 mb: `3`,
@@ -122,6 +135,7 @@ export const pageQuery = graphql`
       uid
       data {
         song_title
+        excerpt
         artist
         timestamp
         spotify_id

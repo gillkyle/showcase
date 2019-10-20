@@ -4,7 +4,7 @@ import { jsx } from "theme-ui"
 const SpotifyEmbed = ({ id }) => (
   <iframe
     src={`https://open.spotify.com/embed/track/${id}`}
-    width="400"
+    width="480"
     height="80"
     frameborder="0"
     allowtransparency="true"

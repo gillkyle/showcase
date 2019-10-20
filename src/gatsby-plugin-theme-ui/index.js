@@ -18,6 +18,7 @@ export default {
   radii: [2, 0, 0],
   colors: {
     text: "#DDD",
+    textMuted: "#AAAFAF",
     background: "#1b1b1b",
     border: "#333",
     primary: "#00caff",
