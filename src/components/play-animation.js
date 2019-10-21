@@ -22,7 +22,7 @@ const PlayAnimation = ({ playing }) => {
   useInterval(() => {
     setVariance(Math.floor(Math.random() * 50) + 1)
   }, 750)
-  console.log(variance)
+  // console.log(variance)
 
   return (
     <div
@@ -37,7 +37,7 @@ const PlayAnimation = ({ playing }) => {
       {Array(NUM_BARS)
         .fill(null)
         .map((value, index) => {
-          return <Bar index={index} playing={playing} />
+          return <Bar key={index} index={index} playing={playing} />
         })}
     </div>
   )

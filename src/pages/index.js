@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
-import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 

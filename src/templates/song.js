@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import { get } from "lodash"
 import { FiPlayCircle } from "react-icons/fi"
 import { formatDistance } from "date-fns"
+import { motion } from "framer-motion"
 
 import Layout from "../components/layout"
 import AlbumArt from "../components/album-art"
@@ -59,8 +60,8 @@ const Post = ({ data }) => {
                 display: `flex`,
               }}
             >
-              {tags.map(tag => (
-                <Tag tag={tag} />
+              {tags.map((tag, index) => (
+                <Tag key={index} tag={tag} />
               ))}
             </div>
           </div>
@@ -99,15 +100,24 @@ const Post = ({ data }) => {
                 gridTemplateColumns: `auto 1fr`,
               }}
             >
-              <div>
-                <FiPlayCircle sx={{ strokeWidth: 1 }} size={64} />
-              </div>
+              <motion.div
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FiPlayCircle
+                  onClick={() => {
+                    console.log("click")
+                  }}
+                  sx={{ strokeWidth: 1 }}
+                  size={64}
+                />
+              </motion.div>
               <PlayAnimation playing={false} />
             </div>
             <div
               sx={{
                 lineHeight: `2`,
-                "& > p:first-child::first-letter": {
+                "& > p:first-of-type::first-letter": {
                   float: `left`,
                   fontSize: `8`,
                   lineHeight: `48px`,
