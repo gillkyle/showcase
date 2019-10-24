@@ -44,5 +44,15 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-source-spotify`,
+      options: {
+        clientId: `${process.env.GATSBY_CLIENT_ID}`,
+        clientSecret: `${process.env.GATSBY_CLIENT_SECRET}`,
+        refreshToken: `AQAlCO82_2dY9t7aF8h3ONn69BDSzgGV2LFFQArSFKAAW2u5AU1neSMsoDYmPnVYjDoiUA7ZJ2y4AMC5nYgqp6da0LnsOZkzfMNHUzAy6JuQTEXPifqprSz5-xWVNzNK32RHDg`,
+        fetchPlaylists: true, // optional. Set to false to disable fetching of your playlists
+        fetchRecent: false, // optional. Set to false to disable fetching of your recently played tracks
+      },
+    },
   ],
 }

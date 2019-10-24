@@ -2,14 +2,13 @@
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
 import { get } from "lodash"
-import { FiPlayCircle } from "react-icons/fi"
 import { formatDistance } from "date-fns"
-import { motion } from "framer-motion"
 
 import Layout from "../components/layout"
 import AlbumArt from "../components/album-art"
 import SpotifyEmbed from "../components/spotify-embed"
 import Tag from "../components/tag"
+import PlayButton from "../components/play-button"
 import PlayAnimation from "../components/play-animation"
 
 const Post = ({ data }) => {
@@ -100,18 +99,7 @@ const Post = ({ data }) => {
                 gridTemplateColumns: `auto 1fr`,
               }}
             >
-              <motion.div
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FiPlayCircle
-                  onClick={() => {
-                    console.log("click")
-                  }}
-                  sx={{ strokeWidth: 1 }}
-                  size={64}
-                />
-              </motion.div>
+              <PlayButton />
               <PlayAnimation playing={false} />
             </div>
             <div
