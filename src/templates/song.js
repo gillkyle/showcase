@@ -83,7 +83,13 @@ const Post = ({ data }) => {
             <div>
               by: <span sx={{ color: `text` }}>{authorName}</span>
             </div>
-            <div>
+            <div
+              sx={{
+                textTransform: `uppercase`,
+                fontSize: `0`,
+                fontWeight: `bold`,
+              }}
+            >
               {formatDistance(new Date(song.timestamp), new Date())} ago
             </div>
           </div>

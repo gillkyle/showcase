@@ -1,52 +1,63 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
+import { motion } from "framer-motion"
 
 import Layout from "../components/layout"
+import Container from "../components/container"
 
 export default ({ data }) => (
   <Layout>
-    <div>Song Showcase</div>
-    <div
-      style={{
-        display: `grid`,
-        gridTemplateColumns: `repeat(5, 1fr)`,
-      }}
-    >
-      {data.allPrismicSong.nodes.map(song => (
-        <Link to={song.uid} sx={{ textDecoration: `none` }}>
-          <div
-            sx={{
-              p: 3,
-              my: 2,
-              borderRadius: 1,
-              transition: `0.3s all`,
-              boxShadow: theme => `0px 2px 15px 0px ${theme.colors.shadow}`,
-              "&:hover": {
-                boxShadow: theme => `0px 5px 35px 0px ${theme.colors.shadow}`,
-              },
-            }}
-          >
-            <span
+    <Container>
+      <div sx={{ py: `6`, textAlign: `center` }}>
+        <h1>Music that means something.</h1>
+      </div>
+      <div
+        sx={{
+          display: `grid`,
+          gridTemplateColumns: `repeat(auto-fit, minmax(250px, 1fr))`,
+          gridGap: `4`,
+        }}
+      >
+        {data.allPrismicSong.nodes.map(song => (
+          <Link to={song.uid} sx={{ textDecoration: `none` }}>
+            <motion.div
+              whileHover={{ y: -3 }}
               sx={{
-                fontSize: 3,
-                color: `primary`,
+                display: `flex`,
+                flexDirection: `column`,
+                my: 2,
+                borderRadius: 1,
+                transition: `0.3s all`,
+                width: 250,
               }}
             >
-              {song.data.artist}
-            </span>
-            <span
-              sx={{
-                fontSize: 3,
-              }}
-            >
-              {" "}
-              - {song.data.song_title}
-            </span>
-          </div>
-        </Link>
-      ))}
-    </div>
+              <Img
+                sx={{ height: 220, width: 220 }}
+                fixed={song.data.album_art.localFile.childImageSharp.fixed}
+              />
+              <span
+                sx={{
+                  fontSize: 3,
+                  color: `primary`,
+                }}
+              >
+                {song.data.artist}
+              </span>
+              <span
+                sx={{
+                  fontSize: 3,
+                }}
+              >
+                {" "}
+                - {song.data.song_title}
+              </span>
+            </motion.div>
+          </Link>
+        ))}
+      </div>
+    </Container>
   </Layout>
 )
 
@@ -63,8 +74,8 @@ export const query = graphql`
           album_art {
             localFile {
               childImageSharp {
-                fixed {
-                  src
+                fixed(width: 250, height: 250) {
+                  ...GatsbyImageSharpFixed
                 }
               }
             }
