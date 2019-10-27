@@ -5,24 +5,42 @@ import { keyframes } from "@emotion/core"
 
 import { useInterval } from "../hooks/useInterval"
 
-const sound = keyframes`
-0% {
-  opacity: 0.35;
-  height: 05%;
-}
-100% {
-  opacity: 1;
-  height: 45%;
-}
-`
+const BarHeights = [
+  75,
+  80,
+  90,
+  100,
+  100,
+  100,
+  95,
+  80,
+  50,
+  75,
+  70,
+  60,
+  40,
+  30,
+  25,
+  25,
+  40,
+  50,
+  60,
+  80,
+  75,
+  55,
+  40,
+  30,
+  20,
+  50,
+  25,
+  60,
+  60,
+  50,
+  30,
+]
 
 const PlayAnimation = ({ playing }) => {
   const NUM_BARS = 60
-  let [variance, setVariance] = useState(20)
-  useInterval(() => {
-    setVariance(Math.floor(Math.random() * 50) + 1)
-  }, 750)
-  // console.log(variance)
 
   return (
     <div
@@ -34,27 +52,34 @@ const PlayAnimation = ({ playing }) => {
         alignItems: `center`,
       }}
     >
-      {Array(NUM_BARS)
-        .fill(null)
-        .map((value, index) => {
-          return <Bar key={index} index={index} playing={playing} />
-        })}
+      {BarHeights.map((value, index) => {
+        return (
+          <Bar key={index} maxHeight={value} index={index} playing={playing} />
+        )
+      })}
     </div>
   )
 }
 
 export default PlayAnimation
 
-const Bar = ({ index, playing }) => {
+const Bar = ({ index, playing, maxHeight }) => {
+  let [newHeight, setNewHeight] = useState(5)
+
+  useInterval(() => {
+    if (playing) {
+      setNewHeight(Math.floor(Math.random() * maxHeight) + 5)
+    }
+  }, Math.random() * 300)
+
   return (
     <div
       sx={{
-        height: `05%`,
+        height: playing ? `${newHeight}%` : `5%`,
         width: `100%`,
         backgroundColor: `primary`,
         borderRadius: `0`,
-        animation: playing && `${sound} 1s ease-in-out infinite alternate`,
-        animationDuration: `${index + 600}ms`,
+        transition: `0.3s all`,
       }}
     />
   )

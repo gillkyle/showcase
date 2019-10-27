@@ -9,10 +9,9 @@ import AlbumArt from "../components/album-art"
 import SpotifyEmbed from "../components/spotify-embed"
 import Tag from "../components/tag"
 import PlayButton from "../components/play-button"
-import PlayAnimation from "../components/play-animation"
 
 const Post = ({ data }) => {
-  const { data: song } = data.prismicSong
+  const { data: song, fields: spotifyData } = data.prismicSong
   const authorName = get(song, `author.document[0].data.name`)
   const tags = get(song, `tag_list[0].all_tags.document`)
 
@@ -105,8 +104,7 @@ const Post = ({ data }) => {
                 gridTemplateColumns: `auto 1fr`,
               }}
             >
-              <PlayButton />
-              <PlayAnimation playing={false} />
+              <PlayButton songPreview={spotifyData.previewUrl} />
             </div>
             <div
               sx={{
@@ -137,6 +135,9 @@ export const pageQuery = graphql`
   query SongBySlug($uid: String!) {
     prismicSong(uid: { eq: $uid }) {
       uid
+      fields {
+        previewUrl
+      }
       data {
         song_title
         excerpt
