@@ -16,6 +16,10 @@ const PlaySection = ({ songPreview }) => {
       setPlaying(false)
     }
     audio.current.volume = 0
+    // clean up function will pause the audio when navigating to a new page
+    return function cleanup() {
+      audio.current.pause()
+    }
   }, [])
 
   const fadeIn = (duration = 1000, targetVolume = 1, tick = 50) => {
@@ -38,7 +42,11 @@ const PlaySection = ({ songPreview }) => {
 
   return (
     <Fragment>
-      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+      <motion.div
+        sx={{ display: `flex`, alignItems: `center` }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
         {playing ? (
           <FiPauseCircle
             onClick={() => {

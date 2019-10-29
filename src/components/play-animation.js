@@ -36,10 +36,22 @@ const BarHeights = [
   60,
   50,
   30,
+  80,
+  75,
+  55,
+  40,
+  30,
+  20,
+  50,
+  25,
+  60,
+  15,
+  10,
+  10,
 ]
 
 const PlayAnimation = ({ playing }) => {
-  const NUM_BARS = 60
+  const NUM_BARS = BarHeights.length
 
   return (
     <div

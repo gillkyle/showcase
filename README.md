@@ -2,16 +2,10 @@
 
 Music blog for songs with deeper meaning.
 
-## Scripts
+## Data
 
-To get a temporary refresh token for hitting the API, you can run the following:
+Data comes from 2 sources: Spotify and Prismic. Information stored in Prismic is the content for a song post including a timestamp, a url, album art, and the actual content written about a track. Spotify data includes info like popularity, a preview URL, and other metadata for richer experiences on the blog.
 
-```sh
-npx gatsby-source-spotify token <clientId> <clientToken>
-```
+Content can be written straight inside of Prismic, including adding authors, tags, and new song posts.
 
-To rewrite information in the tracks.json file, use the following:
-
-```
-
-```
+The information from Spotify is stored in the tracks.json file and can be refreshed by running the `writeTracks` script at the root of the site after updating the refresh token inside of the file.

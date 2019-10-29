@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
-import Img from "gatsby-image"
 import { motion } from "framer-motion"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
+import AlbumArt from "../components/album-art"
 
 export default ({ data }) => (
   <Layout>
@@ -33,10 +33,11 @@ export default ({ data }) => (
                 width: 250,
               }}
             >
-              <Img
-                sx={{ height: 220, width: 220 }}
-                fixed={song.data.album_art.localFile.childImageSharp.fixed}
-              />
+              <div sx={{ height: 220, width: 220 }}>
+                <AlbumArt
+                  fluid={song.data.album_art.localFile.childImageSharp.fluid}
+                />
+              </div>
               <span
                 sx={{
                   fontSize: 3,
@@ -74,8 +75,8 @@ export const query = graphql`
           album_art {
             localFile {
               childImageSharp {
-                fixed(width: 250, height: 250) {
-                  ...GatsbyImageSharpFixed
+                fluid {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

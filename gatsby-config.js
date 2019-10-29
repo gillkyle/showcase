@@ -26,11 +26,11 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Roboto`,
+            family: `Cabin`,
             variants: [`100`, `300`, `400`, `500`, `700`],
           },
           {
-            family: `PT Sans`,
+            family: `Open Sans`,
             variants: [`400`, `700`],
           },
         ],

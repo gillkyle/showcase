@@ -1,9 +1,7 @@
 export default {
-  initialColorModeName: "dark",
-  useColorSchemeMediaQuery: true,
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
-    body: "PT Sans, system-ui, sans-serif",
+    body: "Cabin, system-ui, sans-serif",
     heading: "inherit",
     monospace: "Menlo, monospace",
   },
@@ -18,28 +16,17 @@ export default {
   radii: [2, 0, 0],
   colors: {
     text: "#DDD",
-    textMuted: "#AAAFAF",
-    background: "#1b1b1b",
+    textMuted: ["#AAAFAF", "#4b4e56"],
+    background: "#121517",
     border: "#333",
-    primary: "#00caff",
+    primary: "#008BFF",
     primaryMuted: "#CCF4FF",
-    secondary: "#008bff",
+    secondary: "#9DD0FF",
     secondaryMuted: "#CCE8FF",
-    card: "#222324",
-    gradient: theme =>
-      `linear-gradient(-180deg, ${theme.colors.primary},${theme.colors.secondary})`,
+    card: "rgba(33,37,41,0.75)",
     shadow: "rgba(50, 50, 93, 0.17)",
     modes: {
-      light: {
-        text: "#222",
-        background: "#EDEDED",
-        border: "#EEE",
-        primary: "#00caff",
-        secondary: "#008bff",
-        card: "#CECECE",
-        gradient: theme =>
-          `linear-gradient(-180deg, ${theme.colors.primary},${theme.colors.secondary})`,
-      },
+      light: {},
     },
   },
 }

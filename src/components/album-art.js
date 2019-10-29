@@ -2,12 +2,13 @@
 import { jsx } from "theme-ui"
 import Img from "gatsby-image"
 
-const AlbumArt = ({ fixed }) => (
+const AlbumArt = ({ fluid, ...props }) => (
   <Img
     sx={{
       borderRadius: 1,
     }}
-    fixed={fixed}
+    fluid={{ ...fluid, aspectRatio: 1 }}
+    {...props}
   />
 )
 

@@ -15,8 +15,6 @@ const Layout = ({ children }) => (
     <header
       sx={{
         padding: 3,
-        borderBottom: `1px solid`,
-        borderBottomColor: `border`,
       }}
     >
       <Container>
@@ -28,21 +26,11 @@ const Layout = ({ children }) => (
         position: `relative`,
       }}
     >
-      <SVG sx={{ position: `absolute`, minWidth: `100vw`, mt: 1 }} />
       <Container>{children}</Container>
-      <SVG
-        sx={{
-          zIndex: -1,
-          transform: `scaleY(-1)`,
-          minWidth: `100vw`,
-        }}
-      />
     </main>
     <footer
       sx={{
         p: 4,
-        borderTop: `1px solid`,
-        borderTopColor: `border`,
       }}
     >
       <Container>

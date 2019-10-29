@@ -27,40 +27,56 @@ const Post = ({ data }) => {
           sx={{
             mt: `6`,
             position: `relative`,
+            display: `flex`,
+            justifyContent: `center`,
+            minHeight: 280,
           }}
         >
           <div
             sx={{
               position: `absolute`,
-              height: 250,
-              right: 32,
-              bottom: 32,
+              width: `25%`,
+              left: -50,
+              bottom: 20,
               borderRadius: `1`,
             }}
           >
-            <AlbumArt fixed={song.album_art.localFile.childImageSharp.fixed} />
+            <AlbumArt fluid={song.album_art.localFile.childImageSharp.fluid} />
           </div>
           <div
             sx={{
               backgroundColor: `card`,
               borderRadius: `2`,
               p: `4`,
+              width: `70%`,
+              display: `flex`,
+              alignItems: `center`,
             }}
           >
-            <h1 sx={{ fontSize: `6`, fontStyle: `italic`, mb: `1` }}>
-              {song.song_title}
-            </h1>
-            <div sx={{ fontSize: `4`, color: `primaryMuted`, mb: `4` }}>
-              {song.artist}
-            </div>
-            <div
-              sx={{
-                display: `flex`,
-              }}
-            >
-              {tags.map((tag, index) => (
-                <Tag key={index} tag={tag} />
-              ))}
+            <div sx={{ pl: `72px` }}>
+              <h1 sx={{ fontSize: `7`, mb: `1` }}>{song.song_title}</h1>
+              <div
+                sx={{
+                  fontSize: `5`,
+                  color: `primaryMuted`,
+                  mb: `4`,
+                  background: theme =>
+                    `linear-gradient(${theme.colors.secondary}, ${theme.colors.primary})`,
+                  "-webkit-background-clip": `text`,
+                  "-webkit-text-fill-color": `transparent`,
+                }}
+              >
+                {song.artist}
+              </div>
+              <div
+                sx={{
+                  display: `flex`,
+                }}
+              >
+                {tags.map((tag, index) => (
+                  <Tag key={index} tag={tag} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -73,7 +89,7 @@ const Post = ({ data }) => {
           <div
             sx={{
               mt: `5`,
-              color: `textMuted`,
+              color: `textMuted.0`,
               "*+*": {
                 mt: `3`,
               },
@@ -98,13 +114,29 @@ const Post = ({ data }) => {
             )}
             <div
               sx={{
+                border: `1px solid`,
+                borderColor: `border`,
+                p: `2`,
                 mb: `3`,
                 display: `grid`,
                 gridGap: `3`,
-                gridTemplateColumns: `auto 1fr`,
+                gridTemplateColumns: `auto auto 1fr`,
+                justifyContent: `center`,
               }}
             >
               <PlayButton songPreview={spotifyData.previewUrl} />
+              <div
+                sx={{
+                  display: `flex`,
+                  alignItems: `center`,
+                  fontSize: `1`,
+                  letterSpacing: `2px`,
+                  textTransform: `uppercase`,
+                  color: `textMuted.1`,
+                }}
+              >
+                Song Preview
+              </div>
             </div>
             <div
               sx={{
@@ -150,8 +182,8 @@ export const pageQuery = graphql`
         album_art {
           localFile {
             childImageSharp {
-              fixed(width: 250, height: 250) {
-                ...GatsbyImageSharpFixed
+              fluid {
+                ...GatsbyImageSharpFluid
               }
             }
           }
