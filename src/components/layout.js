@@ -3,7 +3,6 @@ import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 
 import Container from "../components/container"
-import SVG from "../assets/dot-group.svg"
 
 const Layout = ({ children }) => (
   <div
@@ -18,7 +17,12 @@ const Layout = ({ children }) => (
       }}
     >
       <Container>
-        <Link to="/">Music</Link>
+        <Link
+          sx={{ textDecoration: `none`, color: `white`, fontSize: `3` }}
+          to="/"
+        >
+          AUDIO <span sx={{ variant: `gradient.text` }}>• KINETICS</span>
+        </Link>
       </Container>
     </header>
     <main

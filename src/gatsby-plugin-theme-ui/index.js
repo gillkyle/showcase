@@ -14,6 +14,14 @@ export default {
   },
   // radii: [4, 8, 16],
   radii: [2, 0, 0],
+  gradient: {
+    text: {
+      background: theme =>
+        `linear-gradient(${theme.colors.secondary}, ${theme.colors.primary})`,
+      "-webkit-background-clip": `text`,
+      "-webkit-text-fill-color": `transparent`,
+    },
+  },
   colors: {
     text: "#DDD",
     textMuted: ["#AAAFAF", "#4b4e56"],
