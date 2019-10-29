@@ -8,7 +8,13 @@ const Layout = ({ children }) => (
   <div
     sx={{
       height: `100%`,
+      minHeight: `100vh`,
       backgroundColor: `background`,
+      backgroundImage: theme => `radial-gradient(${theme.colors.faint} 1px, transparent 1px),
+      radial-gradient(${theme.colors.faint} 1px, transparent 1px)`,
+      backgroundPosition: `0 0, 25px 25px`,
+      backgroundAttachment: `fixed`,
+      backgroundSize: `50px 50px`,
     }}
   >
     <header

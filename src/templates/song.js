@@ -143,6 +143,7 @@ const Post = ({ data }) => {
             )}
             <div
               sx={{
+                backgroundColor: `background`,
                 border: `1px solid`,
                 borderColor: `border`,
                 p: `2`,
