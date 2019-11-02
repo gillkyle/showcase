@@ -34,10 +34,15 @@ const Clap = () => {
       whileHover={{
         scale: 1.05,
         boxShadow: `0px 0px 4px 4px ${theme.colors.primary}`,
-        borderRadius: 500,
       }}
       whileTap={{ scale: 0.95 }}
-      sx={{ height: 72, width: 72, position: `relative`, cursor: `pointer` }}
+      sx={{
+        borderRadius: 500,
+        height: 72,
+        width: 72,
+        position: `relative`,
+        cursor: `pointer`,
+      }}
     >
       <motion.div
         sx={{

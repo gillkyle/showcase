@@ -8,7 +8,7 @@ import Clap from "./clap"
 const SongMenu = ({ songTimestamp, authorName }) => {
   return (
     <Fragment>
-      <div>
+      <div sx={{ mb: 3 }}>
         by: <span sx={{ color: `text` }}>{authorName}</span>
       </div>
       <div
@@ -16,6 +16,7 @@ const SongMenu = ({ songTimestamp, authorName }) => {
           textTransform: `uppercase`,
           fontSize: `0`,
           fontWeight: `bold`,
+          mb: `3`,
         }}
       >
         {formatDistance(new Date(songTimestamp), new Date())} ago

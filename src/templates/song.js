@@ -35,9 +35,6 @@ const Post = ({ data }) => {
               visibility: [`hidden`, `hidden`, `visible`],
               flexDirection: [`row`, `column`, null],
               color: `textMuted.0`,
-              "*+*": {
-                mt: `3`,
-              },
             }}
           >
             <SongMenu authorName={authorName} songTimestamp={song.timestamp} />
