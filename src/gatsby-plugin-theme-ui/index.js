@@ -1,5 +1,6 @@
 export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  breakpoints: [`750px`, `1050px`],
   fonts: {
     body: "Cabin, system-ui, sans-serif",
     heading: "inherit",
@@ -18,8 +19,8 @@ export default {
     text: {
       background: theme =>
         `linear-gradient(${theme.colors.secondary}, ${theme.colors.primary})`,
-      "-webkit-background-clip": `text`,
-      "-webkit-text-fill-color": `transparent`,
+      WebkitBackgroundClip: `text`,
+      WebkitTextFillColor: `transparent`,
     },
   },
   colors: {

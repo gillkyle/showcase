@@ -9,9 +9,10 @@ import PlayAnimation from "../components/play-animation"
 const PlaySection = ({ songPreview }) => {
   const [playing, setPlaying] = useState(false)
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false)
-  const audio = useRef(new Audio(songPreview))
+  let audio
 
   useEffect(() => {
+    audio = useRef(new Audio(songPreview))
     audio.current.onended = () => {
       setPlaying(false)
     }

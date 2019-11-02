@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { motion } from "framer-motion"
 
 import Layout from "../components/layout"
