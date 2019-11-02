@@ -5,14 +5,14 @@ import { FiPlayCircle, FiPauseCircle } from "react-icons/fi"
 import { motion } from "framer-motion"
 
 import PlayAnimation from "../components/play-animation"
+import { useAudio } from "../hooks/useAudio"
 
 const PlaySection = ({ songPreview }) => {
   const [playing, setPlaying] = useState(false)
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false)
-  let audio
+  const audio = useAudio(songPreview)
 
   useEffect(() => {
-    audio = useRef(new Audio(songPreview))
     audio.current.onended = () => {
       setPlaying(false)
     }
