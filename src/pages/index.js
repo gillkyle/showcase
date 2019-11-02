@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { graphql, Link } from "gatsby"
-import { motion } from "framer-motion"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
-import AlbumArt from "../components/album-art"
+import SongCard from "../components/song-card"
 
 export default ({ data }) => (
   <Layout>
@@ -17,45 +16,12 @@ export default ({ data }) => (
         sx={{
           display: `grid`,
           gridTemplateColumns: `repeat(auto-fit, minmax(250px, 1fr))`,
-          gridGap: `4`,
+          gridColumnGap: `4`,
+          gridRowGap: `5`,
         }}
       >
         {data.allPrismicSong.nodes.map(song => (
-          <Link to={song.uid} sx={{ textDecoration: `none` }}>
-            <motion.div
-              whileHover={{ y: -3 }}
-              sx={{
-                display: `flex`,
-                flexDirection: `column`,
-                my: 2,
-                borderRadius: 1,
-                transition: `0.3s all`,
-                width: 250,
-              }}
-            >
-              <div sx={{ height: 220, width: 220 }}>
-                <AlbumArt
-                  fluid={song.data.album_art.localFile.childImageSharp.fluid}
-                />
-              </div>
-              <span
-                sx={{
-                  fontSize: 3,
-                  color: `primary`,
-                }}
-              >
-                {song.data.artist}
-              </span>
-              <span
-                sx={{
-                  fontSize: 3,
-                }}
-              >
-                {" "}
-                - {song.data.song_title}
-              </span>
-            </motion.div>
-          </Link>
+          <SongCard song={song} />
         ))}
       </div>
     </Container>
@@ -77,6 +43,17 @@ export const query = graphql`
               childImageSharp {
                 fluid {
                   ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+          tag_list {
+            all_tags {
+              document {
+                data {
+                  bg_color
+                  name
+                  text_color
                 }
               }
             }

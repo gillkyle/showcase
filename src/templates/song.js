@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
-import { motion } from "framer-motion"
 import { get } from "lodash"
 import { formatDistance } from "date-fns"
 
@@ -56,16 +55,13 @@ const Post = ({ data }) => {
             }}
           >
             <div sx={{ pl: `72px` }}>
-              <h1 sx={{ fontSize: `7`, mb: `1` }}>{song.song_title}</h1>
+              <h1 sx={{ fontSize: `6`, mb: `1` }}>{song.song_title}</h1>
               <div
                 sx={{
                   fontSize: `5`,
                   color: `primaryMuted`,
                   mb: `4`,
-                  background: theme =>
-                    `linear-gradient(${theme.colors.secondary}, ${theme.colors.primary})`,
-                  WebkitBackgroundClip: `text`,
-                  WebkitTextFillColor: `transparent`,
+                  variant: `gradient.text`,
                 }}
               >
                 {song.artist}
@@ -75,9 +71,8 @@ const Post = ({ data }) => {
                   display: `flex`,
                 }}
               >
-                {tags.map((tag, index) => (
-                  <Tag key={index} tag={tag} />
-                ))}
+                {tags &&
+                  tags.map((tag, index) => <Tag key={index} tag={tag} />)}
               </div>
             </div>
           </div>

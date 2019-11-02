@@ -5,7 +5,7 @@ export function useAudio(url) {
 
   useEffect(() => {
     audio.current = new Audio(url)
-  }, [])
+  }, [url])
 
   return audio
 }

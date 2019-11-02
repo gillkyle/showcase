@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState, useRef, useEffect, Fragment } from "react"
+import { useState, useEffect, Fragment } from "react"
 import { FiPlayCircle, FiPauseCircle } from "react-icons/fi"
 import { motion } from "framer-motion"
 
@@ -21,7 +21,7 @@ const PlaySection = ({ songPreview }) => {
     return function cleanup() {
       audio.current.pause()
     }
-  }, [])
+  }, [audio])
 
   const fadeIn = (duration = 1000, targetVolume = 1, tick = 50) => {
     const volumeIncrease = targetVolume / (duration / tick)
