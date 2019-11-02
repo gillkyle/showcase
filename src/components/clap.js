@@ -37,7 +37,7 @@ const Clap = () => {
         borderRadius: 500,
       }}
       whileTap={{ scale: 0.95 }}
-      sx={{ height: 72, width: 72, position: `relative` }}
+      sx={{ height: 72, width: 72, position: `relative`, cursor: `pointer` }}
     >
       <motion.div
         sx={{
@@ -48,20 +48,20 @@ const Clap = () => {
           bottom: 0,
           borderRadius: 500,
           zIndex: 2,
-          boxShadow: `0px 0px 2px 2px ${theme.colors.primary}`,
+          boxShadow: `0px 0px 0px 0px ${theme.colors.primary}`,
         }}
         onClick={handleClick}
         animate={controls}
       ></motion.div>
       <motion.svg
-        sx={{ userSelect: `none`, cursor: `pointer`, m: 0 }}
+        sx={{ userSelect: `none`, m: 0 }}
         onClick={handleClick}
         style={{
           borderRadius: 500,
           zIndex: 3,
         }}
         initial={{
-          boxShadow: `0px 0px 2px 2px #bdc`,
+          boxShadow: `0px 0px 0px 0px #fff`,
         }}
         width="72"
         height="72"
