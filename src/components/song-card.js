@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 
 import AlbumArt from "./album-art"
 
-const SongCard = ({ song }) => {
+const SongCard = ({ songData, songId }) => {
   return (
     <div
       sx={{
@@ -16,11 +16,11 @@ const SongCard = ({ song }) => {
         justifySelf: `center`,
       }}
     >
-      <Link to={song.uid} sx={{ textDecoration: `none` }}>
+      <Link to={songId} sx={{ textDecoration: `none` }}>
         <motion.div whileHover={{ y: -3 }}>
           <AlbumArt
             sx={{ transform: `translateY(-20px)` }}
-            fluid={song.data.album_art.localFile.childImageSharp.fluid}
+            fluid={songData.album_art.localFile.childImageSharp.fluid}
           />
         </motion.div>
         <div
@@ -29,7 +29,7 @@ const SongCard = ({ song }) => {
             fontSize: 4,
           }}
         >
-          {song.data.song_title}
+          {songData.song_title}
         </div>
         <div
           sx={{
@@ -37,7 +37,7 @@ const SongCard = ({ song }) => {
             variant: `gradient.text`,
           }}
         >
-          {song.data.artist}
+          {songData.artist}
         </div>
       </Link>
     </div>

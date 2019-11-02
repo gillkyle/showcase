@@ -1,6 +1,6 @@
 export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  breakpoints: [`750px`, `1050px`],
+  breakpoints: [`750px`, `1000px`],
   fonts: {
     body: "Cabin, system-ui, sans-serif",
     heading: "inherit",

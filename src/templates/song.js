@@ -2,14 +2,12 @@
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
 import { get } from "lodash"
-import { formatDistance } from "date-fns"
 
 import Layout from "../components/layout"
-import AlbumArt from "../components/album-art"
 import SpotifyEmbed from "../components/spotify-embed"
-import Tag from "../components/tag"
+import SongHeader from "../components/song-header"
+import SongMenu from "../components/song-menu"
 import PlayButton from "../components/play-button"
-import Clap from "../components/clap"
 
 const Post = ({ data }) => {
   const { data: song, fields: spotifyData } = data.prismicSong
@@ -24,69 +22,17 @@ const Post = ({ data }) => {
           flexDirection: `column`,
         }}
       >
-        <div
-          sx={{
-            mt: `5`,
-            position: `relative`,
-            display: `flex`,
-            justifyContent: `center`,
-            minHeight: 280,
-          }}
-        >
-          <div
-            sx={{
-              position: `absolute`,
-              width: `25%`,
-              left: -50,
-              bottom: 20,
-              borderRadius: `1`,
-            }}
-          >
-            <AlbumArt fluid={song.album_art.localFile.childImageSharp.fluid} />
-          </div>
-          <div
-            sx={{
-              backgroundColor: `card`,
-              borderRadius: `2`,
-              p: `4`,
-              width: `70%`,
-              display: `flex`,
-              alignItems: `center`,
-            }}
-          >
-            <div sx={{ pl: `72px` }}>
-              <h1 sx={{ fontSize: `6`, mb: `1` }}>{song.song_title}</h1>
-              <div
-                sx={{
-                  fontSize: `5`,
-                  color: `primaryMuted`,
-                  mb: `4`,
-                  variant: `gradient.text`,
-                }}
-              >
-                {song.artist}
-              </div>
-              <div
-                sx={{
-                  display: `flex`,
-                }}
-              >
-                {tags &&
-                  tags.map((tag, index) => <Tag key={index} tag={tag} />)}
-              </div>
-            </div>
-          </div>
-        </div>
+        <SongHeader authorName={authorName} song={song} tags={tags} />
         <div
           sx={{
             display: `grid`,
-            gridTemplateColumns: `minmax(80px, 220px) 1fr minmax(80px, 220px)`,
+            gridTemplateColumns: [`5% 1fr 5%`, `150px 1fr 150px`],
           }}
         >
           <div
             sx={{
               mt: `5`,
-              display: `flex`,
+              visibility: [`hidden`, `hidden`, `visible`],
               flexDirection: [`row`, `column`, null],
               color: `textMuted.0`,
               "*+*": {
@@ -94,19 +40,7 @@ const Post = ({ data }) => {
               },
             }}
           >
-            <div>
-              by: <span sx={{ color: `text` }}>{authorName}</span>
-            </div>
-            <div
-              sx={{
-                textTransform: `uppercase`,
-                fontSize: `0`,
-                fontWeight: `bold`,
-              }}
-            >
-              {formatDistance(new Date(song.timestamp), new Date())} ago
-            </div>
-            <Clap />
+            <SongMenu authorName={authorName} songTimestamp={song.timestamp} />
           </div>
           <div>
             {song.excerpt && (

@@ -21,7 +21,7 @@ export default ({ data }) => (
         }}
       >
         {data.allPrismicSong.nodes.map(song => (
-          <SongCard song={song} />
+          <SongCard songId={song.uid} songData={song.data} />
         ))}
       </div>
     </Container>
