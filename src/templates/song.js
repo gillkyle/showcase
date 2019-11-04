@@ -72,12 +72,14 @@ const Post = ({ data }) => {
             </div>
             <div
               sx={{
-                lineHeight: `2`,
+                "& > p": {
+                  lineHeight: `2`,
+                },
                 "& > p:first-of-type::first-letter": {
                   float: `left`,
                   fontSize: `8`,
-                  lineHeight: `48px`,
-                  mt: `4`,
+                  lineHeight: 0.7,
+                  mt: `3`,
                   mr: `2`,
                   fontWeight: 700,
                 },
@@ -99,9 +101,7 @@ export const pageQuery = graphql`
   query SongBySlug($uid: String!) {
     prismicSong(uid: { eq: $uid }) {
       uid
-      fields {
-        previewUrl
-      }
+      ...SongFieldsFragment
       data {
         song_title
         excerpt
@@ -111,15 +111,7 @@ export const pageQuery = graphql`
         content {
           html
         }
-        album_art {
-          localFile {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
+        ...AlbumArtFragment
         author {
           document {
             data {

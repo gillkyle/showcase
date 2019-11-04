@@ -6,12 +6,26 @@ exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
   // add data in /data/tracks.json to posts from Prismic
 
+  const getMatchingTrackItem = node => {
+    if (node.internal.type === `PrismicSong`) {
+      return trackItems.find(
+        trackItem => trackItem.track.id === node.data.spotify_id
+      )
+    } else if (node.internal.type === `PrismicFeaturedTrack`) {
+      return trackItems.find(
+        trackItem => trackItem.track.id === node.data.featured_track_spotify_id
+      )
+    }
+  }
+
   // only add to PrismicSong nodes
-  if (node.internal.type === `PrismicSong`) {
+  if (
+    node.internal.type === `PrismicSong` ||
+    node.internal.type === `PrismicFeaturedTrack`
+  ) {
     // find the matching song from tracks.json to hook up to the song
-    const matchingTrackItem = trackItems.find(
-      trackItem => trackItem.track.id === node.data.spotify_id
-    )
+    const matchingTrackItem = getMatchingTrackItem(node)
+    if (!matchingTrackItem) return
 
     // add the previewUrl field from the track to the PrismicNode
     createNodeField({

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { get } from "lodash"
 
 import Layout from "../components/layout"
@@ -12,17 +12,14 @@ export default ({ data }) => {
   const {
     allPrismicSong,
     prismicFeaturedTrack: {
-      data: { featured_track },
+      data: { featured_track: featuredTrack, title: featureTrackTitle },
     },
   } = data
-  const featuredTrackData = get(featured_track, `document[0].data`)
+  const featuredTrackData = get(featuredTrack, `document[0].data`)
   const featuredTrackTags = get(
-    featured_track,
+    featuredTrack,
     `document[0].data.tag_list[0].all_tags.document`
   )
-
-  console.log(featured_track)
-  console.log(featuredTrackTags)
   return (
     <Layout>
       <Container>
@@ -30,19 +27,27 @@ export default ({ data }) => {
           <h1 sx={{ fontSize: `6`, mb: `2` }}>
             Curated Music the Means Something
           </h1>
-          <p sx={{ margin: `0 auto`, maxWidth: `75%` }}>
+          <p
+            sx={{
+              fontSize: `3`,
+              color: `secondaryMuted`,
+              margin: `0 auto`,
+              maxWidth: `75%`,
+            }}
+          >
             Surfacing the best music that tells deeper stories, evokes greater
             thoughts, and most of all moves us.
           </p>
         </div>
         <div>
-          <h2 sx={{ fontSize: `6`, textAlign: `center` }}>Featured Track</h2>
-          <Link to={`/${featured_track.uid}`} sx={{ textDecoration: `none` }}>
-            <FeaturedTrack
-              songData={featuredTrackData}
-              tags={featuredTrackTags}
-            />
-          </Link>
+          <h2 sx={{ fontSize: `6`, textAlign: `center` }}>
+            {featureTrackTitle}
+          </h2>
+          <FeaturedTrack
+            songId={featuredTrack.uid}
+            songData={featuredTrackData}
+            tags={featuredTrackTags}
+          />
         </div>
         <div sx={{ mt: `6` }}>
           <h2 sx={{ fontSize: `6`, textAlign: `center` }}>Latest Picks</h2>
@@ -56,7 +61,7 @@ export default ({ data }) => {
             }}
           >
             {allPrismicSong.nodes.map(song => (
-              <SongCard songId={song.uid} songData={song.data} />
+              <SongCard key={song.uid} songId={song.uid} songData={song.data} />
             ))}
           </div>
         </div>
@@ -75,18 +80,15 @@ export const query = graphql`
           song_title
           timestamp
           spotify_id
-          album_art {
-            ...AlbumArtFragment
-          }
-          tag_list {
-            ...TagFragment
-          }
+          ...AlbumArtFragment
+          ...TagFragment
         }
       }
     }
     prismicFeaturedTrack {
       id
       data {
+        title
         featured_track {
           id
           uid
@@ -97,12 +99,8 @@ export const query = graphql`
               artist
               excerpt
               timestamp
-              album_art {
-                ...AlbumArtFragment
-              }
-              tag_list {
-                ...TagFragment
-              }
+              ...AlbumArtFragment
+              ...TagFragment
             }
           }
         }
