@@ -16,7 +16,7 @@ const SongCard = ({ songData, songId }) => {
         justifySelf: `center`,
       }}
     >
-      <Link to={songId} sx={{ textDecoration: `none` }}>
+      <Link to={`/${songId}`} sx={{ textDecoration: `none` }}>
         <motion.div whileHover={{ y: -3 }}>
           <AlbumArt
             sx={{ transform: `translateY(-20px)` }}
