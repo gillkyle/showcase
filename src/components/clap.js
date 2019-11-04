@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Fragment, useState } from "react"
-import { motion, useAnimation, transform } from "framer-motion"
+import { useState } from "react"
+import { motion, useAnimation } from "framer-motion"
 
 import theme from "../gatsby-plugin-theme-ui"
 
