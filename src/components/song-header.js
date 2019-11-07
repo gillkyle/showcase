@@ -117,7 +117,11 @@ const SongHeader = ({ song, tags, authorName }) => {
               },
             }}
           >
-            <SongMenu authorName={authorName} songTimestamp={song.timestamp} />
+            <SongMenu
+              spotifyId={song.spotify_id}
+              authorName={authorName}
+              songTimestamp={song.timestamp}
+            />
           </div>
         </div>
       </div>
