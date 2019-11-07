@@ -3,15 +3,34 @@ import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 import { motion } from "framer-motion"
 import { get } from "lodash"
+import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
 
 import AlbumArt from "./album-art"
 import Tag from "./tag"
 import PlayButton from "./play-button"
+import SmallClap from "./small-clap"
+
+const SongStatsQuery = gql`
+  query FindSongStatById($spotifyId: String!) {
+    songStatsBySpotifyId(spotifyId: $spotifyId) {
+      data {
+        spotifyId
+        claps
+      }
+    }
+  }
+`
 
 const FeaturedTrack = ({ songId, song, tags }) => {
   const songData = get(song, `document[0].data`)
   const previewUrl = get(song, `document[0].fields.previewUrl`)
-  console.log(songData)
+
+  const { data } = useQuery(SongStatsQuery, {
+    variables: { spotifyId: songData.spotify_id },
+  })
+  console.log(data)
+  const featuredTrackClaps = get(data, `songStatsBySpotifyId.data[0].claps`, 0)
 
   return (
     <div
@@ -88,9 +107,11 @@ const FeaturedTrack = ({ songId, song, tags }) => {
           <div
             sx={{
               display: `flex`,
+              justifyContent: `space-between`,
             }}
           >
             {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+            <SmallClap fill="textMuted.0" numClaps={featuredTrackClaps} />
           </div>
         </div>
       </div>

@@ -15,7 +15,6 @@ export default ({ data }) => {
       data: { featured_track: featuredTrack, title: featureTrackTitle },
     },
   } = data
-  console.log(featuredTrack)
   const featuredTrackTags = get(
     featuredTrack,
     `document[0].data.tag_list[0].all_tags.document`

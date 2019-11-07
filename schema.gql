@@ -1,0 +1,9 @@
+type songStats {
+  spotifyId: String!
+  claps: Int
+}
+
+type Query {
+  allSongStats: [songStats!]
+  songStatsBySpotifyId(spotifyId: String!): songStats!
+}
