@@ -9,7 +9,7 @@ const SongCard = ({ songData, songId }) => {
   return (
     <div
       sx={{
-        width: 235,
+        width: [300, 275, 275],
         backgroundColor: `card`,
         px: `3`,
         pb: `3`,

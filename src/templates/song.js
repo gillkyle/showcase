@@ -75,6 +75,9 @@ const Post = ({ data }) => {
                 "& > p": {
                   lineHeight: `2`,
                 },
+                "& > p > a": {
+                  variant: `gradient.text`,
+                },
                 "& > p:first-of-type::first-letter": {
                   float: `left`,
                   fontSize: `8`,

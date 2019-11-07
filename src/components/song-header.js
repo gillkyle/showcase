@@ -45,7 +45,6 @@ const SongHeader = ({ song, tags, authorName }) => {
             <div
               sx={{
                 fontSize: `5`,
-                color: `primaryMuted`,
                 mb: `4`,
                 variant: `gradient.text`,
               }}

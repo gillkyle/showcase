@@ -15,7 +15,7 @@ export default ({ data }) => {
       data: { featured_track: featuredTrack, title: featureTrackTitle },
     },
   } = data
-  const featuredTrackData = get(featuredTrack, `document[0].data`)
+  console.log(featuredTrack)
   const featuredTrackTags = get(
     featuredTrack,
     `document[0].data.tag_list[0].all_tags.document`
@@ -45,7 +45,7 @@ export default ({ data }) => {
           </h2>
           <FeaturedTrack
             songId={featuredTrack.uid}
-            songData={featuredTrackData}
+            song={featuredTrack}
             tags={featuredTrackTags}
           />
         </div>
@@ -54,8 +54,8 @@ export default ({ data }) => {
           <div
             sx={{
               display: `grid`,
-              gridTemplateColumns: `repeat(auto-fit, minmax(250px, 1fr))`,
-              gridColumnGap: `4`,
+              gridTemplateColumns: `repeat(auto-fit, minmax(300px, 1fr))`,
+              gridColumnGap: `3`,
               gridRowGap: `5`,
               mt: `5`,
             }}
@@ -93,6 +93,7 @@ export const query = graphql`
           id
           uid
           document {
+            ...SongFieldsFragment
             data {
               song_title
               spotify_id

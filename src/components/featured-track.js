@@ -2,12 +2,17 @@
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 import { motion } from "framer-motion"
+import { get } from "lodash"
 
 import AlbumArt from "./album-art"
 import Tag from "./tag"
 import PlayButton from "./play-button"
 
-const FeaturedTrack = ({ songId, songData, tags }) => {
+const FeaturedTrack = ({ songId, song, tags }) => {
+  const songData = get(song, `document[0].data`)
+  const previewUrl = get(song, `document[0].fields.previewUrl`)
+  console.log(songData)
+
   return (
     <div
       sx={{
@@ -77,7 +82,7 @@ const FeaturedTrack = ({ songId, songData, tags }) => {
               justifyContent: `center`,
             }}
           >
-            <PlayButton songPreview={songData.previewUrl} />
+            <PlayButton songPreview={previewUrl} />
           </div>
 
           <div
