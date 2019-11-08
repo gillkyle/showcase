@@ -7,11 +7,14 @@ import { get } from "lodash"
 import AlbumArt from "./album-art"
 import Tag from "./tag"
 import PlayButton from "./play-button"
+import SmallClap from "./small-clap"
+import { useQueryClapsById } from "../hooks/useClaps"
 
 const FeaturedTrack = ({ songId, song, tags }) => {
   const songData = get(song, `document[0].data`)
   const previewUrl = get(song, `document[0].fields.previewUrl`)
-  console.log(songData)
+
+  const claps = useQueryClapsById(songData.spotify_id)
 
   return (
     <div
@@ -88,9 +91,11 @@ const FeaturedTrack = ({ songId, song, tags }) => {
           <div
             sx={{
               display: `flex`,
+              justifyContent: `space-between`,
             }}
           >
             {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+            <SmallClap fill="textMuted.0" numClaps={claps} />
           </div>
         </div>
       </div>

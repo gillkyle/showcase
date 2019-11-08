@@ -37,7 +37,11 @@ const Post = ({ data }) => {
               color: `textMuted.0`,
             }}
           >
-            <SongMenu authorName={authorName} songTimestamp={song.timestamp} />
+            <SongMenu
+              spotifyId={song.spotify_id}
+              authorName={authorName}
+              songTimestamp={song.timestamp}
+            />
           </div>
           <div>
             {song.excerpt && (

@@ -4,8 +4,12 @@ import { Fragment } from "react"
 import { formatDistance } from "date-fns"
 
 import Clap from "./clap"
+import { useQueryClapsById } from "../hooks/useClaps"
 
-const SongMenu = ({ songTimestamp, authorName }) => {
+const SongMenu = ({ spotifyId, songTimestamp, authorName }) => {
+  const claps = useQueryClapsById(spotifyId)
+  console.log(claps)
+
   return (
     <Fragment>
       <div sx={{ mb: 3 }}>
@@ -21,7 +25,15 @@ const SongMenu = ({ songTimestamp, authorName }) => {
       >
         {formatDistance(new Date(songTimestamp), new Date())} ago
       </div>
-      <Clap />
+      <div
+        sx={{
+          display: `flex`,
+          alignItems: `center`,
+        }}
+      >
+        <Clap />
+        <span sx={{ fontSize: `3`, ml: `2` }}>{claps}</span>
+      </div>
     </Fragment>
   )
 }
