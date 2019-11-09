@@ -37,7 +37,7 @@ const FeaturedTrack = ({ songId, song, tags }) => {
             width: `35%`,
             left: 0,
             top: 36,
-            borderRadius: `1`,
+            borderRadius: `0`,
           }}
         >
           <AlbumArt
@@ -48,7 +48,7 @@ const FeaturedTrack = ({ songId, song, tags }) => {
       <div
         sx={{
           backgroundColor: `card`,
-          borderRadius: `2`,
+          borderRadius: `0`,
           p: `4`,
           width: `70%`,
           display: `flex`,

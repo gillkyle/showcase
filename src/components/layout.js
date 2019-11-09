@@ -44,7 +44,12 @@ const Layout = ({ children }) => (
       }}
     >
       <Container>
-        <Link to="/">Music</Link>
+        <Link
+          sx={{ textDecoration: `none`, color: `white`, fontSize: `2` }}
+          to="/"
+        >
+          AUDIO <span sx={{ variant: `gradient.text` }}>• KINETICS</span>
+        </Link>
       </Container>
     </footer>
   </div>

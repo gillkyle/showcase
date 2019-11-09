@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { get } from "lodash"
 
 import Layout from "../components/layout"
@@ -62,6 +62,26 @@ export default ({ data }) => {
             {allPrismicSong.nodes.map(song => (
               <SongCard key={song.uid} songId={song.uid} songData={song.data} />
             ))}
+          </div>
+          <div sx={{ my: `4`, display: `flex`, placeContent: `center` }}>
+            <Link
+              to="/list"
+              sx={{
+                transition: `0.3s all`,
+                textDecoration: `none`,
+                fontWeight: 700,
+                fontSize: `4`,
+                py: `3`,
+                px: `4`,
+                color: `text`,
+                borderRadius: `2`,
+                "&:hover": {
+                  backgroundColor: `card`,
+                },
+              }}
+            >
+              See All >
+            </Link>
           </div>
         </div>
       </Container>

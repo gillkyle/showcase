@@ -13,8 +13,7 @@ export default {
     heading: 700,
     bold: 700,
   },
-  // radii: [4, 8, 16],
-  radii: [2, 0, 0],
+  radii: [0, 2, 4, 8],
   gradient: {
     text: {
       background: theme =>

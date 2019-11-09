@@ -25,7 +25,7 @@ const SongHeader = ({ song, tags, authorName }) => {
             width: `25%`,
             left: 0,
             bottom: 20,
-            borderRadius: `1`,
+            borderRadius: `0`,
           }}
         >
           <AlbumArt fluid={song.album_art.localFile.childImageSharp.fluid} />
@@ -33,7 +33,7 @@ const SongHeader = ({ song, tags, authorName }) => {
         <div
           sx={{
             backgroundColor: `card`,
-            borderRadius: `2`,
+            borderRadius: `0`,
             p: `4`,
             width: `70%`,
             display: `flex`,
