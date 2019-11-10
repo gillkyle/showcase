@@ -11,6 +11,7 @@ import theme from "../gatsby-plugin-theme-ui"
 const UpdateClapsMutation = gql`
   mutation UpdateSong($id: ID!, $inputData: SongStatsInput!) {
     updateSongStats(id: $id, data: $inputData) {
+      _id
       claps
     }
   }

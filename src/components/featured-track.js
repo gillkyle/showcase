@@ -27,35 +27,44 @@ const FeaturedTrack = ({ songId, song, tags }) => {
         minHeight: 280,
       }}
     >
-      <Link to={`/${songId}`} sx={{ textDecoration: `none` }}>
-        <motion.div
-          whileHover={{
-            x: 8,
-          }}
-          sx={{
-            position: `absolute`,
-            width: `35%`,
-            left: 0,
-            top: 36,
-            borderRadius: `0`,
-          }}
-        >
-          <AlbumArt
-            fluid={songData.album_art.localFile.childImageSharp.fluid}
-          />
-        </motion.div>
-      </Link>
       <div
         sx={{
           backgroundColor: `card`,
           borderRadius: `0`,
-          p: `4`,
+          py: `4`,
+          pr: `4`,
           width: `70%`,
-          display: `flex`,
+          display: `grid`,
+          gridTemplateColumns: `1fr 1fr`,
           alignItems: `center`,
         }}
       >
-        <div sx={{ pl: `7` }}>
+        <Link
+          sx={{
+            width: `100%`,
+            textDecoration: `none`,
+          }}
+          to={`/${songId}`}
+        >
+          <motion.div
+            initial={{
+              x: -32,
+            }}
+            whileHover={{
+              x: -42,
+            }}
+            sx={{
+              height: `100%`,
+              width: `100%`,
+            }}
+          >
+            <AlbumArt
+              fluid={songData.album_art.localFile.childImageSharp.fluid}
+            />
+          </motion.div>
+        </Link>
+
+        <div sx={{ pl: `2` }}>
           <h1 sx={{ fontSize: `6`, mb: `1` }}>{songData.song_title}</h1>
           <div
             sx={{
@@ -85,7 +94,7 @@ const FeaturedTrack = ({ songId, song, tags }) => {
               justifyContent: `center`,
             }}
           >
-            <PlayButton songPreview={previewUrl} />
+            <PlayButton numBars={25} songPreview={previewUrl} />
           </div>
 
           <div

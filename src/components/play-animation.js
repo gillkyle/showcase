@@ -50,8 +50,8 @@ const BarHeights = [
   10,
 ]
 
-const PlayAnimation = ({ playing }) => {
-  const NUM_BARS = BarHeights.length
+const PlayAnimation = ({ numBars, playing }) => {
+  const NUM_BARS = numBars || BarHeights.length
 
   return (
     <div
@@ -63,7 +63,7 @@ const PlayAnimation = ({ playing }) => {
         alignItems: `center`,
       }}
     >
-      {BarHeights.map((value, index) => {
+      {BarHeights.slice(0, NUM_BARS).map((value, index) => {
         return (
           <Bar key={index} maxHeight={value} index={index} playing={playing} />
         )

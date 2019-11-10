@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import PlayAnimation from "../components/play-animation"
 import { useAudio } from "../hooks/useAudio"
 
-const PlaySection = ({ songPreview }) => {
+const PlaySection = ({ numBars, songPreview }) => {
   const [playing, setPlaying] = useState(false)
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false)
   const audio = useAudio(songPreview)
@@ -52,7 +52,6 @@ const PlaySection = ({ songPreview }) => {
           <FiPauseCircle
             onClick={() => {
               audio.current.pause()
-              console.log("pause")
               setPlaying(false)
             }}
             sx={{ strokeWidth: 1 }}
@@ -66,7 +65,6 @@ const PlaySection = ({ songPreview }) => {
               } else {
                 fadeIn()
               }
-              console.log("play")
               setPlaying(true)
               setHasStartedPlaying(true)
             }}
@@ -75,7 +73,7 @@ const PlaySection = ({ songPreview }) => {
           />
         )}
       </motion.div>
-      <PlayAnimation playing={playing} />
+      <PlayAnimation numBars={numBars} playing={playing} />
     </Fragment>
   )
 }
