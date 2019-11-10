@@ -35,7 +35,7 @@ const Clap = ({ id, spotifyId, claps }) => {
   const controls = useAnimation()
   const popControls = useAnimation()
   const [faunaId, setFaunaId] = useState(id)
-  const [userStat, setUserStat] = useLocalStorage("userStat")
+  const [userStat, setUserStat] = useLocalStorage("userStat", {})
   const [clapped, setClapped] = useState(!!userStat[spotifyId])
   const [clapCount, setClapCount] = useState(claps)
   const [updateSong, {}] = useMutation(UpdateClapsMutation)
