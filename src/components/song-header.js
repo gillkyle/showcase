@@ -66,7 +66,7 @@ const SongHeader = ({ song, tags, authorName }) => {
         sx={{
           mt: `4`,
           display: [`grid`, `grid`, `none`],
-          gridTemplateColumns: [`5% 1fr 5%`, `150px 1fr 150px`],
+          gridTemplateColumns: [`5% 1fr 5%`, `175px 1fr 175px`],
         }}
       >
         <div />
@@ -112,9 +112,6 @@ const SongHeader = ({ song, tags, authorName }) => {
               ml: `4`,
               flexDirection: [`row`, `column`, null],
               color: `textMuted.0`,
-              "*+*": {
-                mt: `3`,
-              },
             }}
           >
             <SongMenu

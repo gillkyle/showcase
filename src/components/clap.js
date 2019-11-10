@@ -1,16 +1,87 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import gql from "graphql-tag"
 import { useState } from "react"
 import { motion, useAnimation } from "framer-motion"
+import { useMutation } from "@apollo/react-hooks"
 
+import { useLocalStorage } from "../hooks/useLocalStorage"
 import theme from "../gatsby-plugin-theme-ui"
 
-const Clap = () => {
+const UpdateClapsMutation = gql`
+  mutation UpdateSong($id: ID!, $inputData: SongStatsInput!) {
+    updateSongStats(id: $id, data: $inputData) {
+      claps
+    }
+  }
+`
+
+const CreateSong = gql`
+  mutation CreateSong($inputData: SongStatsInput!) {
+    createSongStats(data: $inputData) {
+      _id
+      claps
+    }
+  }
+`
+
+const kFormatter = num => {
+  return Math.abs(num) > 999
+    ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "k"
+    : Math.sign(num) * Math.abs(num)
+}
+
+const Clap = ({ id, spotifyId, claps }) => {
   const controls = useAnimation()
-  const [clapped, setClapped] = useState(false)
+  const popControls = useAnimation()
+  const [faunaId, setFaunaId] = useState(id)
+  const [userStat, setUserStat] = useLocalStorage("userStat")
+  const [clapped, setClapped] = useState(!!userStat[spotifyId])
+  const [clapCount, setClapCount] = useState(claps)
+  const [updateSong, {}] = useMutation(UpdateClapsMutation)
+  const [createSong, {}] = useMutation(CreateSong)
 
   const handleClick = async () => {
+    const MAX_CLAP_AMOUNT = 25
+    const hasClappedMaxAmount = userStat[spotifyId] >= MAX_CLAP_AMOUNT
+    const newClapCount = hasClappedMaxAmount ? clapCount : clapCount + 1
+    setClapCount(newClapCount)
+    if (clapped) {
+      setUserStat({
+        ...userStat,
+        [spotifyId]: hasClappedMaxAmount
+          ? userStat[spotifyId]
+          : userStat[spotifyId] + 1,
+      })
+    } else {
+      setUserStat({
+        ...userStat,
+        [spotifyId]: 1,
+      })
+    }
     setClapped(true)
+    if (!hasClappedMaxAmount) {
+      if (clapCount === 0) {
+        const mutationResult = await createSong({
+          variables: { inputData: { spotifyId, claps: newClapCount } },
+        })
+        setFaunaId(mutationResult.data.createSongStats._id)
+      } else {
+        updateSong({
+          variables: {
+            id: faunaId,
+            inputData: { spotifyId, claps: newClapCount },
+          },
+        })
+      }
+    }
+    animateClick()
+  }
+
+  const animateClick = async () => {
+    popControls.start({
+      opacity: 1,
+    })
     await controls.start({
       scale: 1.2,
       opacity: [0.5, 0],
@@ -23,11 +94,16 @@ const Clap = () => {
         ease: `easeOut`,
       },
     })
+    popControls.start({
+      opacity: 0,
+    })
     await controls.start({
       scale: 1,
       boxShadow: `0px 0px 0px 0px ${theme.colors.primary}`,
     })
   }
+
+  const sendMutation = () => {}
 
   return (
     <motion.div
@@ -42,6 +118,10 @@ const Clap = () => {
         width: 72,
         position: `relative`,
         cursor: `pointer`,
+        display: `grid`,
+        gridTemplateColumns: `auto 1fr`,
+        gridGap: `3`,
+        alignItems: `center`,
       }}
     >
       <motion.div
@@ -86,6 +166,34 @@ const Clap = () => {
           sx={{ fill: `text` }}
         />
       </motion.svg>
+      <span sx={{ fontSize: `3`, ml: `1` }}>
+        {!!clapCount ? (clapped ? clapCount : kFormatter(clapCount)) : ``}
+      </span>
+      <motion.div
+        animate={popControls}
+        initial={{
+          opacity: 0,
+        }}
+        sx={{
+          position: `absolute`,
+          top: -32,
+          width: 72,
+          display: `flex`,
+          alignItems: `center`,
+          justifyContent: `center`,
+        }}
+      >
+        <span
+          sx={{
+            borderRadius: 50,
+            backgroundColor: `faint`,
+            px: `2`,
+            py: `1`,
+          }}
+        >
+          {`+${userStat[spotifyId]}`}
+        </span>
+      </motion.div>
     </motion.div>
   )
 }

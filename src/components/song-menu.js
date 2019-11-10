@@ -7,8 +7,7 @@ import Clap from "./clap"
 import { useQueryClapsById } from "../hooks/useClaps"
 
 const SongMenu = ({ spotifyId, songTimestamp, authorName }) => {
-  const claps = useQueryClapsById(spotifyId)
-  console.log(claps)
+  const { claps, id, loading } = useQueryClapsById(spotifyId)
 
   return (
     <Fragment>
@@ -20,7 +19,7 @@ const SongMenu = ({ spotifyId, songTimestamp, authorName }) => {
           textTransform: `uppercase`,
           fontSize: `0`,
           fontWeight: `bold`,
-          mb: `3`,
+          mb: 36,
         }}
       >
         {formatDistance(new Date(songTimestamp), new Date())} ago
@@ -31,8 +30,7 @@ const SongMenu = ({ spotifyId, songTimestamp, authorName }) => {
           alignItems: `center`,
         }}
       >
-        <Clap />
-        <span sx={{ fontSize: `3`, ml: `2` }}>{claps}</span>
+        {!loading && <Clap spotifyId={spotifyId} id={id} claps={claps} />}
       </div>
     </Fragment>
   )

@@ -6,6 +6,7 @@ const SongStatsQuery = gql`
   query FindSongStatById($spotifyId: String!) {
     songStatsBySpotifyId(spotifyId: $spotifyId) {
       data {
+        _id
         spotifyId
         claps
       }
@@ -14,9 +15,13 @@ const SongStatsQuery = gql`
 `
 
 export function useQueryClapsById(spotifyId) {
-  const { data } = useQuery(SongStatsQuery, {
+  const { data, loading } = useQuery(SongStatsQuery, {
     variables: { spotifyId },
   })
 
-  return get(data, `songStatsBySpotifyId.data[0].claps`, 0)
+  return {
+    claps: get(data, `songStatsBySpotifyId.data[0].claps`, 0),
+    id: get(data, `songStatsBySpotifyId.data[0]._id`),
+    loading,
+  }
 }

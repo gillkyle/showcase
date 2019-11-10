@@ -14,7 +14,7 @@ const FeaturedTrack = ({ songId, song, tags }) => {
   const songData = get(song, `document[0].data`)
   const previewUrl = get(song, `document[0].fields.previewUrl`)
 
-  const claps = useQueryClapsById(songData.spotify_id)
+  const { claps } = useQueryClapsById(songData.spotify_id)
 
   return (
     <div

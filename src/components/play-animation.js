@@ -89,7 +89,7 @@ const Bar = ({ index, playing, maxHeight }) => {
         height: playing ? `${newHeight}%` : `5%`,
         width: `100%`,
         backgroundColor: `primary`,
-        borderRadius: `0`,
+        borderRadius: `1`,
         transition: `0.3s all`,
       }}
     />

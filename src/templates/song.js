@@ -26,7 +26,7 @@ const Post = ({ data }) => {
         <div
           sx={{
             display: `grid`,
-            gridTemplateColumns: [`5% 1fr 5%`, `150px 1fr 150px`],
+            gridTemplateColumns: [`5% 1fr 5%`, `175px 1fr 175px`],
           }}
         >
           <div
