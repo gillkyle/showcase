@@ -16,14 +16,14 @@ const SongCard = ({ songData, songId }) => {
         justifySelf: `center`,
         display: `flex`,
         flexDirection: `column`,
-        width: [300, 275, 275],
         backgroundColor: `card`,
+        width: [`75%`, `100%`],
         px: `3`,
         pb: `3`,
       }}
     >
       <Link to={`/${songId}`} sx={{ textDecoration: `none` }}>
-        <motion.div whileHover={{ y: -3 }}>
+        <motion.div whileHover={{ y: -3 }} sx={{}}>
           <AlbumArt
             sx={{ transform: `translateY(-20px)` }}
             fluid={songData.album_art.localFile.childImageSharp.fluid}

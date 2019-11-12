@@ -1,12 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import { Grid } from "@theme-ui/components"
 import { graphql } from "gatsby"
-import { get } from "lodash"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
 import SongCard from "../components/song-card"
-import FeaturedTrack from "../components/featured-track"
 
 export default ({ data }) => {
   const { allPrismicSong } = data
@@ -14,21 +13,13 @@ export default ({ data }) => {
   return (
     <Layout>
       <Container>
-        <div sx={{ mt: `6` }}>
+        <div sx={{ mt: `6`, mx: [`5`, `3`] }}>
           <h2 sx={{ fontSize: `6`, textAlign: `center` }}>Latest Picks</h2>
-          <div
-            sx={{
-              display: `grid`,
-              gridTemplateColumns: `repeat(auto-fit, minmax(300px, 1fr))`,
-              gridColumnGap: `3`,
-              gridRowGap: `5`,
-              mt: `5`,
-            }}
-          >
+          <Grid width={250} columnns={3} gap={`5`}>
             {allPrismicSong.nodes.map(song => (
               <SongCard key={song.uid} songId={song.uid} songData={song.data} />
             ))}
-          </div>
+          </Grid>
         </div>
       </Container>
     </Layout>

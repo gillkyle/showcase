@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import { Grid } from "@theme-ui/components"
 import { graphql, Link } from "gatsby"
 import { get } from "lodash"
 
@@ -48,9 +49,9 @@ export default ({ data }) => {
             tags={featuredTrackTags}
           />
         </div>
-        <div sx={{ mt: `6` }}>
+        <div sx={{ mt: `6`, mx: [`5`, `3`] }}>
           <h2 sx={{ fontSize: `6`, textAlign: `center` }}>Latest Picks</h2>
-          <div
+          {/* <div
             sx={{
               display: `grid`,
               gridTemplateColumns: `repeat(auto-fit, minmax(300px, 1fr))`,
@@ -58,11 +59,13 @@ export default ({ data }) => {
               gridRowGap: `5`,
               mt: `5`,
             }}
-          >
+          > */}
+          <Grid width={250} columnns={3} gap={`5`}>
             {allPrismicSong.nodes.map(song => (
               <SongCard key={song.uid} songId={song.uid} songData={song.data} />
             ))}
-          </div>
+          </Grid>
+          {/* </div> */}
           <div sx={{ my: `4`, display: `flex`, placeContent: `center` }}>
             <Link
               to="/list"

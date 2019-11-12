@@ -33,9 +33,10 @@ const FeaturedTrack = ({ songId, song, tags }) => {
           borderRadius: `0`,
           py: `4`,
           pr: `4`,
+          pl: [`4`, null],
           width: `70%`,
           display: `grid`,
-          gridTemplateColumns: `1fr 1fr`,
+          gridTemplateColumns: [`1fr`, `1fr 1fr`],
           alignItems: `center`,
         }}
       >
@@ -43,15 +44,16 @@ const FeaturedTrack = ({ songId, song, tags }) => {
           sx={{
             width: `100%`,
             textDecoration: `none`,
+            transform: [
+              `translateX(0px) translateY(-60px)`,
+              `translateX(-60px)`,
+            ],
           }}
           to={`/${songId}`}
         >
           <motion.div
-            initial={{
-              x: -32,
-            }}
             whileHover={{
-              x: -42,
+              y: -10,
             }}
             sx={{
               height: `100%`,
