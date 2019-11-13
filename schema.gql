@@ -1,3 +1,4 @@
+# this file uploaded to Fauna to define the backend logic
 type songStats {
   spotifyId: String!
   claps: Int

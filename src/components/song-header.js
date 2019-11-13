@@ -10,7 +10,7 @@ import { useQueryClapsById } from "../hooks/useClaps"
 
 const SongHeader = ({ song, tags, authorName }) => {
   const { claps, id, loading } = useQueryClapsById(song.spotifyId)
-
+  console.log(tags)
   return (
     <Fragment>
       {/* wide screen view */}
@@ -60,7 +60,9 @@ const SongHeader = ({ song, tags, authorName }) => {
                 display: `flex`,
               }}
             >
-              {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+              {tags.map((tag, index) => (
+                <Tag key={index} tag={tag[0]} />
+              ))}
             </div>
           </div>
         </div>
@@ -116,7 +118,11 @@ const SongHeader = ({ song, tags, authorName }) => {
                 mt: `3`,
               }}
             >
-              {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+              {tags &&
+                tags.map(
+                  (tag, index) =>
+                    console.log(tag) || <Tag key={index} tag={tag[0]} />
+                )}
             </div>
           </div>
           <div

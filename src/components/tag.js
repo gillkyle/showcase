@@ -13,6 +13,7 @@ const Tag = ({ tag, small }) => (
       letterSpacing: 1.2,
       fontWeight: 100,
       fontSize: small ? `0` : `1`,
+      mr: `2`,
     }}
   >
     {tag.data.name}

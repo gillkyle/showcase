@@ -104,8 +104,6 @@ const Clap = ({ id, spotifyId, claps }) => {
     })
   }
 
-  const sendMutation = () => {}
-
   return (
     <motion.div
       whileHover={{

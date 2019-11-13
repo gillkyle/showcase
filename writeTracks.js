@@ -12,7 +12,7 @@ const spotifyApi = new SpotifyWebApi({
 
 // set the access token (can get new one in UI here: https://developer.spotify.com/console/get-playlist/?playlist_id=&market=&fields=)
 // this needs to be replaced when used
-const REFRESH_TOKEN = `BQBR6BOqlX1_afMNQkF25CMe-yulNIoFGmTvVhT0JkA66csVt3ocEQBrekDGzl8-SQytwGgNuiHxIk8ZoBcDsb0wJXgfF1Oqm_DI1R1bTFZZkbiOpEF0oHpWytGscPt2VRfyLg_-4CeCTSdv`
+const REFRESH_TOKEN = `BQB_PKJcuJKeBCMSXyN4YJGl5lG-6lqc7iTo0a2-U4dCTjlCJhv2DwMBCOFW18HRW_OqvIeeRDN-NX2fw-P1RsBOtIxIjJjWtPkVC4wLyCi51uum7aR1ztFrXw61GjriH8UWFtOHY14eSGJI`
 spotifyApi.setAccessToken(REFRESH_TOKEN)
 
 // get blog playlist
@@ -24,7 +24,21 @@ spotifyApi.getPlaylist(`6gJdqmvRKCIhqVctijLaak`).then(
       },
     } = data
     console.log(`---- FOUND ${items.length} TRACKS ----`)
-    fs.writeFileSync("./data/tracks.json", JSON.stringify(items))
+    const pluckedItems = items.map(item => {
+      return {
+        track: {
+          id: item.track.id,
+          name: item.track.name,
+          aritst: item.track.artists[0].name,
+          popularity: item.track.popularity,
+          preview_url: item.track.preview_url,
+          duration_ms: item.track.duration_ms,
+          explicit: item.track.explicit,
+          album_art: item.track.album.images[0].url,
+        },
+      }
+    })
+    fs.writeFileSync("./data/tracks.json", JSON.stringify(pluckedItems))
     console.log(`---- WROTE TRACKS SUCCESSFULLY ----`)
   },
   err => {

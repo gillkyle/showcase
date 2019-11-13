@@ -12,7 +12,8 @@ import PlayButton from "../components/play-button"
 const Post = ({ data }) => {
   const { data: song, fields: spotifyData } = data.prismicSong
   const authorName = get(song, `author.document[0].data.name`)
-  const tags = get(song, `tag_list[0].all_tags.document`)
+  const tags = song.tag_list.map(song => song.all_tags.document)
+  console.log(tags)
 
   return (
     <Layout>

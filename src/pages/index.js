@@ -8,6 +8,7 @@ import Layout from "../components/layout"
 import Container from "../components/container"
 import SongCard from "../components/song-card"
 import FeaturedTrack from "../components/featured-track"
+import { getTags } from "../utils/get-tags"
 
 export default ({ data }) => {
   const {
@@ -16,10 +17,8 @@ export default ({ data }) => {
       data: { featured_track: featuredTrack, title: featureTrackTitle },
     },
   } = data
-  const featuredTrackTags = get(
-    featuredTrack,
-    `document[0].data.tag_list[0].all_tags.document`
-  )
+  const featuredTrackTags = getTags(get(featuredTrack, `document[0].data`))
+
   return (
     <Layout>
       <Container>
@@ -46,26 +45,16 @@ export default ({ data }) => {
           <FeaturedTrack
             songId={featuredTrack.uid}
             song={featuredTrack}
-            tags={featuredTrackTags}
+            tags={featuredTrackTags[0]}
           />
         </div>
         <div sx={{ mt: `6`, mx: [`5`, `3`] }}>
           <h2 sx={{ fontSize: `6`, textAlign: `center` }}>Latest Picks</h2>
-          {/* <div
-            sx={{
-              display: `grid`,
-              gridTemplateColumns: `repeat(auto-fit, minmax(300px, 1fr))`,
-              gridColumnGap: `3`,
-              gridRowGap: `5`,
-              mt: `5`,
-            }}
-          > */}
           <Grid width={250} columnns={3} gap={`5`}>
             {allPrismicSong.nodes.map(song => (
               <SongCard key={song.uid} songId={song.uid} songData={song.data} />
             ))}
           </Grid>
-          {/* </div> */}
           <div sx={{ my: `4`, display: `flex`, placeContent: `center` }}>
             <Link
               to="/list"
