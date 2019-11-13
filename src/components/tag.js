@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-const Tag = ({ tag, small }) => (
+const Tag = ({ tag, small, ...props }) => (
   <span
     sx={{
       py: `1`,
@@ -15,6 +15,7 @@ const Tag = ({ tag, small }) => (
       fontSize: small ? `0` : `1`,
       mr: `2`,
     }}
+    {...props}
   >
     {tag.data.name}
   </span>

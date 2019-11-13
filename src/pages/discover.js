@@ -41,31 +41,49 @@ export default ({ data }) => {
     <Layout>
       <Container>
         <div sx={{ mt: `6`, mx: [`5`, `3`] }}>
-          <h2 sx={{ fontSize: `6`, textAlign: `center` }}>Tags</h2>
-          {allPrismicTag.nodes.map((tag, index) => (
-            <Fragment>
-              <Tag key={index} tag={tag} />
-              <div
-                sx={{
-                  display: `grid`,
-                  gridTemplateColumns: `repeat(3, minmax(300px, 1fr))`,
-                  gridColumnGap: `5`,
-                  gridRowGap: `5`,
-                  mt: `5`,
-                }}
-              >
-                {tagBank[getTagName(tag)].map(song => {
-                  return (
-                    <SongCard
-                      key={song.uid}
-                      songId={song.uid}
-                      songData={song.data}
-                    />
-                  )
-                })}
+          <section>
+            <h3 sx={{ fontSize: `5` }}>Highest Rated</h3>
+            <p sx={{ fontSize: `3`, color: `primaryMuted` }}>
+              See what members of the community are enjoying most with the list
+              of most upvoted tracks across the whole site.
+            </p>
+          </section>
+          <section>
+            <h3 sx={{ fontSize: `5` }}>Tags</h3>
+            <p sx={{ fontSize: `3`, color: `primaryMuted` }}>
+              Find songs based off of genres you like or that overlap with your
+              taste. Genres aren't always the best for categorizing sound, but
+              they serve as a good starting point.
+            </p>
+            {allPrismicTag.nodes.map((tag, index) => (
+              <div sx={{ mt: `5` }}>
+                <Tag
+                  key={index}
+                  tag={tag}
+                  sx={{ py: `2`, px: `3`, fontSize: `3` }}
+                />
+                <div
+                  sx={{
+                    display: `grid`,
+                    gridTemplateColumns: `repeat(3, minmax(300px, 1fr))`,
+                    gridColumnGap: `5`,
+                    gridRowGap: `5`,
+                    mt: `5`,
+                  }}
+                >
+                  {tagBank[getTagName(tag)].map(song => {
+                    return (
+                      <SongCard
+                        key={song.uid}
+                        songId={song.uid}
+                        songData={song.data}
+                      />
+                    )
+                  })}
+                </div>
               </div>
-            </Fragment>
-          ))}
+            ))}
+          </section>
         </div>
       </Container>
     </Layout>
