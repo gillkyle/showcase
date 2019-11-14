@@ -22,13 +22,30 @@ const Layout = ({ children }) => (
         padding: 3,
       }}
     >
-      <Container>
-        <Link
-          sx={{ textDecoration: `none`, color: `white`, fontSize: `3` }}
-          to="/"
-        >
-          AUDIO <span sx={{ variant: `gradient.text` }}>• KINETICS</span>
-        </Link>
+      <Container
+        sx={{
+          display: `flex`,
+          flexDirection: `row`,
+          alignItems: `center`,
+          justifyContent: `space-between`,
+        }}
+      >
+        <div>
+          <Link
+            sx={{ textDecoration: `none`, color: `white`, fontSize: `3` }}
+            to="/"
+          >
+            AUDIO <span sx={{ variant: `gradient.text` }}>• KINETICS</span>
+          </Link>
+        </div>
+        <div>
+          <Link
+            sx={{ textDecoration: `none`, color: `white`, fontSize: `2` }}
+            to="/discover"
+          >
+            DISCOVER
+          </Link>
+        </div>
       </Container>
     </header>
     <main

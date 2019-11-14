@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Fragment } from "react"
 import { graphql } from "gatsby"
 import { get } from "lodash"
+import { useQuery } from "@apollo/react-hooks"
+import gql from "graphql-tag"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
@@ -19,8 +20,24 @@ const getTagName = tag => {
   return get(tag, "data.name")
 }
 
+const AllSongStatsQuery = gql`
+  query AllSongStats {
+    allSongStats(_size: 25) {
+      data {
+        _id
+        spotifyId
+        claps
+      }
+    }
+  }
+`
+
 export default ({ data }) => {
   const { allPrismicTag, allPrismicSong } = data
+  const { data: allSongStatsData, loading } = useQuery(AllSongStatsQuery)
+  if (!loading) {
+    console.log(allSongStatsData)
+  }
 
   const tagBank = {}
   // fill the tagBank with each tag

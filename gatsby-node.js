@@ -59,15 +59,41 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  const tags = await graphql(`
+    query {
+      allPrismicTag {
+        nodes {
+          id
+          data {
+            name
+            bg_color
+            text_color
+          }
+        }
+      }
+    }
+  `)
 
-  const template = path.resolve("src/templates/song.js")
+  const songTemplate = path.resolve("src/templates/song.js")
+  const tagTemplate = path.resolve("src/templates/tag.js")
 
   pages.data.allPrismicSong.nodes.forEach(node => {
     createPage({
       path: `${node.uid}`,
-      component: template,
+      component: songTemplate,
       context: {
         uid: node.uid,
+      },
+    })
+  })
+  tags.data.allPrismicTag.nodes.forEach(node => {
+    createPage({
+      path: `/tag/${node.data.name.toLowerCase()}`,
+      component: tagTemplate,
+      context: {
+        name: node.data.name,
+        bgColor: node.data.bg_color,
+        textColor: node.data.text_color,
       },
     })
   })
