@@ -21,6 +21,10 @@ export default {
       WebkitBackgroundClip: `text`,
       WebkitTextFillColor: `transparent`,
     },
+    button: {
+      background: theme =>
+        `linear-gradient(${theme.colors.secondary}, ${theme.colors.primary})`,
+    },
   },
   colors: {
     text: "#DDD",

@@ -43,8 +43,39 @@ const PlaySection = ({ numBars, songPreview }) => {
 
   return (
     <Fragment>
-      <motion.div
-        sx={{ display: `flex`, alignItems: `center` }}
+      <motion.button
+        sx={{
+          display: `flex`,
+          alignItems: `center`,
+          maragin: 0,
+          border: 0,
+          background: `transparent`,
+          color: `white`,
+          outline: 0,
+          "&:active, &:focus": {
+            color: `primary`,
+          },
+        }}
+        onKeyDown={e => {
+          if (e.keyCode !== 32) {
+            return
+          }
+          if (playing) {
+            e.preventDefault()
+            audio.current.pause()
+            setPlaying(false)
+          } else {
+            e.preventDefault()
+
+            if (hasStartedPlaying) {
+              audio.current.play()
+            } else {
+              fadeIn()
+            }
+            setPlaying(true)
+            setHasStartedPlaying(true)
+          }
+        }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -72,7 +103,7 @@ const PlaySection = ({ numBars, songPreview }) => {
             size={48}
           />
         )}
-      </motion.div>
+      </motion.button>
       <PlayAnimation numBars={numBars} playing={playing} />
     </Fragment>
   )
