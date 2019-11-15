@@ -84,7 +84,11 @@ export default ({ data }) => {
                     mb: `4`,
                   }}
                 >
-                  <h3 sx={{ fontSize: `4`, m: 0 }}>{tag.data.name}</h3>
+                  <h3 sx={{ fontSize: `4`, m: 0, textTransform: `uppercase` }}>
+                    <span sx={{ color: tag.data.bg_color }}>• </span>
+                    {tag.data.name}
+                    <span sx={{ color: tag.data.bg_color }}> •</span>
+                  </h3>
                   <motion.div whileHover={{ y: -2 }}>
                     <Link
                       to={`/tag/${tag.data.name.toLowerCase()}`}

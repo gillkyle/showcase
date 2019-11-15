@@ -9,7 +9,7 @@ import Clap from "./clap"
 import { useQueryClapsById } from "../hooks/useClaps"
 
 const SongHeader = ({ song, tags, authorName }) => {
-  const { claps, id, loading } = useQueryClapsById(song.spotifyId)
+  const { claps, id, loading } = useQueryClapsById(song.spotify_id)
 
   return (
     <Fragment>

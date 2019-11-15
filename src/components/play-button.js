@@ -53,7 +53,7 @@ const PlaySection = ({ numBars, songPreview }) => {
           color: `white`,
           outline: 0,
           "&:active, &:focus": {
-            color: `primary`,
+            color: `secondaryMuted`,
           },
         }}
         onKeyDown={e => {

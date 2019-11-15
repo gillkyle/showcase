@@ -26,7 +26,7 @@ export default ({ data }) => {
       <Container>
         <div sx={{ py: `6`, textAlign: `center` }}>
           <h1 sx={{ fontSize: `6`, mb: `2` }}>
-            Curated Music the Means Something
+            Curated Music that Means Something
           </h1>
           <p
             sx={{
@@ -45,12 +45,20 @@ export default ({ data }) => {
             sx={{
               fontSize: `6`,
               textAlign: `center`,
-              mb: `3`,
+              mb: `2`,
             }}
           >
             {featureTrackTitle}
           </h2>
-          <p sx={{ textAlign: `center`, fontSize: `2`, color: `textMuted.0` }}>
+          <p
+            sx={{
+              textAlign: `center`,
+              fontSize: `2`,
+              color: `textMuted.0`,
+              margin: `0 auto`,
+              maxWidth: `75%`,
+            }}
+          >
             One of our favorite tracks right now that's worth highlighting.
           </p>
           <FeaturedTrack
