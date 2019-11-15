@@ -83,20 +83,10 @@ export default ({ data }) => {
               <Link
                 to="/list"
                 sx={{
-                  variant: `gradient.button`,
-                  transition: `0.3s all`,
-                  textDecoration: `none`,
-                  fontWeight: 700,
-                  fontSize: `4`,
-                  py: `3`,
-                  px: `4`,
-                  color: `text`,
-                  borderRadius: `2`,
-                  display: `flex`,
-                  alignItems: `center`,
+                  variant: `button.default`,
                 }}
               >
-                See All <FiChevronRight size={30} />
+                See All <FiChevronRight />
               </Link>
             </motion.div>
           </div>

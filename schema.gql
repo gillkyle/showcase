@@ -7,4 +7,5 @@ type songStats {
 type Query {
   allSongStats: [songStats!]
   songStatsBySpotifyId(spotifyId: String!): songStats!
+  topSongStats: [songStats!] @index(name: "topSongStats")
 }

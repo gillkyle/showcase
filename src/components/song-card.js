@@ -18,6 +18,7 @@ const SongCard = ({ songData, songId }) => {
         flexDirection: `column`,
         backgroundColor: `card`,
         width: [`75%`, `100%`],
+        maxWidth: 320,
         px: `3`,
         pb: `3`,
       }}

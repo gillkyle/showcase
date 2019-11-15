@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { graphql } from "gatsby"
+import { Grid } from "@theme-ui/components"
+import { graphql, Link } from "gatsby"
+import { motion } from "framer-motion"
 import { get } from "lodash"
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
@@ -58,15 +60,16 @@ export default ({ data }) => {
     <Layout>
       <Container>
         <div sx={{ mt: `6`, mx: [`5`, `3`] }}>
+          <h1 sx={{ fontSize: `6`, mb: `2`, textAlign: `center` }}>Discover</h1>
           <section>
-            <h3 sx={{ fontSize: `5` }}>Highest Rated</h3>
+            <h2 sx={{ fontSize: `5` }}>Highest Rated</h2>
             <p sx={{ fontSize: `3`, color: `textMuted.0` }}>
               See what members of the community are enjoying most with the list
               of most upvoted tracks across the whole site.
             </p>
           </section>
           <section>
-            <h3 sx={{ fontSize: `5` }}>Tags</h3>
+            <h2 sx={{ fontSize: `5` }}>Tags</h2>
             <p sx={{ fontSize: `3`, color: `textMuted.0` }}>
               Find songs based off of genres you like or that overlap with your
               taste. Genres aren't always the best for categorizing sound, but
@@ -74,21 +77,30 @@ export default ({ data }) => {
             </p>
             {allPrismicTag.nodes.map((tag, index) => (
               <div sx={{ mt: `5` }}>
-                <Tag
-                  key={index}
-                  tag={tag}
-                  sx={{ py: `2`, px: `3`, fontSize: `3` }}
-                />
                 <div
                   sx={{
-                    display: `grid`,
-                    gridTemplateColumns: `repeat(3, minmax(300px, 1fr))`,
-                    gridColumnGap: `5`,
-                    gridRowGap: `5`,
-                    mt: `5`,
+                    display: `flex`,
+                    justifyContent: [`space-around`, `space-between`],
+                    mb: `4`,
                   }}
                 >
-                  {tagBank[getTagName(tag)].map(song => {
+                  <h3 sx={{ fontSize: `4`, m: 0 }}>{tag.data.name}</h3>
+                  <motion.div whileHover={{ y: -2 }}>
+                    <Link
+                      to={`/tag/${tag.data.name.toLowerCase()}`}
+                      sx={{
+                        variant: `button.default`,
+                        height: `3`,
+                        fontSize: `2`,
+                      }}
+                    >
+                      View All
+                    </Link>
+                  </motion.div>
+                </div>
+                <Grid width={250} columnns={3} gap={`5`}>
+                  {tagBank[getTagName(tag)].map((song, index) => {
+                    if (index > 2) return
                     return (
                       <SongCard
                         key={song.uid}
@@ -97,7 +109,7 @@ export default ({ data }) => {
                       />
                     )
                   })}
-                </div>
+                </Grid>
               </div>
             ))}
           </section>

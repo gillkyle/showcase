@@ -26,6 +26,22 @@ export default {
         `linear-gradient(${theme.colors.secondary}, ${theme.colors.primary})`,
     },
   },
+  button: {
+    default: {
+      variant: `gradient.button`,
+      textDecoration: `none`,
+      letterSpacing: 1.4,
+      textTransform: `uppercase`,
+      fontWeight: 700,
+      fontSize: `3`,
+      py: `2`,
+      px: `4`,
+      color: `text`,
+      borderRadius: `2`,
+      display: `flex`,
+      alignItems: `center`,
+    },
+  },
   colors: {
     text: "#DDD",
     textMuted: ["#AAAFAF", "#4b4e56"],
