@@ -4,12 +4,14 @@ import { Grid } from "@theme-ui/components"
 import { motion } from "framer-motion"
 import { graphql, Link } from "gatsby"
 import { get } from "lodash"
-import { FiChevronRight } from "react-icons/fi"
+import { FiChevronRight, FiMail } from "react-icons/fi"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
 import SongCard from "../components/song-card"
 import FeaturedTrack from "../components/featured-track"
+import SignupForm from "../components/signup-form"
+import PlayAnimation from "../components/play-animation"
 import { getTags } from "../utils/get-tags"
 
 export default ({ data }) => {
@@ -99,6 +101,57 @@ export default ({ data }) => {
             </motion.div>
           </div>
         </div>
+        <section sx={{ my: `6`, display: `flex`, justifyContent: `center` }}>
+          <div
+            sx={{
+              backgroundColor: `background`,
+              p: `5`,
+              maxWidth: 620,
+              display: `flex`,
+              flexDirection: `column`,
+              alignItems: `center`,
+              borderColor: `border`,
+              border: theme => `1px solid ${theme.colors.border}`,
+            }}
+          >
+            <h2
+              sx={{
+                fontSize: `6`,
+                textAlign: `center`,
+                m: 0,
+                mb: `2`,
+                display: `flex`,
+                alignItems: `center`,
+              }}
+            >
+              <FiMail size={48} sx={{ mr: `2` }} />
+              Subscribe
+            </h2>
+            <p
+              sx={{
+                textAlign: `center`,
+                fontSize: `2`,
+                color: `textMuted.0`,
+                width: `75%`,
+              }}
+            >
+              Get updates on the latest content and be the first to know about
+              new content
+            </p>
+            <div
+              sx={{
+                height: 30,
+                display: `flex`,
+                alignItems: `center`,
+                justifyContent: `center`,
+                mb: `4`,
+              }}
+            >
+              <PlayAnimation numBars={12} playing />
+            </div>
+            <SignupForm />
+          </div>
+        </section>
       </Container>
     </Layout>
   )

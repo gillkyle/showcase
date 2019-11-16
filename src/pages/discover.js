@@ -84,10 +84,31 @@ export default ({ data }) => {
                     mb: `4`,
                   }}
                 >
-                  <h3 sx={{ fontSize: `4`, m: 0, textTransform: `uppercase` }}>
-                    <span sx={{ color: tag.data.bg_color }}>• </span>
-                    {tag.data.name}
-                    <span sx={{ color: tag.data.bg_color }}> •</span>
+                  <h3
+                    sx={{
+                      fontSize: `4`,
+                      m: 0,
+                      textTransform: `uppercase`,
+                      display: `flex`,
+                      alignItems: `center`,
+                      "& *+*": {
+                        ml: `2`,
+                      },
+                    }}
+                  >
+                    <span sx={{ color: tag.data.bg_color }}>•</span>
+                    <span>{tag.data.name}</span>
+                    <span sx={{ color: tag.data.bg_color }}>•</span>
+                    <span
+                      sx={{
+                        fontSize: `3`,
+                        color: `textMuted.1`,
+                        ml: `2`,
+                        verticalAlign: `middle`,
+                      }}
+                    >
+                      ({tagBank[getTagName(tag)].length})
+                    </span>
                   </h3>
                   <motion.div whileHover={{ y: -2 }}>
                     <Link

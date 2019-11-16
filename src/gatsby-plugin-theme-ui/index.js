@@ -40,6 +40,26 @@ export default {
       borderRadius: `2`,
       display: `flex`,
       alignItems: `center`,
+      cursor: `pointer`,
+    },
+  },
+  input: {
+    default: {
+      fontSize: `3`,
+      p: `3`,
+      borderRadius: `2`,
+      display: `flex`,
+      alignItems: `center`,
+      backgroundColor: `shadow`,
+      borderColor: `border`,
+      borderStyle: `solid`,
+      color: `text`,
+      transition: `0.3s all`,
+      outline: 0,
+      "&:focus,  &:active": {
+        boxShadow: theme =>
+          `0 0 0px 3px ${theme.colors.background}, 0 0 0px 5px ${theme.colors.border}`,
+      },
     },
   },
   colors: {

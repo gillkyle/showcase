@@ -90,6 +90,13 @@ const Post = ({ data }) => {
                   mr: `2`,
                   fontWeight: 700,
                 },
+                "& > pre": {
+                  fontFamily: `Cabin, Open Sans, sans-serif`,
+                  letterSpacing: 1.1,
+                  lineHeight: 1.5,
+                  px: `3`,
+                  borderLeft: theme => `1px solid ${theme.colors.border}`,
+                },
               }}
               dangerouslySetInnerHTML={{ __html: song.content.html }}
             />
