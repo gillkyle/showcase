@@ -14,12 +14,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
     {
-      resolve: `gatsby-plugin-mailchimp`,
-      options: {
-        endpoint: `https://gmail.us5.list-manage.com/subscribe/post?u=ce4a6fc187c7f93aa8657f35f&amp;id=79efa975eb`,
-      },
-    },
-    {
       resolve: `gatsby-source-prismic`,
       options: {
         repositoryName: `songshowcase`,
@@ -40,6 +34,19 @@ module.exports = {
             variants: [`400`, `700`],
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-152643177-1",
+      },
+    },
+    // simplifies sending signups to Mailchimp
+    {
+      resolve: `gatsby-plugin-mailchimp`,
+      options: {
+        endpoint: `https://gmail.us5.list-manage.com/subscribe/post?u=ce4a6fc187c7f93aa8657f35f&amp;id=79efa975eb`,
       },
     },
   ],

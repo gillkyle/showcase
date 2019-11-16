@@ -44,7 +44,8 @@ const Clap = ({ id, spotifyId, claps }) => {
 
   const handleClick = async () => {
     const MAX_CLAP_AMOUNT = 25
-    const hasClappedMaxAmount = userStat[spotifyId] >= MAX_CLAP_AMOUNT
+    const hasClappedMaxAmount =
+      userStat[spotifyId] >= MAX_CLAP_AMOUNT || clapCount >= 10000
     const newClapCount = hasClappedMaxAmount ? clapCount : clapCount + 1
     setClapCount(newClapCount)
     if (clapped) {
