@@ -38,12 +38,21 @@ const Layout = ({ children }) => (
             AUDIO <span sx={{ variant: `gradient.text` }}>• KINETICS</span>
           </Link>
         </div>
-        <div>
-          <Link
-            sx={{ textDecoration: `none`, color: `white`, fontSize: `2` }}
-            to="/discover"
-          >
+        <div
+          sx={{
+            display: `grid`,
+            gridTemplateColumns: `repeat(3, auto)`,
+            gridGap: `2`,
+          }}
+        >
+          <Link sx={{ variant: `button.link` }} to="/list">
+            LATEST
+          </Link>
+          <Link sx={{ variant: `button.link` }} to="/discover">
             DISCOVER
+          </Link>
+          <Link sx={{ variant: `button.link` }} to="/discover">
+            SUBMIT
           </Link>
         </div>
       </Container>

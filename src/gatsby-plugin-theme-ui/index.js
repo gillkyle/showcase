@@ -42,6 +42,18 @@ export default {
       alignItems: `center`,
       cursor: `pointer`,
     },
+    link: {
+      textDecoration: `none`,
+      color: `white`,
+      fontSize: `2`,
+      px: `3`,
+      py: `2`,
+      transition: `0.3s all`,
+      borderRadius: `3`,
+      "&:hover": {
+        backgroundColor: `faint`,
+      },
+    },
   },
   input: {
     default: {
