@@ -1,0 +1,69 @@
+// create index for most clapped songs, sorted DESC
+CreateIndex( 
+  {
+    "name": "mostClapped",
+    "source": Collection("songStats"),
+    "values": [
+      {
+        "field": [
+          "data",
+          "claps"
+        ],
+        "reverse": true
+      },
+      {
+        "field": [
+          "ref"
+        ]
+      }
+    ]
+  }
+)
+
+// update schema
+curl -u <key>: https://graphql.fauna.com/import --data-binary "@schema.gql"
+
+// create a UDF for the index tied to your schema
+Update(
+  Function("mostClapped"),
+  {
+    body: Query(Lambda(["size", "after", "before"],
+      Let(
+        {
+          match: Match(Index("mostClapped")),
+          page: If(
+            Equals(Var("before"), null),
+            If(
+              Equals(Var("after"), null),
+                Paginate(Var("match"), { size: Var("size") }),
+                Paginate(Var("match"), { size: Var("size"), after: Var("after") })
+            ),
+            Paginate(Var("match"), { size: Var("size"), before: Var("before") }),
+          )
+        },
+        Map(Var("page"), Lambda(["claps", "ref"], Get(Var("ref"))))
+      )
+    ))
+  }
+);
+
+// Sample Queries and Operations
+
+// Update(Match(Index('songsById'), '7jq0zoF4CmZgnkCJ1YBGQd'), {data: {claps: 6}})
+
+// Update(
+//   Select([`ref`], Get(Match(Index("songsById"), "7jq0zoF4CmZgnkCJ1YBGQd"))),
+//   { data: { claps: 7 } }
+// )
+
+// Exists(Match(Index("songsById"), "7jq0zoF4CmZgnkCJ1YBGQd"))
+// CreateIndex({
+//   name: "topSongs",
+//   source: Collection("songStats"),
+//   values: {
+//     { field: ["data", "claps"], reverse: true },
+//     { field: ["data", "spotifyId"] }
+//   }
+// }
+
+// Get(Match(Index("topSongs")))

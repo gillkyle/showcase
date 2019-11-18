@@ -4,7 +4,7 @@
       "id": "1ThNi9QOkcg84S9PQScTgM",
       "name": "The Veldt - Original Mix",
       "aritst": "deadmau5",
-      "popularity": 28,
+      "popularity": 26,
       "preview_url": null,
       "duration_ms": 692706,
       "explicit": false,
@@ -28,7 +28,7 @@
       "id": "6tJkq3zUXlEjWluMW9Hdij",
       "name": "creature",
       "aritst": "half•alive",
-      "popularity": 53,
+      "popularity": 52,
       "preview_url": "https://p.scdn.co/mp3-preview/2af0fb8f9eb9845bf408b1d06aa82cdffaf9e756?cid=774b29d4f13844c495f206cafdad9c86",
       "duration_ms": 335066,
       "explicit": false,
@@ -112,7 +112,7 @@
       "id": "60sV2nPuOLbNjFoycSMmLe",
       "name": "Everything and Nothing",
       "aritst": "Hammock",
-      "popularity": 26,
+      "popularity": 25,
       "preview_url": "https://p.scdn.co/mp3-preview/c798d92fda2934c60e384dadd3570bb36f11187d?cid=774b29d4f13844c495f206cafdad9c86",
       "duration_ms": 237586,
       "explicit": false,
@@ -184,7 +184,7 @@
       "id": "056I2woy7SpjpBUiEf1Kxd",
       "name": "This Is the Christ",
       "aritst": "Mormon Tabernacle Choir",
-      "popularity": 36,
+      "popularity": 35,
       "preview_url": "https://p.scdn.co/mp3-preview/df44a4ba3c985336277587b1e779915b7b000ec0?cid=774b29d4f13844c495f206cafdad9c86",
       "duration_ms": 320346,
       "explicit": false,
@@ -208,7 +208,7 @@
       "id": "2MC3BeKRisYWS14Kjk6lMt",
       "name": "end",
       "aritst": "Jeremy Zucker",
-      "popularity": 18,
+      "popularity": 17,
       "preview_url": "https://p.scdn.co/mp3-preview/dd9db79256e365f17e799716f861489e389aeb9b?cid=774b29d4f13844c495f206cafdad9c86",
       "duration_ms": 229280,
       "explicit": false,
@@ -280,7 +280,7 @@
       "id": "2xJCwA0WygA4INcY2tMQ5g",
       "name": "Nate's Theme 2.0",
       "aritst": "Greg Edmonson",
-      "popularity": 47,
+      "popularity": 48,
       "preview_url": "https://p.scdn.co/mp3-preview/c5cf21bceed8075a5c670d2f2c18d01cc3c63b71?cid=774b29d4f13844c495f206cafdad9c86",
       "duration_ms": 105515,
       "explicit": false,
@@ -508,7 +508,7 @@
       "id": "06FOFzecZN4wdNwXCfBxeX",
       "name": "Ísjaki",
       "aritst": "Sigur Rós",
-      "popularity": 2,
+      "popularity": 1,
       "preview_url": null,
       "duration_ms": 303053,
       "explicit": false,
@@ -765,6 +765,78 @@
       "duration_ms": 337551,
       "explicit": false,
       "album_art": "https://i.scdn.co/image/3552a60be0f2d1851c5b91ac4a52a50375d9130a"
+    }
+  },
+  {
+    "track": {
+      "id": "4DeFPU8TdDVK1QCB0cq42R",
+      "name": "Messiah - Part 1: 12. Chorus: \"For unto us a Child is born\"",
+      "aritst": "George Frideric Handel",
+      "popularity": 34,
+      "preview_url": "https://p.scdn.co/mp3-preview/ae6c8effeec7cf0780b0e53305b8f453b9065090?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 241533,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/fa72c896f9b5d91af48023229d59cbf5750f412f"
+    }
+  },
+  {
+    "track": {
+      "id": "2R80ulaH3xgjMfvXZGJ4Qu",
+      "name": "Lead, Kindly Light (Arr. James L. Stevens)",
+      "aritst": "BYU Vocal Point",
+      "popularity": 39,
+      "preview_url": "https://p.scdn.co/mp3-preview/d5ddb0c201721488475384edca687d429e7bab9a?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 244441,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/ab67616d0000b273028ae8db967f3e674f3274e3"
+    }
+  },
+  {
+    "track": {
+      "id": "6VMT3SzIMbNoR5lsUsniQY",
+      "name": "Stars",
+      "aritst": "Skillet",
+      "popularity": 56,
+      "preview_url": "https://p.scdn.co/mp3-preview/a4420b0266249f79619887070f48952b731c0212?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 225853,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/ab67616d0000b2733387bacdfd59f32e14dbe17a"
+    }
+  },
+  {
+    "track": {
+      "id": "5ZzDCRFlb3WdMLqsTgagWD",
+      "name": "Homecoming",
+      "aritst": "Thomas Bergersen",
+      "popularity": 36,
+      "preview_url": "https://p.scdn.co/mp3-preview/b86099f2534a47ebb786b5caed46e91727d9a07f?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 176753,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/ab67616d0000b27300f6b0bb05902f3938f006a4"
+    }
+  },
+  {
+    "track": {
+      "id": "4aW4Dpz3gpb619hBXDrFUa",
+      "name": "Honor (Main Title Theme from \"The Pacific\")",
+      "aritst": "Hans Zimmer",
+      "popularity": 54,
+      "preview_url": "https://p.scdn.co/mp3-preview/57a22519e4e52ce01fc4c38b804696e3a553fc22?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 176586,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/ab67616d0000b273513e73e63aaab6ebcb4897a6"
+    }
+  },
+  {
+    "track": {
+      "id": "3PvvsoGjRyF7YhfQXZHUaX",
+      "name": "Rise",
+      "aritst": "Hans Zimmer",
+      "popularity": 6,
+      "preview_url": null,
+      "duration_ms": 435877,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/ab67616d0000b2734583c76636ddc8e303649a4f"
     }
   }
 ]

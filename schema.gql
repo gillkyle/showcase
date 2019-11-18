@@ -7,5 +7,5 @@ type songStats {
 type Query {
   allSongStats: [songStats!]
   songStatsBySpotifyId(spotifyId: String!): songStats!
-  topSongStats: [songStats!] @index(name: "topSongStats")
+  mostClapped: [songStats!] @resolver(name: "mostClapped", paginated: true)
 }
