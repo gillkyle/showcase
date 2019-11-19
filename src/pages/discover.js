@@ -7,6 +7,7 @@ import { get } from "lodash"
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 
+import AlbumArt from "../components/album-art"
 import Layout from "../components/layout"
 import Container from "../components/container"
 import Tag from "../components/tag"
@@ -22,6 +23,17 @@ const getTagName = tag => {
   return get(tag, "data.name")
 }
 
+const MostClappedQuery = gql`
+  query MostClapped {
+    mostClapped(_size: 10) {
+      data {
+        claps
+        spotifyId
+      }
+    }
+  }
+`
+
 const AllSongStatsQuery = gql`
   query AllSongStats {
     allSongStats(_size: 25) {
@@ -36,11 +48,19 @@ const AllSongStatsQuery = gql`
 
 export default ({ data }) => {
   const { allPrismicTag, allPrismicSong } = data
-  const { data: allSongStatsData, loading } = useQuery(AllSongStatsQuery)
-  if (!loading) {
-    console.log(allSongStatsData)
-  }
+  const { data: allSongStatsData, loading: loadingAllSongs } = useQuery(
+    AllSongStatsQuery
+  )
+  const { data: mostClappedData, loading: loadingMostClapped } = useQuery(
+    MostClappedQuery
+  )
 
+  const mostClappedIds = !loadingMostClapped
+    ? mostClappedData.mostClapped.data.map(song => song.spotifyId)
+    : []
+  // match IDs returned from Fauna with data page
+  let mostClapped = new Array(10).fill(null)
+  // create a dictionary for songs by tag
   const tagBank = {}
   // fill the tagBank with each tag
   allPrismicTag.nodes.forEach(tag => {
@@ -49,12 +69,22 @@ export default ({ data }) => {
   // load up tagBank with all Songs
   allPrismicSong.nodes.forEach(song => {
     tagBank[getSongTag(song)].push(song)
+    // if song is part of the most clapped list, add it to mostClapped
+    if (mostClappedIds.includes(song.data.spotify_id)) {
+      const index = mostClappedIds.indexOf(song.data.spotify_id)
+      mostClapped[index] = {
+        claps: mostClappedData.mostClapped.data[index].claps,
+        uid: song.uid,
+        ...song.data,
+      }
+    }
     // if it has a second tag include it in another list
     if (getSongSecondaryTag(song)) {
       tagBank[getSongSecondaryTag(song)].push(song)
     }
   })
-  console.log(tagBank)
+
+  mostClapped = mostClapped.filter(Boolean)
 
   return (
     <Layout>
@@ -67,6 +97,30 @@ export default ({ data }) => {
               See what members of the community are enjoying most with the list
               of most upvoted tracks across the whole site.
             </p>
+            {!loadingMostClapped &&
+              mostClapped.map(
+                song =>
+                  console.log(song) || (
+                    <div
+                      sx={{
+                        display: `grid`,
+                        gridTemplateColumns: `100px 1fr 1fr 1fr`,
+                        backgroundColor: `card`,
+                        my: `3`,
+                        p: `3`,
+                      }}
+                    >
+                      <div sx={{ width: 80, height: 80 }}>
+                        <AlbumArt
+                          fluid={song.album_art.localFile.childImageSharp.fluid}
+                        />
+                      </div>
+                      <div>{song.song_title}</div>
+                      <div>{song.artist}</div>
+                      {song.claps}
+                    </div>
+                  )
+              )}
           </section>
           <section>
             <h2 sx={{ fontSize: `5` }}>Tags</h2>
@@ -156,6 +210,8 @@ export const query = graphql`
         }
       }
     }
+    # it would be helpful to make a group here  but pulling data from
+    # Prismic with multiple tag support doesn't look possible
     allPrismicSong(sort: { fields: data___timestamp, order: DESC }) {
       nodes {
         uid
