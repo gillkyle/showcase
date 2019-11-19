@@ -58,7 +58,8 @@ export default {
   input: {
     default: {
       fontSize: `3`,
-      p: `3`,
+      px: `3`,
+      py: `2`,
       borderRadius: `2`,
       display: `flex`,
       alignItems: `center`,

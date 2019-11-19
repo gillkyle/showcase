@@ -12,6 +12,26 @@ import Layout from "../components/layout"
 import Container from "../components/container"
 import Tag from "../components/tag"
 import SongCard from "../components/song-card"
+import SmallClap from "../components/small-clap"
+import { getTags } from "../utils/get-tags"
+
+const decorativeBeforeStyles = {
+  height: 75,
+  width: 75,
+  transform: `translate(-16px,-16px)`,
+  position: `absolute`,
+  content: `""`,
+  zIndex: -1,
+}
+const indexEvaluator = num => {
+  if (num === 0) {
+    return `primary`
+  } else if (num === 1) {
+    return `secondary`
+  } else {
+    return null
+  }
+}
 
 const getSongTag = song => {
   return get(song, "data.tag_list[0].all_tags.document[0].data.name")
@@ -91,36 +111,69 @@ export default ({ data }) => {
       <Container>
         <div sx={{ mt: `6`, mx: [`5`, `3`] }}>
           <h1 sx={{ fontSize: `6`, mb: `2`, textAlign: `center` }}>Discover</h1>
-          <section>
+          <section sx={{ position: `relative`, zIndex: 0 }}>
             <h2 sx={{ fontSize: `5` }}>Highest Rated</h2>
             <p sx={{ fontSize: `3`, color: `textMuted.0` }}>
               See what members of the community are enjoying most with the list
               of most upvoted tracks across the whole site.
             </p>
             {!loadingMostClapped &&
-              mostClapped.map(
-                song =>
-                  console.log(song) || (
-                    <div
-                      sx={{
-                        display: `grid`,
-                        gridTemplateColumns: `100px 1fr 1fr 1fr`,
-                        backgroundColor: `card`,
-                        my: `3`,
-                        p: `3`,
-                      }}
-                    >
-                      <div sx={{ width: 80, height: 80 }}>
-                        <AlbumArt
-                          fluid={song.album_art.localFile.childImageSharp.fluid}
-                        />
-                      </div>
-                      <div>{song.song_title}</div>
-                      <div>{song.artist}</div>
-                      {song.claps}
+              mostClapped.map((song, index) => {
+                const tags = getTags(song)
+                return (
+                  <div
+                    sx={{
+                      display: `grid`,
+                      gridTemplateColumns: `100px  2fr 2fr 1fr 100px`,
+                      alignItems: `center`,
+                      backgroundColor: `card`,
+                      my: `3`,
+                      p: `2`,
+                      zIndex: 2,
+                      "&::before": {
+                        ...decorativeBeforeStyles,
+                        backgroundColor: indexEvaluator(index),
+                      },
+                    }}
+                  >
+                    <div sx={{ width: 80, height: 80 }}>
+                      <AlbumArt
+                        fluid={song.album_art.localFile.childImageSharp.fluid}
+                      />
                     </div>
-                  )
-              )}
+
+                    <div>
+                      <div
+                        sx={{
+                          display: `flex`,
+                          flexDirection: `column`,
+                        }}
+                      >
+                        <span sx={{ fontSize: `4`, mb: `1` }}>
+                          {song.song_title}
+                        </span>
+                        <span sx={{ fontSize: `2`, variant: `gradient.text` }}>
+                          {song.artist}
+                        </span>
+                      </div>
+                    </div>
+                    <div>
+                      {tags &&
+                        tags.map((tag, index) => {
+                          return <Tag small key={index} tag={tag[0]} />
+                        })}
+                    </div>
+                    <div>
+                      <Link to={song.uid} sx={{ variant: `button.link` }}>
+                        View Track
+                      </Link>
+                    </div>
+                    <div>
+                      <SmallClap fill="textMuted.0" numClaps={song.claps} />
+                    </div>
+                  </div>
+                )
+              })}
           </section>
           <section>
             <h2 sx={{ fontSize: `5` }}>Tags</h2>
