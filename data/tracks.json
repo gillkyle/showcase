@@ -4,7 +4,7 @@
       "id": "1ThNi9QOkcg84S9PQScTgM",
       "name": "The Veldt - Original Mix",
       "aritst": "deadmau5",
-      "popularity": 26,
+      "popularity": 25,
       "preview_url": null,
       "duration_ms": 692706,
       "explicit": false,
@@ -16,7 +16,7 @@
       "id": "3PkqbfkSZxqi0MgvvSuvge",
       "name": "Goodbye Lizard Island",
       "aritst": "Dan Romer",
-      "popularity": 20,
+      "popularity": 21,
       "preview_url": "https://p.scdn.co/mp3-preview/25432ced4d0c74606a1eed500fd5ab043fa29273?cid=774b29d4f13844c495f206cafdad9c86",
       "duration_ms": 233440,
       "explicit": false,
@@ -184,7 +184,7 @@
       "id": "056I2woy7SpjpBUiEf1Kxd",
       "name": "This Is the Christ",
       "aritst": "Mormon Tabernacle Choir",
-      "popularity": 35,
+      "popularity": 36,
       "preview_url": "https://p.scdn.co/mp3-preview/df44a4ba3c985336277587b1e779915b7b000ec0?cid=774b29d4f13844c495f206cafdad9c86",
       "duration_ms": 320346,
       "explicit": false,
@@ -208,7 +208,7 @@
       "id": "2MC3BeKRisYWS14Kjk6lMt",
       "name": "end",
       "aritst": "Jeremy Zucker",
-      "popularity": 17,
+      "popularity": 18,
       "preview_url": "https://p.scdn.co/mp3-preview/dd9db79256e365f17e799716f861489e389aeb9b?cid=774b29d4f13844c495f206cafdad9c86",
       "duration_ms": 229280,
       "explicit": false,
@@ -232,7 +232,7 @@
       "id": "7huKSNp5GL1p4yRH26qJXk",
       "name": "Tiny Anthem",
       "aritst": "The M Machine",
-      "popularity": 34,
+      "popularity": 35,
       "preview_url": "https://p.scdn.co/mp3-preview/497a2068a93236b11bfcdcc72834113f409a60f6?cid=774b29d4f13844c495f206cafdad9c86",
       "duration_ms": 282352,
       "explicit": false,
@@ -508,7 +508,7 @@
       "id": "06FOFzecZN4wdNwXCfBxeX",
       "name": "Ísjaki",
       "aritst": "Sigur Rós",
-      "popularity": 1,
+      "popularity": 2,
       "preview_url": null,
       "duration_ms": 303053,
       "explicit": false,
@@ -837,6 +837,90 @@
       "duration_ms": 435877,
       "explicit": false,
       "album_art": "https://i.scdn.co/image/ab67616d0000b2734583c76636ddc8e303649a4f"
+    }
+  },
+  {
+    "track": {
+      "id": "2W2e6TBrwJt4ASh5jyYgvZ",
+      "name": "Heavy With Hoping",
+      "aritst": "Madeon",
+      "popularity": 59,
+      "preview_url": "https://p.scdn.co/mp3-preview/adaec359d17828ee1f7d6aa469f8b076e3ecff7f?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 241040,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/fa799b5fdba8fe46173725e6de8d0b6494f94f1e"
+    }
+  },
+  {
+    "track": {
+      "id": "1bpnYrDCforv9ctJMzJRV8",
+      "name": "Defying Gravity - From \"Wicked\" Original Broadway Cast Recording/2003",
+      "aritst": "Stephen Schwartz",
+      "popularity": 60,
+      "preview_url": "https://p.scdn.co/mp3-preview/2e7673d3cc5c80ae95b239d033159b7d19c0295d?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 353920,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/6a47f64e6e21f3294fa6005ec05b4dee04f82c8c"
+    }
+  },
+  {
+    "track": {
+      "id": "7ji5gjCF89ptzVhZ6YoXUV",
+      "name": "Foreign Land",
+      "aritst": "DESERT STAR",
+      "popularity": 39,
+      "preview_url": "https://p.scdn.co/mp3-preview/c5e9ee33d643569eab2633902122333c76584cad?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 161718,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/ab67616d0000b273626059b1e027d372878e6675"
+    }
+  },
+  {
+    "track": {
+      "id": "0adZjn5WV3b0BcZbvSi0y9",
+      "name": "Bone Dry",
+      "aritst": "Tristam",
+      "popularity": 53,
+      "preview_url": "https://p.scdn.co/mp3-preview/45d746f01775f743c3447593e4998b9d6f734b8b?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 285000,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/ab67616d0000b273b3d81f39b58946abfe8ea1cf"
+    }
+  },
+  {
+    "track": {
+      "id": "4fbvXwMTXPWaFyaMWUm9CR",
+      "name": "Holocene",
+      "aritst": "Bon Iver",
+      "popularity": 71,
+      "preview_url": "https://p.scdn.co/mp3-preview/a07bbe36e9ce8fc15114becac8876d3a20517cf2?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 336613,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/ab67616d0000b2736e68b2cb5583d891095d8c21"
+    }
+  },
+  {
+    "track": {
+      "id": "5QFdOfeQlX8gp7ick31XRG",
+      "name": "A Dark Knight",
+      "aritst": "Hans Zimmer",
+      "popularity": 56,
+      "preview_url": "https://p.scdn.co/mp3-preview/ffef604c2c6bdec349cbb0fe8334c254a645ab2f?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 975266,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/ab67616d0000b2739ca20352ead0cc8dccdf7951"
+    }
+  },
+  {
+    "track": {
+      "id": "1dZCiUTIbbvwOCALmzBh9y",
+      "name": "Oogway Ascends",
+      "aritst": "Hans Zimmer",
+      "popularity": 57,
+      "preview_url": "https://p.scdn.co/mp3-preview/32d39439df97972e2142f884588524d327c4921b?cid=774b29d4f13844c495f206cafdad9c86",
+      "duration_ms": 123506,
+      "explicit": false,
+      "album_art": "https://i.scdn.co/image/9ab8369260fbe83db702dee37918f6ef30bb8622"
     }
   }
 ]
