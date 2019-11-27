@@ -17,18 +17,18 @@ const SongHeader = ({ song, tags, authorName }) => {
       <div
         sx={{
           display: [`none`, `none`, `flex`],
+          backgroundColor: `card`,
+          p: `4`,
           mt: `5`,
           position: `relative`,
-          justifyContent: `center`,
-          minHeight: 280,
+          alignItems: `center`,
+          justifyContent: `flex-start`,
+          borderRadius: `2`,
         }}
       >
         <div
           sx={{
-            position: `absolute`,
             width: `25%`,
-            left: 0,
-            bottom: 20,
             borderRadius: `0`,
           }}
         >
@@ -36,15 +36,13 @@ const SongHeader = ({ song, tags, authorName }) => {
         </div>
         <div
           sx={{
-            backgroundColor: `card`,
             borderRadius: `0`,
-            p: `4`,
-            width: `70%`,
             display: `flex`,
             alignItems: `center`,
+            ml: `4`,
           }}
         >
-          <div sx={{ pl: `6` }}>
+          <div>
             <h1 sx={{ fontSize: `6`, mb: `1` }}>{song.song_title}</h1>
             <div
               sx={{
@@ -79,21 +77,25 @@ const SongHeader = ({ song, tags, authorName }) => {
         <div
           sx={{
             display: `flex`,
-            alignItems: `center`,
-            justifyContent: `center`,
             flexDirection: `column`,
+            justifyContent: `center`,
           }}
         >
           <div
             sx={{
               width: `100%`,
-              backgroundColor: `card`,
-              px: `3`,
-              pb: `3`,
+              display: `flex`,
+              flexDirection: `column`,
+              alignItems: `center`,
+              textAlign: `center`,
             }}
           >
             <AlbumArt
-              sx={{ transform: `translateY(-20px)`, maxWidth: 300 }}
+              sx={{
+                width: `100%`,
+                justifySelf: `center`,
+                mb: `3`,
+              }}
               fluid={song.album_art.localFile.childImageSharp.fluid}
             />
             <div
@@ -114,6 +116,17 @@ const SongHeader = ({ song, tags, authorName }) => {
             </div>
             <div
               sx={{
+                mt: `2`,
+                textTransform: `uppercase`,
+                fontSize: `0`,
+                fontWeight: `bold`,
+              }}
+            >
+              {formatDistance(new Date(song.timestamp), new Date())} ago | by:{" "}
+              <span sx={{ color: `text` }}>{authorName}</span>
+            </div>
+            <div
+              sx={{
                 display: `flex`,
                 mt: `3`,
               }}
@@ -126,44 +139,16 @@ const SongHeader = ({ song, tags, authorName }) => {
             sx={{
               mt: `4`,
               display: `grid`,
-              gridGap: `5`,
+              gridGap: `3`,
               flexDirection: `row`,
               gridTemplateColumns: `auto 1fr`,
               color: `textMuted.0`,
-              alignSelf: `flex-start`,
+              alignSelf: `center`,
             }}
           >
-            <div
-              sx={{
-                display: `flex`,
-                alignItems: `center`,
-              }}
-            >
-              {!loading && (
-                <Clap spotifyId={song.spotifyId} id={id} claps={claps} />
-              )}
-            </div>
-            <div
-              sx={{
-                display: `flex`,
-                flexDirection: `column`,
-                justifyContent: `center`,
-              }}
-            >
-              <div>
-                by: <span sx={{ color: `text` }}>{authorName}</span>
-              </div>
-              <div
-                sx={{
-                  mt: `2`,
-                  textTransform: `uppercase`,
-                  fontSize: `0`,
-                  fontWeight: `bold`,
-                }}
-              >
-                {formatDistance(new Date(song.timestamp), new Date())} ago
-              </div>
-            </div>
+            {!loading && (
+              <Clap spotifyId={song.spotifyId} id={id} claps={claps} />
+            )}
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import AlbumArt from "./album-art"
 import Tag from "./tag"
 import { getTags } from "../utils/get-tags"
 
-const SongCard = ({ songData, songId }) => {
+const SongCard = ({ songData, songId, ...props }) => {
   const tags = getTags(songData)
 
   return (
@@ -16,17 +16,16 @@ const SongCard = ({ songData, songId }) => {
         justifySelf: `center`,
         display: `flex`,
         flexDirection: `column`,
-        backgroundColor: `card`,
-        width: [`75%`, `100%`],
-        maxWidth: 320,
-        px: `3`,
-        pb: `3`,
+        backgroundColor: [`transparent`, `card`],
+        width: `100%`,
+        p: `3`,
+        borderRadius: `2`,
       }}
+      {...props}
     >
       <Link to={`/${songId}`} sx={{ textDecoration: `none` }}>
-        <motion.div whileHover={{ y: -3 }} sx={{}}>
+        <motion.div whileHover={{ y: -3 }} sx={{ mb: `2` }}>
           <AlbumArt
-            sx={{ transform: `translateY(-20px)` }}
             fluid={songData.album_art.localFile.childImageSharp.fluid}
           />
         </motion.div>
@@ -35,14 +34,14 @@ const SongCard = ({ songData, songId }) => {
       <div
         sx={{
           color: `white`,
-          fontSize: 4,
+          fontSize: [3, 4],
         }}
       >
         {songData.song_title}
       </div>
       <div
         sx={{
-          fontSize: 3,
+          fontSize: [2, 3],
           variant: `gradient.text`,
         }}
       >

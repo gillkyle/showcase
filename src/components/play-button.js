@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { useState, useEffect, Fragment } from "react"
-import { FiPlayCircle, FiPauseCircle } from "react-icons/fi"
 import { motion } from "framer-motion"
 
+import { Play, Pause } from "../components/svg-buttons"
 import PlayAnimation from "../components/play-animation"
 import { useAudio } from "../hooks/useAudio"
 
@@ -80,16 +80,14 @@ const PlaySection = ({ numBars, songPreview }) => {
         whileTap={{ scale: 0.95 }}
       >
         {playing ? (
-          <FiPauseCircle
+          <Pause
             onClick={() => {
               audio.current.pause()
               setPlaying(false)
             }}
-            sx={{ strokeWidth: 1 }}
-            size={48}
           />
         ) : (
-          <FiPlayCircle
+          <Play
             onClick={() => {
               if (hasStartedPlaying) {
                 audio.current.play()
@@ -99,8 +97,6 @@ const PlaySection = ({ numBars, songPreview }) => {
               setPlaying(true)
               setHasStartedPlaying(true)
             }}
-            sx={{ strokeWidth: 1 }}
-            size={48}
           />
         )}
       </motion.button>

@@ -7,6 +7,7 @@ const SpotifyEmbed = ({ id }) => (
       backgroundColor: `background`,
       border: `1px solid`,
       borderColor: `border`,
+      borderRadius: `1`,
       p: `2`,
       mb: `3`,
       display: `grid`,

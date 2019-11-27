@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { get } from "lodash"
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
+import { FiExternalLink } from "react-icons/fi"
 
 import AlbumArt from "../components/album-art"
 import Layout from "../components/layout"
@@ -109,7 +110,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <Container>
-        <div sx={{ mt: `6`, mx: [`5`, `3`] }}>
+        <div sx={{ mt: `6`, mx: `3` }}>
           <h1 sx={{ fontSize: `6`, mb: `2`, textAlign: `center` }}>Discover</h1>
           <section sx={{ position: `relative`, zIndex: 0 }}>
             <h2 sx={{ fontSize: `5` }}>Highest Rated</h2>
@@ -117,63 +118,117 @@ export default ({ data }) => {
               See what members of the community are enjoying most with the list
               of most upvoted tracks across the whole site.
             </p>
-            {!loadingMostClapped &&
-              mostClapped.map((song, index) => {
-                const tags = getTags(song)
-                return (
-                  <div
-                    sx={{
-                      display: `grid`,
-                      gridTemplateColumns: `100px  2fr 2fr 1fr 100px`,
-                      alignItems: `center`,
-                      backgroundColor: `card`,
-                      my: `3`,
-                      p: `2`,
-                      zIndex: 2,
-                      "&::before": {
-                        ...decorativeBeforeStyles,
-                        backgroundColor: indexEvaluator(index),
-                      },
-                    }}
-                  >
-                    <div sx={{ width: 80, height: 80 }}>
-                      <AlbumArt
-                        fluid={song.album_art.localFile.childImageSharp.fluid}
-                      />
-                    </div>
-
-                    <div>
+            {!loadingMostClapped
+              ? mostClapped.map((song, index) => {
+                  const tags = getTags(song)
+                  return (
+                    <div
+                      sx={{
+                        display: `grid`,
+                        gridTemplateColumns: [
+                          `180px  2fr 60px`,
+                          `100px  2fr 2fr 1fr 100px`,
+                        ],
+                        gridTemplateAreas: [
+                          `
+                        "art title title"
+                        "art link link"
+                        "art tags clap"
+                      `,
+                          `
+                          "art title tags link clap"
+                        `,
+                        ],
+                        alignItems: `center`,
+                        backgroundColor: `card`,
+                        my: `3`,
+                        p: `2`,
+                        zIndex: 2,
+                        "&::before": {
+                          ...decorativeBeforeStyles,
+                          backgroundColor: indexEvaluator(index),
+                        },
+                      }}
+                    >
                       <div
                         sx={{
-                          display: `flex`,
-                          flexDirection: `column`,
+                          gridArea: `art`,
+                          width: [160, 80],
+                          height: [160, 80],
                         }}
                       >
-                        <span sx={{ fontSize: `4`, mb: `1` }}>
-                          {song.song_title}
-                        </span>
-                        <span sx={{ fontSize: `2`, variant: `gradient.text` }}>
-                          {song.artist}
-                        </span>
+                        <AlbumArt
+                          fluid={song.album_art.localFile.childImageSharp.fluid}
+                        />
+                      </div>
+
+                      <div>
+                        <div
+                          sx={{
+                            gridArea: `title`,
+                            display: `flex`,
+                            flexDirection: `column`,
+                          }}
+                        >
+                          <span sx={{ fontSize: `4`, mb: `1` }}>
+                            {song.song_title}{" "}
+                            <span sx={{ fontSize: `3`, color: `textMuted.1` }}>
+                              #{index + 1}
+                            </span>
+                          </span>
+                          <span
+                            sx={{ fontSize: `2`, variant: `gradient.text` }}
+                          >
+                            {song.artist}
+                          </span>
+                        </div>
+                      </div>
+                      <div sx={{ gridArea: `tags` }}>
+                        {tags &&
+                          tags.map((tag, index) => {
+                            return <Tag small key={index} tag={tag[0]} />
+                          })}
+                      </div>
+                      <div sx={{ gridArea: `link`, my: [`2`, null] }}>
+                        <Link
+                          to={song.uid}
+                          sx={{
+                            variant: `button.link`,
+                            whiteSpace: `nowrap`,
+                          }}
+                        >
+                          View Track{" "}
+                          <FiExternalLink size={16} sx={{ ml: `2` }} />
+                        </Link>
+                      </div>
+                      <div sx={{ gridArea: `clap` }}>
+                        <SmallClap fill="textMuted.0" numClaps={song.claps} />
                       </div>
                     </div>
-                    <div>
-                      {tags &&
-                        tags.map((tag, index) => {
-                          return <Tag small key={index} tag={tag[0]} />
-                        })}
+                  )
+                })
+              : Array(10)
+                  .fill()
+                  .map((_, index) => (
+                    <div
+                      sx={{
+                        height: 80,
+                        display: `grid`,
+                        gridTemplateColumns: `100px  2fr 2fr 1fr 100px`,
+                        alignItems: `center`,
+                        backgroundColor: `card`,
+                        my: `3`,
+                        p: `2`,
+                        zIndex: 2,
+                        "&::before": {
+                          ...decorativeBeforeStyles,
+                          backgroundColor: indexEvaluator(index),
+                        },
+                      }}
+                    >
+                      Loading...
                     </div>
-                    <div>
-                      <Link to={song.uid} sx={{ variant: `button.link` }}>
-                        View Track
-                      </Link>
-                    </div>
-                    <div>
-                      <SmallClap fill="textMuted.0" numClaps={song.claps} />
-                    </div>
-                  </div>
-                )
-              })}
+                  ))}
           </section>
           <section>
             <h2 sx={{ fontSize: `5` }}>Tags</h2>
@@ -187,7 +242,7 @@ export default ({ data }) => {
                 <div
                   sx={{
                     display: `flex`,
-                    justifyContent: [`space-around`, `space-between`],
+                    justifyContent: `space-between`,
                     mb: `4`,
                   }}
                 >
@@ -230,7 +285,7 @@ export default ({ data }) => {
                     </Link>
                   </motion.div>
                 </div>
-                <Grid width={250} columnns={3} gap={`5`}>
+                <Grid width={180} columns={3} gap={[`3`, 48]}>
                   {tagBank[getTagName(tag)].map((song, index) => {
                     if (index > 2) return
                     return (

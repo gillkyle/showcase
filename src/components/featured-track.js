@@ -34,9 +34,9 @@ const FeaturedTrack = ({ songId, song, tags }) => {
           py: `4`,
           pr: `4`,
           pl: [`4`, null],
-          width: `70%`,
           display: `grid`,
           gridTemplateColumns: [`1fr`, `1fr 1fr`],
+          gridGap: `3`,
           alignItems: `center`,
         }}
       >
@@ -44,10 +44,6 @@ const FeaturedTrack = ({ songId, song, tags }) => {
           sx={{
             width: `100%`,
             textDecoration: `none`,
-            transform: [
-              `translateX(0px) translateY(-60px)`,
-              `translateX(-60px)`,
-            ],
           }}
           to={`/${songId}`}
         >
@@ -99,13 +95,10 @@ const FeaturedTrack = ({ songId, song, tags }) => {
             <PlayButton numBars={25} songPreview={previewUrl} />
           </div>
 
-          <div
-            sx={{
-              display: `flex`,
-              justifyContent: `space-between`,
-            }}
-          >
+          <div>
             {tags && tags.map((tag, index) => <Tag key={index} tag={tag} />)}
+          </div>
+          <div sx={{ mt: `4` }}>
             <SmallClap fill="textMuted.0" numClaps={claps} />
           </div>
         </div>

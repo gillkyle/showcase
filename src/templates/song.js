@@ -45,13 +45,16 @@ const Post = ({ data }) => {
           </div>
           <div>
             {song.excerpt && (
-              <div sx={{ fontSize: `4`, mt: `5`, mb: `4` }}>{song.excerpt}</div>
+              <div sx={{ fontSize: `4`, mt: [`4`, `5`], mb: `4` }}>
+                {song.excerpt}
+              </div>
             )}
             <div
               sx={{
                 backgroundColor: `background`,
                 border: `1px solid`,
                 borderColor: `border`,
+                borderRadius: `1`,
                 p: `2`,
                 mb: `3`,
                 display: `grid`,

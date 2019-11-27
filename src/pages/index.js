@@ -69,7 +69,7 @@ export default ({ data }) => {
             tags={featuredTrackTags[0]}
           />
         </div>
-        <div sx={{ mt: `6`, mx: [`5`, `3`] }}>
+        <div sx={{ mt: `6`, mx: `3` }}>
           <h2 sx={{ fontSize: `6`, textAlign: `center`, mb: `2` }}>
             Latest Picks
           </h2>
@@ -83,7 +83,7 @@ export default ({ data }) => {
           >
             The latest tracks reviewed and highlighted on Audio • Kinetics.
           </p>
-          <Grid width={250} columnns={3} gap={`5`}>
+          <Grid width={180} columns={3} gap={[`3`, 48]}>
             {allPrismicSong.nodes.map(song => (
               <SongCard key={song.uid} songId={song.uid} songData={song.data} />
             ))}

@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 const AlbumArt = ({ fluid, ...props }) => (
   <Img
     sx={{
-      borderRadius: 0,
+      borderRadius: `1`,
     }}
     fluid={{ ...fluid, aspectRatio: 1 }}
     {...props}
