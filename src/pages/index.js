@@ -3,6 +3,7 @@ import { jsx } from "theme-ui"
 import { Grid } from "@theme-ui/components"
 import { motion } from "framer-motion"
 import { graphql, Link } from "gatsby"
+import Img from "gatsby-image"
 import { get } from "lodash"
 import { FiChevronRight, FiMail } from "react-icons/fi"
 
@@ -12,6 +13,7 @@ import SongCard from "../components/song-card"
 import FeaturedTrack from "../components/featured-track"
 import SignupForm from "../components/signup-form"
 import PlayAnimation from "../components/play-animation"
+import Underline from "../components/underlined-text"
 import { getTags } from "../utils/get-tags"
 
 export default ({ data }) => {
@@ -20,6 +22,7 @@ export default ({ data }) => {
     prismicFeaturedTrack: {
       data: { featured_track: featuredTrack, title: featureTrackTitle },
     },
+    heroImage,
   } = data
   const featuredTrackTags = getTags(get(featuredTrack, `document[0].data`))
 
@@ -28,7 +31,7 @@ export default ({ data }) => {
       <Container>
         <div sx={{ py: `6`, textAlign: `center` }}>
           <h1 sx={{ fontSize: `6`, mb: `2` }}>
-            Curated Music that Means Something
+            Curated Music that <Underline>Means Something</Underline>
           </h1>
           <p
             sx={{
@@ -41,6 +44,7 @@ export default ({ data }) => {
             Surfacing the best music that tells deeper stories, evokes greater
             thoughts, and most of all moves us.
           </p>
+          <Img sx={{ mt: `4` }} fluid={heroImage.childImageSharp.fluid} />
         </div>
         <div>
           <h2
@@ -159,7 +163,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allPrismicSong(limit: 3, sort: { fields: data___timestamp, order: DESC }) {
+    allPrismicSong(limit: 4, sort: { fields: data___timestamp, order: DESC }) {
       nodes {
         uid
         data {
@@ -191,6 +195,14 @@ export const query = graphql`
               ...TagFragment
             }
           }
+        }
+      }
+    }
+    heroImage: file(relativePath: { eq: "hero-graphic.png" }) {
+      id
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }

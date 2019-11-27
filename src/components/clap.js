@@ -136,7 +136,6 @@ const Clap = ({ id, spotifyId, claps }) => {
           zIndex: 2,
           boxShadow: `0px 0px 0px 0px ${theme.colors.primary}`,
         }}
-        onClick={handleClick}
         animate={controls}
       ></motion.div>
       {/* <motion.svg
@@ -168,6 +167,7 @@ const Clap = ({ id, spotifyId, claps }) => {
         />
       </motion.svg> */}
       <motion.div
+        tabIndex={0}
         sx={{
           display: `flex`,
           alignItems: `center`,
@@ -178,6 +178,12 @@ const Clap = ({ id, spotifyId, claps }) => {
           width: 72,
           background: `linear-gradient(180deg, #9DD0FF 0%, #008BFF 100%)`,
           boxShadow: `inset 0px 0px 4px rgba(0, 0, 0, 0.5)`,
+          outline: 0,
+          transition: `all 0.3s ease-in-out`,
+          "&:focus, &:active": {
+            background: theme =>
+              `linear-gradient(160deg, ${theme.colors.secondary} 0%, ${theme.colors.primary} 100%)`,
+          },
         }}
         onClick={handleClick}
         style={{

@@ -13,7 +13,7 @@ export default {
     heading: 700,
     bold: 700,
   },
-  radii: [0, 2, 4, 8],
+  radii: [0, 2, 4, 8, 16],
   gradient: {
     text: {
       background: theme =>
@@ -33,13 +33,14 @@ export default {
       letterSpacing: 1.4,
       textTransform: `uppercase`,
       fontWeight: 700,
-      fontSize: `3`,
+      fontSize: `2`,
       py: `2`,
       px: `4`,
       color: `text`,
       borderRadius: `2`,
       display: `flex`,
       alignItems: `center`,
+      justifyContent: `center`,
       cursor: `pointer`,
     },
     link: {

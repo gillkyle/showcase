@@ -1,4 +1,5 @@
 const path = require("path")
+const _ = require("lodash")
 
 const trackItems = require(`./data/tracks.json`)
 
@@ -51,10 +52,27 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pages = await graphql(`
     query {
-      allPrismicSong {
+      allPrismicSong(sort: { fields: data___timestamp, order: DESC }) {
         nodes {
           id
           uid
+          data {
+            song_title
+            artist
+            album_art {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -77,12 +95,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const songTemplate = path.resolve("src/templates/song.js")
   const tagTemplate = path.resolve("src/templates/tag.js")
 
-  pages.data.allPrismicSong.nodes.forEach(node => {
+  pages.data.allPrismicSong.nodes.forEach((node, index) => {
     createPage({
       path: `${node.uid}`,
       component: songTemplate,
       context: {
         uid: node.uid,
+        next: _.get(pages.data.allPrismicSong.nodes, index + 1),
+        prev: _.get(pages.data.allPrismicSong.nodes, index - 1),
       },
     })
   })

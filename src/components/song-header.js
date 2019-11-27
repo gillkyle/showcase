@@ -23,20 +23,21 @@ const SongHeader = ({ song, tags, authorName }) => {
           position: `relative`,
           alignItems: `center`,
           justifyContent: `flex-start`,
-          borderRadius: `2`,
+          borderRadius: `3`,
         }}
       >
         <div
           sx={{
             width: `25%`,
-            borderRadius: `0`,
           }}
         >
-          <AlbumArt fluid={song.album_art.localFile.childImageSharp.fluid} />
+          <AlbumArt
+            sx={{ borderRadius: `2` }}
+            fluid={song.album_art.localFile.childImageSharp.fluid}
+          />
         </div>
         <div
           sx={{
-            borderRadius: `0`,
             display: `flex`,
             alignItems: `center`,
             ml: `4`,

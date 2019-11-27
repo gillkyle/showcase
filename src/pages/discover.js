@@ -15,6 +15,7 @@ import Tag from "../components/tag"
 import SongCard from "../components/song-card"
 import SmallClap from "../components/small-clap"
 import { getTags } from "../utils/get-tags"
+import Underline from "../components/underlined-text"
 
 const decorativeBeforeStyles = {
   height: 75,
@@ -111,7 +112,15 @@ export default ({ data }) => {
     <Layout>
       <Container>
         <div sx={{ mt: `6`, mx: `3` }}>
-          <h1 sx={{ fontSize: `6`, mb: `2`, textAlign: `center` }}>Discover</h1>
+          <h1
+            sx={{
+              fontSize: `6`,
+              mb: `2`,
+              textAlign: `center`,
+            }}
+          >
+            <Underline>Discover</Underline>
+          </h1>
           <section sx={{ position: `relative`, zIndex: 0 }}>
             <h2 sx={{ fontSize: `5` }}>Highest Rated</h2>
             <p sx={{ fontSize: `3`, color: `textMuted.0` }}>
@@ -141,12 +150,14 @@ export default ({ data }) => {
                         ],
                         alignItems: `center`,
                         backgroundColor: `card`,
+                        borderRadius: `2`,
                         my: `3`,
                         p: `2`,
                         zIndex: 2,
                         "&::before": {
                           ...decorativeBeforeStyles,
                           backgroundColor: indexEvaluator(index),
+                          borderRadius: `2`,
                         },
                       }}
                     >

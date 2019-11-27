@@ -30,7 +30,7 @@ const FeaturedTrack = ({ songId, song, tags }) => {
       <div
         sx={{
           backgroundColor: `card`,
-          borderRadius: `0`,
+          borderRadius: [`0`, `4`],
           py: `4`,
           pr: `4`,
           pl: [`4`, null],
@@ -57,6 +57,9 @@ const FeaturedTrack = ({ songId, song, tags }) => {
             }}
           >
             <AlbumArt
+              sx={{
+                borderRadius: `3`,
+              }}
               fluid={songData.album_art.localFile.childImageSharp.fluid}
             />
           </motion.div>

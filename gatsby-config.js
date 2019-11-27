@@ -14,6 +14,13 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/img`,
+      },
+    },
+    {
       resolve: `gatsby-source-prismic`,
       options: {
         repositoryName: `songshowcase`,

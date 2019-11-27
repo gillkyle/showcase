@@ -1,16 +1,19 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { get } from "lodash"
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 
 import Layout from "../components/layout"
 import SpotifyEmbed from "../components/spotify-embed"
 import SongHeader from "../components/song-header"
 import SongMenu from "../components/song-menu"
 import PlayButton from "../components/play-button"
+import AlbumArt from "../components/album-art"
 
-const Post = ({ data }) => {
+const Post = ({ data, pageContext }) => {
   const { data: song, fields: spotifyData } = data.prismicSong
+  const { next, prev } = pageContext
   const authorName = get(song, `author.document[0].data.name`)
   const tags = song.tag_list.map(song => song.all_tags.document)
 
@@ -104,6 +107,80 @@ const Post = ({ data }) => {
               dangerouslySetInnerHTML={{ __html: song.content.html }}
             />
             <SpotifyEmbed id={song.spotify_id} />
+            <div
+              sx={{
+                display: `grid`,
+                gridTemplateColumns: `1fr 1fr`,
+                gridGap: `3`,
+              }}
+            >
+              {prev && (
+                <Link to={prev.uid} sx={{ textDecoration: `none` }}>
+                  <div
+                    sx={{
+                      color: `text`,
+                      backgroundColor: `background`,
+                      border: `1px solid`,
+                      borderColor: `border`,
+                      borderRadius: `1`,
+                      p: `2`,
+                      display: `flex`,
+                      alignItems: `center`,
+                      justifyContent: `space-between`,
+                    }}
+                  >
+                    <FiChevronLeft size={30} />
+                    <div sx={{ mx: `1` }}>
+                      <div>{prev.data.song_title}</div>
+                      <div sx={{ color: `textMuted.0` }}>
+                        {prev.data.artist}
+                      </div>
+                    </div>
+                    <div>
+                      <AlbumArt
+                        sx={{ height: 60, width: 60 }}
+                        fluid={
+                          prev.data.album_art.localFile.childImageSharp.fluid
+                        }
+                      />
+                    </div>
+                  </div>
+                </Link>
+              )}
+              {next && (
+                <Link to={next.uid} sx={{ textDecoration: `none` }}>
+                  <div
+                    sx={{
+                      color: `text`,
+                      backgroundColor: `background`,
+                      border: `1px solid`,
+                      borderColor: `border`,
+                      borderRadius: `1`,
+                      p: `2`,
+                      display: `flex`,
+                      alignItems: `center`,
+                      justifyContent: `space-between`,
+                    }}
+                  >
+                    <div>
+                      <AlbumArt
+                        sx={{ height: 60, width: 60 }}
+                        fluid={
+                          next.data.album_art.localFile.childImageSharp.fluid
+                        }
+                      />
+                    </div>
+                    <div sx={{ mx: `1` }}>
+                      <div>{next.data.song_title}</div>
+                      <div sx={{ color: `textMuted.0` }}>
+                        {next.data.artist}
+                      </div>
+                    </div>
+                    <FiChevronRight size={30} />
+                  </div>
+                </Link>
+              )}
+            </div>
           </div>
           <div />
         </div>
