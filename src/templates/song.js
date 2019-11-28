@@ -131,8 +131,8 @@ const Post = ({ data, pageContext }) => {
                   >
                     <FiChevronLeft size={30} />
                     <div sx={{ mx: `1` }}>
-                      <div>{prev.data.song_title}</div>
-                      <div sx={{ color: `textMuted.0` }}>
+                      <div sx={{ fontSize: `1` }}>{prev.data.song_title}</div>
+                      <div sx={{ fontSize: `1`, color: `textMuted.0` }}>
                         {prev.data.artist}
                       </div>
                     </div>
@@ -171,8 +171,8 @@ const Post = ({ data, pageContext }) => {
                       />
                     </div>
                     <div sx={{ mx: `1` }}>
-                      <div>{next.data.song_title}</div>
-                      <div sx={{ color: `textMuted.0` }}>
+                      <div sx={{ fontSize: `1` }}>{next.data.song_title}</div>
+                      <div sx={{ fontSize: `1`, color: `textMuted.0` }}>
                         {next.data.artist}
                       </div>
                     </div>
