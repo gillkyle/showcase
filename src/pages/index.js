@@ -9,6 +9,7 @@ import { FiChevronRight, FiMail } from "react-icons/fi"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
+import HeroGraphic from "../components/hero-graphic"
 import SongCard from "../components/song-card"
 import FeaturedTrack from "../components/featured-track"
 import SignupForm from "../components/signup-form"
@@ -31,7 +32,8 @@ export default ({ data }) => {
       <Container>
         <div sx={{ py: `6`, textAlign: `center` }}>
           <h1 sx={{ fontSize: `6`, mb: `2` }}>
-            Curated Music that <Underline>Means Something</Underline>
+            Curated Music that <br sx={{ display: [`flex`, `flex`, `none`] }} />
+            <Underline>Means Something</Underline>
           </h1>
           <p
             sx={{
@@ -44,7 +46,11 @@ export default ({ data }) => {
             Surfacing the best music that tells deeper stories, evokes greater
             thoughts, and most of all moves us.
           </p>
-          <Img sx={{ mt: `4` }} fluid={heroImage.childImageSharp.fluid} />
+          <HeroGraphic sx={{ mt: `4`, display: [`none`, `none`, `grid`] }} />
+          <Img
+            sx={{ mt: `4`, display: [`inherit`, `inherit`, `none`], mx: `3` }}
+            fluid={heroImage.childImageSharp.fluid}
+          />
         </div>
         <div>
           <h2
@@ -198,7 +204,7 @@ export const query = graphql`
         }
       }
     }
-    heroImage: file(relativePath: { eq: "hero-graphic.png" }) {
+    heroImage: file(relativePath: { eq: "mobile-hero-graphic.png" }) {
       id
       childImageSharp {
         fluid {

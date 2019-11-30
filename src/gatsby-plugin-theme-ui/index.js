@@ -80,7 +80,7 @@ export default {
     text: "#DDD",
     textMuted: ["#AAAFAF", "#4b4e56"],
     background: "#121517",
-    faint: "#444",
+    faint: "#232323",
     border: "#333",
     primary: "#008BFF",
     primaryMuted: "#CCF4FF",
