@@ -110,7 +110,7 @@ const Post = ({ data, pageContext }) => {
             <div
               sx={{
                 display: `grid`,
-                gridTemplateColumns: `1fr 1fr`,
+                gridTemplateColumns: !!prev ? `1fr 1fr` : `1fr`,
                 gridGap: `3`,
               }}
             >

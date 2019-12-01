@@ -19,6 +19,19 @@ const TagTemplate = ({
           <h2 sx={{ fontSize: `6`, textAlign: `center`, mb: `4` }}>
             <Underline>{tagName}</Underline>
           </h2>
+          <p
+            sx={{
+              textAlign: `center`,
+              fontSize: `4`,
+              color: `textMuted.0`,
+              mb: `5`,
+            }}
+          >
+            <span sx={{ fontWeight: 700, color: `primary` }}>
+              {allPrismicSong.nodes.length}
+            </span>{" "}
+            songs tagged "{tagName}"
+          </p>
           <Grid width={160} columns={3} gap={[`3`, 48]}>
             {allPrismicSong.nodes.map(song => (
               <SongCard key={song.uid} songId={song.uid} songData={song.data} />

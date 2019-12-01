@@ -5,6 +5,7 @@ import { formatDistance } from "date-fns"
 
 import Clap from "./clap"
 import { useQueryClapsById } from "../hooks/useClaps"
+import Loading from "./loading"
 
 const SongMenu = ({ spotifyId, songTimestamp, authorName }) => {
   const { claps, id, loading } = useQueryClapsById(spotifyId)
@@ -30,7 +31,11 @@ const SongMenu = ({ spotifyId, songTimestamp, authorName }) => {
           alignItems: `center`,
         }}
       >
-        {!loading && <Clap spotifyId={spotifyId} id={id} claps={claps} />}
+        {!loading ? (
+          <Clap spotifyId={spotifyId} id={id} claps={claps} />
+        ) : (
+          <Loading />
+        )}
       </div>
     </Fragment>
   )
