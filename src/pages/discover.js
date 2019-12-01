@@ -298,14 +298,17 @@ export default ({ data }) => {
                 </div>
                 <Grid width={180} columns={3} gap={[`3`, 48]}>
                   {tagBank[getTagName(tag)].map((song, index) => {
-                    if (index > 2) return
-                    return (
-                      <SongCard
-                        key={song.uid}
-                        songId={song.uid}
-                        songData={song.data}
-                      />
-                    )
+                    if (index > 3) {
+                      return
+                    } else {
+                      return (
+                        <SongCard
+                          key={song.uid}
+                          songId={song.uid}
+                          songData={song.data}
+                        />
+                      )
+                    }
                   })}
                 </Grid>
               </div>

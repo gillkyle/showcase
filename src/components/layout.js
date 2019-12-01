@@ -33,10 +33,15 @@ const Layout = ({ children }) => (
       >
         <div>
           <Link
-            sx={{ textDecoration: `none`, color: `white`, fontSize: `3` }}
+            sx={{
+              textDecoration: `none`,
+              textTransform: `uppercase`,
+              color: `white`,
+              fontSize: `3`,
+            }}
             to="/"
           >
-            AUDIO <span sx={{ variant: `gradient.text` }}>• KINETICS</span>
+            Kinetic <span sx={{ variant: `gradient.text` }}>• Vault</span>
           </Link>
         </div>
         <div
@@ -72,10 +77,15 @@ const Layout = ({ children }) => (
     >
       <Container>
         <Link
-          sx={{ textDecoration: `none`, color: `white`, fontSize: `2` }}
+          sx={{
+            textDecoration: `none`,
+            textTransform: `uppercase`,
+            color: `white`,
+            fontSize: `2`,
+          }}
           to="/"
         >
-          AUDIO <span sx={{ variant: `gradient.text` }}>• KINETICS</span>
+          Kinetic <span sx={{ variant: `gradient.text` }}>• Vault</span>
         </Link>
       </Container>
     </footer>

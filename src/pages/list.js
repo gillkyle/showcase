@@ -26,7 +26,7 @@ export default ({ data }) => {
               mb: `5`,
             }}
           >
-            The latest tracks reviewed and highlighted on Audio • Kinetics.
+            The latest tracks that have been reviewed and highlighted.
           </p>
           <Grid width={160} columns={3} gap={[`3`, 48]}>
             {allPrismicSong.nodes.map(song => (
