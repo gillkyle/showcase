@@ -122,8 +122,8 @@ export default ({ data }) => {
             <Underline>Discover</Underline>
           </h1>
           <section sx={{ position: `relative`, zIndex: 0 }}>
-            <h2 sx={{ fontSize: `5` }}>Highest Rated</h2>
-            <p sx={{ fontSize: `3`, color: `textMuted.0` }}>
+            <h2 sx={{ fontSize: `5`, mb: `2` }}>Highest Rated</h2>
+            <p sx={{ fontSize: `3`, color: `textMuted.0`, mb: `4` }}>
               See what members of the community are enjoying most with the list
               of most upvoted tracks across the whole site.
             </p>
@@ -242,8 +242,8 @@ export default ({ data }) => {
                   ))}
           </section>
           <section>
-            <h2 sx={{ fontSize: `5` }}>Tags</h2>
-            <p sx={{ fontSize: `3`, color: `textMuted.0` }}>
+            <h2 sx={{ fontSize: `5`, mt: `6`, mb: `2` }}>Tags</h2>
+            <p sx={{ fontSize: `3`, color: `textMuted.0`, mb: `4` }}>
               Find songs based off of genres you like or that overlap with your
               taste. Genres aren't always the best for categorizing sound, but
               they serve as a good starting point.

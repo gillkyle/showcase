@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import { motion } from "framer-motion"
 
 import AlbumArt from "./album-art"
+import ArtistLink from "./artist-link"
 import Tag from "./tag"
 import { getTags } from "../utils/get-tags"
 
@@ -39,13 +40,8 @@ const SongCard = ({ songData, songId, ...props }) => {
       >
         {songData.song_title}
       </div>
-      <div
-        sx={{
-          fontSize: [2, 3],
-          variant: `gradient.text`,
-        }}
-      >
-        {songData.artist}
+      <div>
+        <ArtistLink artistName={songData.artist} />
       </div>
       <div
         sx={{

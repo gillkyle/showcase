@@ -19,6 +19,7 @@ const Tag = ({ tag, small, ...props }) => (
         fontWeight: 100,
         fontSize: small ? `0` : `1`,
         border: `1px solid transparent`,
+        width: `100%`,
         mr: `2`,
         "&:hover, &:active": {
           border: `1px solid ${tag.data.text_color}`,

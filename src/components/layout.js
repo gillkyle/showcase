@@ -47,7 +47,7 @@ const Layout = ({ children }) => (
         <div
           sx={{
             display: `grid`,
-            gridTemplateColumns: `repeat(3, auto)`,
+            gridTemplateColumns: `repeat(4, auto)`,
             gridGap: `2`,
           }}
         >
@@ -57,7 +57,10 @@ const Layout = ({ children }) => (
           <Link sx={{ variant: `button.link` }} to="/discover">
             DISCOVER
           </Link>
-          <Link sx={{ variant: `button.link` }} to="/discover">
+          <Link sx={{ variant: `button.link` }} to="/about">
+            ABOUT
+          </Link>
+          <Link sx={{ variant: `button.link` }} to="/submit">
             SUBMIT
           </Link>
         </div>

@@ -2,6 +2,7 @@ const path = require("path")
 const _ = require("lodash")
 
 const trackItems = require(`./data/tracks.json`)
+const getArtistUrl = require(`./src/utils/get-artist-url`)
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
@@ -91,9 +92,17 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  const artists = await graphql(`
+    query {
+      allPrismicSong {
+        distinct(field: data___artist)
+      }
+    }
+  `)
 
   const songTemplate = path.resolve("src/templates/song.js")
   const tagTemplate = path.resolve("src/templates/tag.js")
+  const artistTemplate = path.resolve("src/templates/artist.js")
 
   pages.data.allPrismicSong.nodes.forEach((node, index) => {
     createPage({
@@ -114,6 +123,15 @@ exports.createPages = async ({ graphql, actions }) => {
         name: node.data.name,
         bgColor: node.data.bg_color,
         textColor: node.data.text_color,
+      },
+    })
+  })
+  artists.data.allPrismicSong.distinct.forEach(node => {
+    createPage({
+      path: `/artist/${getArtistUrl(node)}`,
+      component: artistTemplate,
+      context: {
+        name: node,
       },
     })
   })
