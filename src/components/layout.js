@@ -41,7 +41,7 @@ const Layout = ({ children }) => (
             }}
             to="/"
           >
-            Kinetic <span sx={{ variant: `gradient.text` }}>• Vault</span>
+            Audio <span sx={{ variant: `gradient.text` }}>• Vault</span>
           </Link>
         </div>
         <div
@@ -88,7 +88,7 @@ const Layout = ({ children }) => (
           }}
           to="/"
         >
-          Kinetic <span sx={{ variant: `gradient.text` }}>• Vault</span>
+          Audio <span sx={{ variant: `gradient.text` }}>• Vault</span>
         </Link>
       </Container>
     </footer>
