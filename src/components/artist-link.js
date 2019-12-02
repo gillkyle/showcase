@@ -16,6 +16,7 @@ const ArtistLink = ({ artistName, ...props }) => {
           fontSize: [2, 3],
           variant: `gradient.text`,
         }}
+        {...props}
       >
         {artistName}
       </span>
