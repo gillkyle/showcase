@@ -4,8 +4,7 @@ import { Link } from "gatsby"
 
 import getArtistUrl from "../utils/get-artist-url"
 
-const ArtistLink = ({ artistName, ...props }) => {
-  console.log(getArtistUrl(artistName))
+const ArtistLink = ({ artistName, fontSize, ...props }) => {
   return (
     <Link
       to={`artist/${getArtistUrl(artistName)}`}
@@ -13,7 +12,7 @@ const ArtistLink = ({ artistName, ...props }) => {
     >
       <span
         sx={{
-          fontSize: [2, 3],
+          fontSize: fontSize || [2, 3],
           variant: `gradient.text`,
         }}
         {...props}

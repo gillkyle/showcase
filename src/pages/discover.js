@@ -9,6 +9,7 @@ import gql from "graphql-tag"
 import { FiExternalLink } from "react-icons/fi"
 
 import AlbumArt from "../components/album-art"
+import ArtistLink from "../components/artist-link"
 import Layout from "../components/layout"
 import Container from "../components/container"
 import Tag from "../components/tag"
@@ -187,10 +188,10 @@ export default ({ data }) => {
                               #{index + 1}
                             </span>
                           </span>
-                          <span
-                            sx={{ fontSize: `2`, variant: `gradient.text` }}
-                          >
-                            {song.artist}
+                          <span sx={{ variant: `gradient.text` }}>
+                            <ArtistLink artistName={song.artist} fontSize={`2`}>
+                              {song.artist}
+                            </ArtistLink>
                           </span>
                         </div>
                       </div>

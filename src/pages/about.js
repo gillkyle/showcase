@@ -38,17 +38,11 @@ export default () => {
               I started this site as a way to share really amazing tracks that
               had an additional story or reason to listen to them. A lot of
               songs tell really beautiful stories through lyrics like{" "}
-              <ArtistLink
-                artistName="Twenty One Pilots"
-                sx={{ fontSize: [`2`, `2`] }}
-              >
+              <ArtistLink artistName="Twenty One Pilots" fontSize={[`2`, `2`]}>
                 Twenty One Pilots
               </ArtistLink>
               , or through ridiculously well produced synthesizers like{" "}
-              <ArtistLink
-                artistName="Porter Robinson"
-                sx={{ fontSize: [`2`, `2`] }}
-              >
+              <ArtistLink artistName="Porter Robinson" fontSize={[`2`, `2`]}>
                 Porter Robinson
               </ArtistLink>
               .

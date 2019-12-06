@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { get } from "lodash"
 
 import AlbumArt from "./album-art"
+import ArtistLink from "./artist-link"
 import Tag from "./tag"
 import PlayButton from "./play-button"
 import SmallClap from "./small-clap"
@@ -74,7 +75,9 @@ const FeaturedTrack = ({ songId, song, tags }) => {
               variant: `gradient.text`,
             }}
           >
-            {songData.artist}
+            <ArtistLink artistName={songData.artist} fontSize={`5`}>
+              {songData.artist}
+            </ArtistLink>
           </div>
           <p
             sx={{
@@ -95,7 +98,7 @@ const FeaturedTrack = ({ songId, song, tags }) => {
               justifyContent: `center`,
             }}
           >
-            <PlayButton numBars={25} songPreview={previewUrl} />
+            <PlayButton numBars={35} songPreview={previewUrl} />
           </div>
 
           <div>

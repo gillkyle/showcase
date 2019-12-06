@@ -1,7 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
+import { FiHome, FiZap, FiAward, FiUpload } from "react-icons/fi"
 
+import theme from "../gatsby-plugin-theme-ui/index"
 import Container from "../components/container"
 
 const Layout = ({ children }) => (
@@ -92,7 +94,55 @@ const Layout = ({ children }) => (
         </Link>
       </Container>
     </footer>
+    <div
+      sx={{
+        bg: `background`,
+        p: `2`,
+        position: `fixed`,
+        bottom: 0,
+        right: 0,
+        left: 0,
+        zIndex: 5,
+        display: [`flex`, `none`],
+        justifyContent: `space-around`,
+        borderTop: theme => `1px solid ${theme.colors.border}`,
+      }}
+    >
+      <MobileLink to="/">
+        <FiHome sx={{ mb: `1` }} size={30} />
+        Home
+      </MobileLink>
+      <MobileLink to="/list">
+        <FiZap sx={{ mb: `1` }} size={30} />
+        New
+      </MobileLink>
+      <MobileLink to="/discover">
+        <FiAward sx={{ mb: `1` }} size={30} />
+        Discover
+      </MobileLink>
+      <MobileLink to="/submit">
+        <FiUpload sx={{ mb: `1` }} size={30} />
+        Submit
+      </MobileLink>
+    </div>
   </div>
 )
 
 export default Layout
+
+const MobileLink = ({ children, to }) => (
+  <Link
+    sx={{
+      color: `text`,
+      fontSize: `1`,
+      display: `flex`,
+      flexDirection: `column`,
+      alignItems: `center`,
+      textDecoration: `none`,
+    }}
+    to={to}
+    activeStyle={{ color: theme.colors.primary }}
+  >
+    {children}
+  </Link>
+)
