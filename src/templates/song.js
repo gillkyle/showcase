@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { graphql, Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { get } from "lodash"
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 
@@ -18,7 +19,7 @@ const Post = ({ data, pageContext }) => {
   const tags = song.tag_list.map(song => song.all_tags.document)
 
   return (
-    <Layout>
+    <Layout sx={{ bg: `red` }}>
       <div
         sx={{
           display: `flex`,
@@ -115,7 +116,15 @@ const Post = ({ data, pageContext }) => {
               }}
             >
               {prev && (
-                <Link to={prev.uid} sx={{ textDecoration: `none` }}>
+                <AniLink
+                  cover
+                  direction="left"
+                  entryOffset={100}
+                  duration={0.75}
+                  bg="#232323"
+                  to={prev.uid}
+                  sx={{ textDecoration: `none` }}
+                >
                   <div
                     sx={{
                       color: `text`,
@@ -145,10 +154,18 @@ const Post = ({ data, pageContext }) => {
                       />
                     </div>
                   </div>
-                </Link>
+                </AniLink>
               )}
               {next && (
-                <Link to={next.uid} sx={{ textDecoration: `none` }}>
+                <AniLink
+                  cover
+                  direction="right"
+                  entryOffset={100}
+                  duration={0.75}
+                  bg="#232323"
+                  to={next.uid}
+                  sx={{ textDecoration: `none` }}
+                >
                   <div
                     sx={{
                       color: `text`,
@@ -178,7 +195,7 @@ const Post = ({ data, pageContext }) => {
                     </div>
                     <FiChevronRight size={30} />
                   </div>
-                </Link>
+                </AniLink>
               )}
             </div>
           </div>
