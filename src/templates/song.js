@@ -1,16 +1,17 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { get } from "lodash"
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 
+import AlbumArt from "../components/album-art"
 import Layout from "../components/layout"
 import SpotifyEmbed from "../components/spotify-embed"
+import SignupCard from "../components/signup-card"
 import SongHeader from "../components/song-header"
 import SongMenu from "../components/song-menu"
 import PlayButton from "../components/play-button"
-import AlbumArt from "../components/album-art"
 
 const Post = ({ data, pageContext }) => {
   const { data: song, fields: spotifyData } = data.prismicSong
@@ -198,8 +199,8 @@ const Post = ({ data, pageContext }) => {
                 </AniLink>
               )}
             </div>
+            <SignupCard />
           </div>
-          <div />
         </div>
       </div>
     </Layout>

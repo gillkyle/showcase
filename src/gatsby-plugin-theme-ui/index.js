@@ -30,7 +30,7 @@ export default {
     default: {
       variant: `gradient.button`,
       textDecoration: `none`,
-      letterSpacing: 1.4,
+      letterSpacing: 2,
       textTransform: `uppercase`,
       fontWeight: 700,
       fontSize: `2`,
@@ -42,6 +42,7 @@ export default {
       alignItems: `center`,
       justifyContent: `center`,
       cursor: `pointer`,
+      width: `fit-content`,
     },
     link: {
       textDecoration: `none`,
@@ -54,6 +55,11 @@ export default {
       "&:hover": {
         backgroundColor: `faint`,
       },
+      faint: {
+        textDecoration: `none`,
+        color: `textMuted`,
+        px: `3`,
+      },
     },
   },
   input: {
@@ -64,15 +70,14 @@ export default {
       borderRadius: `2`,
       display: `flex`,
       alignItems: `center`,
-      backgroundColor: `shadow`,
+      backgroundColor: `background`,
       borderColor: `border`,
       borderStyle: `solid`,
       color: `text`,
       transition: `0.3s all`,
       outline: 0,
       "&:focus,  &:active": {
-        boxShadow: theme =>
-          `0 0 0px 3px ${theme.colors.background}, 0 0 0px 5px ${theme.colors.border}`,
+        borderColor: `primary`,
       },
     },
   },

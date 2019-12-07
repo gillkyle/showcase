@@ -24,11 +24,14 @@ const SignupForm = ({ nada }) => {
       onSubmit={handleSubmit}
       sx={{
         display: `grid`,
-        gridTemplateColumns: [`1fr`, `2fr auto`],
+        gridTemplateColumns: [`1fr`],
         gridGap: `3`,
         width: `100%`,
       }}
     >
+      <span sx={{ color: `textMuted.1` }}>
+        *No spam, we promise, unsubscribe anytime
+      </span>
       <input
         type="email"
         placeholder="Your email"
@@ -39,7 +42,7 @@ const SignupForm = ({ nada }) => {
         value={email}
       ></input>
       <button sx={{ variant: `button.default`, border: 0 }}>
-        Subscribe <FiSend />
+        Subscribe <FiSend sx={{ transform: `rotate(45deg)` }} />
       </button>
     </form>
   )

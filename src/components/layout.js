@@ -48,19 +48,16 @@ const Layout = ({ children }) => (
         </div>
         <div
           sx={{
-            display: `grid`,
+            display: [`none`, `grid`],
             gridTemplateColumns: `repeat(4, auto)`,
             gridGap: `2`,
           }}
         >
-          <Link sx={{ variant: `button.link` }} to="/list">
-            LATEST
+          <Link sx={{ variant: `button.link` }} to="/new">
+            NEW
           </Link>
           <Link sx={{ variant: `button.link` }} to="/discover">
             DISCOVER
-          </Link>
-          <Link sx={{ variant: `button.link` }} to="/about">
-            ABOUT
           </Link>
           <Link sx={{ variant: `button.link` }} to="/submit">
             SUBMIT
@@ -80,18 +77,43 @@ const Layout = ({ children }) => (
         p: 4,
       }}
     >
-      <Container>
-        <Link
+      <Container
+        sx={{
+          display: `flex`,
+          flexDirection: `row`,
+          alignItems: `center`,
+          justifyContent: `space-between`,
+        }}
+      >
+        <div>
+          <Link
+            sx={{
+              textDecoration: `none`,
+              textTransform: `uppercase`,
+              color: `white`,
+              fontSize: `2`,
+            }}
+            to="/"
+          >
+            Audio <span sx={{ variant: `gradient.text` }}>• Vault</span>
+          </Link>
+        </div>
+        <div
           sx={{
-            textDecoration: `none`,
-            textTransform: `uppercase`,
-            color: `white`,
-            fontSize: `2`,
+            display: `grid`,
+            gridTemplateColumns: `repeat(4, auto)`,
+            gridGap: `2`,
+            alignItems: `center`,
           }}
-          to="/"
         >
-          Audio <span sx={{ variant: `gradient.text` }}>• Vault</span>
-        </Link>
+          <Link sx={{ variant: `button.link.faint` }} to="/archive">
+            ARCHIVE
+          </Link>
+          ·
+          <Link sx={{ variant: `button.link.faint` }} to="/about">
+            ABOUT
+          </Link>
+        </div>
       </Container>
     </footer>
     <div
@@ -102,7 +124,7 @@ const Layout = ({ children }) => (
         bottom: 0,
         right: 0,
         left: 0,
-        zIndex: 5,
+        zIndex: 10001,
         display: [`flex`, `none`],
         justifyContent: `space-around`,
         borderTop: theme => `1px solid ${theme.colors.border}`,
@@ -112,7 +134,7 @@ const Layout = ({ children }) => (
         <FiHome sx={{ mb: `1` }} size={30} />
         Home
       </MobileLink>
-      <MobileLink to="/list">
+      <MobileLink to="/new">
         <FiZap sx={{ mb: `1` }} size={30} />
         New
       </MobileLink>

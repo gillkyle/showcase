@@ -5,15 +5,14 @@ import { motion } from "framer-motion"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import { get } from "lodash"
-import { FiChevronRight, FiMail } from "react-icons/fi"
+import { FiChevronRight } from "react-icons/fi"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
 import HeroGraphic from "../components/hero-graphic"
 import SongCard from "../components/song-card"
 import FeaturedTrack from "../components/featured-track"
-import SignupForm from "../components/signup-form"
-import PlayAnimation from "../components/play-animation"
+import SignupCard from "../components/signup-card"
 import Underline from "../components/underlined-text"
 import { getTags } from "../utils/get-tags"
 
@@ -30,7 +29,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <Container>
-        <div sx={{ py: `6`, textAlign: `center` }}>
+        <div sx={{ py: [`4`, `6`], textAlign: `center` }}>
           <h1 sx={{ fontSize: `6`, mb: `2` }}>
             Curated Music that <br sx={{ display: [`flex`, `flex`, `none`] }} />
             <Underline>Means Something</Underline>
@@ -101,7 +100,7 @@ export default ({ data }) => {
           <div sx={{ my: `4`, display: `flex`, placeContent: `center` }}>
             <motion.div whileHover={{ y: -2 }}>
               <Link
-                to="/list"
+                to="/new"
                 sx={{
                   variant: `button.default`,
                 }}
@@ -111,57 +110,7 @@ export default ({ data }) => {
             </motion.div>
           </div>
         </div>
-        <section sx={{ my: `6`, display: `flex`, justifyContent: `center` }}>
-          <div
-            sx={{
-              backgroundColor: `background`,
-              p: `5`,
-              maxWidth: 620,
-              display: `flex`,
-              flexDirection: `column`,
-              alignItems: `center`,
-              borderColor: `border`,
-              border: theme => `1px solid ${theme.colors.border}`,
-            }}
-          >
-            <h2
-              sx={{
-                fontSize: `6`,
-                textAlign: `center`,
-                m: 0,
-                mb: `2`,
-                display: `flex`,
-                alignItems: `center`,
-              }}
-            >
-              <FiMail size={48} sx={{ mr: `2` }} />
-              Subscribe
-            </h2>
-            <p
-              sx={{
-                textAlign: `center`,
-                fontSize: `2`,
-                color: `textMuted.0`,
-                width: `75%`,
-              }}
-            >
-              Get updates on the latest content and be the first to know about
-              new content
-            </p>
-            <div
-              sx={{
-                height: 30,
-                display: `flex`,
-                alignItems: `center`,
-                justifyContent: `center`,
-                mb: `4`,
-              }}
-            >
-              <PlayAnimation numBars={12} playing />
-            </div>
-            <SignupForm />
-          </div>
-        </section>
+        <SignupCard />
       </Container>
     </Layout>
   )

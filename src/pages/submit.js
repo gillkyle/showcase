@@ -12,7 +12,7 @@ export default () => {
       <Container>
         <div
           sx={{
-            mt: `6`,
+            mt: [`3`, `6`],
             mx: `3`,
             display: `flex`,
             flexDirection: `column`,

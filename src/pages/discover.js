@@ -112,7 +112,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <Container>
-        <div sx={{ mt: `6`, mx: `3` }}>
+        <div sx={{ mt: [`3`, `6`], mx: `3` }}>
           <h1
             sx={{
               fontSize: `6`,

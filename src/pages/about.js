@@ -13,7 +13,7 @@ export default () => {
       <Container>
         <div
           sx={{
-            mt: `6`,
+            my: [`3`, `6`],
             mx: `3`,
           }}
         >
@@ -26,7 +26,7 @@ export default () => {
           >
             <Underline>About</Underline>
           </h1>
-          <div sx={{ maxWidth: 700 }}>
+          <div sx={{ margin: `0 auto`, maxWidth: 700 }}>
             <p>Hey friends, readers, and followers,</p>
             <p>
               To start, thanks for following along. Whether this is your first

@@ -14,9 +14,9 @@ export default ({ data }) => {
   return (
     <Layout>
       <Container>
-        <div sx={{ mt: `6`, mx: `3` }}>
+        <div sx={{ mt: [`3`, `6`], mx: `3` }}>
           <h2 sx={{ fontSize: `6`, textAlign: `center`, mb: `2` }}>
-            <Underline>Latest Picks</Underline>
+            <Underline>Newest Picks</Underline>
           </h2>
           <p
             sx={{
@@ -41,7 +41,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allPrismicSong(sort: { fields: data___timestamp, order: DESC }) {
+    allPrismicSong(limit: 12, sort: { fields: data___timestamp, order: DESC }) {
       nodes {
         uid
         data {
