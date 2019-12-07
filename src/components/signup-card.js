@@ -3,16 +3,19 @@ import { jsx } from "theme-ui"
 
 import SignupForm from "./signup-form"
 
-const SignupCard = () => {
+const SignupCard = ({ ...props }) => {
   return (
-    <section sx={{ my: `6`, display: `flex`, justifyContent: `center` }}>
+    <section
+      sx={{ my: `6`, display: `flex`, justifyContent: `center` }}
+      {...props}
+    >
       <div
         sx={{
           backgroundColor: `card`,
-          p: `5`,
+          p: [`4`, `5`],
           maxWidth: 620,
           display: `grid`,
-          gridTemplateColumns: [`1fr`, `1fr 1fr`],
+          gridTemplateColumns: [`1fr`, `1fr`, `1fr 1fr`],
           gridGap: `3`,
           alignItems: `flex-start`,
           borderRadius: `2`,

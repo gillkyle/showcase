@@ -52,6 +52,8 @@ export default {
       py: `2`,
       transition: `0.3s all`,
       borderRadius: `3`,
+      display: `flex`,
+      alignItems: `center`,
       "&:hover": {
         backgroundColor: `faint`,
       },

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { get } from "lodash"
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
@@ -117,7 +117,7 @@ const Post = ({ data, pageContext }) => {
               }}
             >
               {prev && (
-                <AniLink
+                <Link
                   cover
                   direction="left"
                   entryOffset={100}
@@ -134,15 +134,33 @@ const Post = ({ data, pageContext }) => {
                       borderColor: `border`,
                       borderRadius: `1`,
                       p: `2`,
-                      display: `flex`,
+                      display: `grid`,
+                      gridTemplateColumns: `30px minmax(100px, 180px) 60px`,
                       alignItems: `center`,
                       justifyContent: `space-between`,
                     }}
                   >
                     <FiChevronLeft size={30} />
                     <div sx={{ mx: `1` }}>
-                      <div sx={{ fontSize: `1` }}>{prev.data.song_title}</div>
-                      <div sx={{ fontSize: `1`, color: `textMuted.0` }}>
+                      <div
+                        sx={{
+                          fontSize: `1`,
+                          whiteSpace: `nowrap`,
+                          textOverflow: `ellipsis`,
+                          overflow: `hidden`,
+                        }}
+                      >
+                        {prev.data.song_title}
+                      </div>
+                      <div
+                        sx={{
+                          fontSize: `1`,
+                          color: `textMuted.0`,
+                          whiteSpace: `nowrap`,
+                          textOverflow: `ellipsis`,
+                          overflow: `hidden`,
+                        }}
+                      >
                         {prev.data.artist}
                       </div>
                     </div>
@@ -155,10 +173,10 @@ const Post = ({ data, pageContext }) => {
                       />
                     </div>
                   </div>
-                </AniLink>
+                </Link>
               )}
               {next && (
-                <AniLink
+                <Link
                   cover
                   direction="right"
                   entryOffset={100}
@@ -175,7 +193,8 @@ const Post = ({ data, pageContext }) => {
                       borderColor: `border`,
                       borderRadius: `1`,
                       p: `2`,
-                      display: `flex`,
+                      display: `grid`,
+                      gridTemplateColumns: `60px minmax(100px, 140px) 30px`,
                       alignItems: `center`,
                       justifyContent: `space-between`,
                     }}
@@ -189,17 +208,34 @@ const Post = ({ data, pageContext }) => {
                       />
                     </div>
                     <div sx={{ mx: `1` }}>
-                      <div sx={{ fontSize: `1` }}>{next.data.song_title}</div>
-                      <div sx={{ fontSize: `1`, color: `textMuted.0` }}>
+                      <div
+                        sx={{
+                          fontSize: `1`,
+                          whiteSpace: `nowrap`,
+                          textOverflow: `ellipsis`,
+                          overflow: `hidden`,
+                        }}
+                      >
+                        {next.data.song_title}
+                      </div>
+                      <div
+                        sx={{
+                          fontSize: `1`,
+                          color: `textMuted.0`,
+                          whiteSpace: `nowrap`,
+                          textOverflow: `ellipsis`,
+                          overflow: `hidden`,
+                        }}
+                      >
                         {next.data.artist}
                       </div>
                     </div>
                     <FiChevronRight size={30} />
                   </div>
-                </AniLink>
+                </Link>
               )}
             </div>
-            <SignupCard />
+            <SignupCard sx={{ my: `5` }} />
           </div>
         </div>
       </div>

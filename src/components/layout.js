@@ -33,7 +33,12 @@ const Layout = ({ children }) => (
           justifyContent: `space-between`,
         }}
       >
-        <div>
+        <div
+          sx={{
+            width: [`100%`, `fit-content`],
+            textAlign: [`center`, null],
+          }}
+        >
           <Link
             sx={{
               textDecoration: `none`,
@@ -53,13 +58,26 @@ const Layout = ({ children }) => (
             gridGap: `2`,
           }}
         >
-          <Link sx={{ variant: `button.link` }} to="/new">
-            NEW
+          <Link
+            activeStyle={{ color: theme.colors.primary }}
+            sx={{ variant: `button.link` }}
+            to="/new"
+          >
+            <FiZap size={16} sx={{ mr: `1` }} /> NEW
           </Link>
-          <Link sx={{ variant: `button.link` }} to="/discover">
-            DISCOVER
+          <Link
+            activeStyle={{ color: theme.colors.primary }}
+            sx={{ variant: `button.link` }}
+            to="/discover"
+          >
+            <FiAward size={16} sx={{ mr: `1` }} /> DISCOVER
           </Link>
-          <Link sx={{ variant: `button.link` }} to="/submit">
+          <Link
+            activeStyle={{ color: theme.colors.primary }}
+            sx={{ variant: `button.link` }}
+            to="/submit"
+          >
+            <FiUpload size={16} sx={{ mr: `1` }} />
             SUBMIT
           </Link>
         </div>
@@ -83,6 +101,7 @@ const Layout = ({ children }) => (
           flexDirection: `row`,
           alignItems: `center`,
           justifyContent: `space-between`,
+          mb: [60, 0],
         }}
       >
         <div>

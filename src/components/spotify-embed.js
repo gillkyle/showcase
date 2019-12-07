@@ -20,7 +20,7 @@ const SpotifyEmbed = ({ id }) => (
       id="embed"
       title="Spotify embed"
       src={`https://open.spotify.com/embed/track/${id}`}
-      width="300"
+      width="280"
       height="80"
       frameBorder="0"
       allowtransparency="true"
