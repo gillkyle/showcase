@@ -148,7 +148,7 @@ const SongHeader = ({ song, tags, authorName }) => {
             }}
           >
             {!loading && (
-              <Clap spotifyId={song.spotifyId} id={id} claps={claps} />
+              <Clap spotifyId={song.spotify_id} id={id} claps={claps} />
             )}
           </div>
         </div>
