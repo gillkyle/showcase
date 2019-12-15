@@ -17,6 +17,7 @@ import SongCard from "../components/song-card"
 import SmallClap from "../components/small-clap"
 import { getTags } from "../utils/get-tags"
 import Underline from "../components/underlined-text"
+import SEO from "../components/seo"
 
 const decorativeBeforeStyles = {
   height: 75,
@@ -111,6 +112,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Discover" />
       <Container>
         <div sx={{ mt: [`3`, `6`], mx: `3` }}>
           <h1

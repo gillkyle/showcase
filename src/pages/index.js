@@ -14,6 +14,7 @@ import SongCard from "../components/song-card"
 import FeaturedTrack from "../components/featured-track"
 import SignupCard from "../components/signup-card"
 import Underline from "../components/underlined-text"
+import SEO from "../components/seo"
 import { getTags } from "../utils/get-tags"
 
 export default ({ data }) => {
@@ -28,6 +29,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Home" />
       <Container>
         <div sx={{ py: [`4`, `6`], textAlign: `center` }}>
           <h1 sx={{ fontSize: `6`, mb: `2` }}>

@@ -7,12 +7,14 @@ import Layout from "../components/layout"
 import Container from "../components/container"
 import SongCard from "../components/song-card"
 import Underline from "../components/underlined-text"
+import SEO from "../components/seo"
 
 export default ({ data }) => {
   const { allPrismicSong } = data
 
   return (
     <Layout>
+      <SEO title="New" />
       <Container>
         <div sx={{ mt: [`3`, `6`], mx: `3` }}>
           <h2 sx={{ fontSize: `6`, textAlign: `center`, mb: `2` }}>

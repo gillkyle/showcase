@@ -5,10 +5,12 @@ import { motion } from "framer-motion"
 import Layout from "../components/layout"
 import Container from "../components/container"
 import Underline from "../components/underlined-text"
+import SEO from "../components/seo"
 
 export default () => {
   return (
     <Layout>
+      <SEO title="Submit" />
       <Container>
         <div
           sx={{

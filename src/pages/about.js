@@ -6,10 +6,12 @@ import Layout from "../components/layout"
 import Container from "../components/container"
 import Underline from "../components/underlined-text"
 import ArtistLink from "../components/artist-link"
+import SEO from "../components/seo"
 
 export default () => {
   return (
     <Layout>
+      <SEO title="About" />
       <Container>
         <div
           sx={{
