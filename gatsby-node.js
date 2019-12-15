@@ -10,13 +10,9 @@ exports.onCreateNode = ({ node, actions }) => {
 
   const getMatchingTrackItem = node => {
     if (node.internal.type === `PrismicSong`) {
-      return trackItems.find(
-        trackItem => trackItem.track.id === node.data.spotify_id
-      )
+      return trackItems[node.data.spotify_id]
     } else if (node.internal.type === `PrismicFeaturedTrack`) {
-      return trackItems.find(
-        trackItem => trackItem.track.id === node.data.featured_track_spotify_id
-      )
+      return trackItems[node.data.featured_track_spotify_id]
     }
   }
 
@@ -33,17 +29,17 @@ exports.onCreateNode = ({ node, actions }) => {
     createNodeField({
       node,
       name: `previewUrl`,
-      value: matchingTrackItem.track.preview_url,
+      value: matchingTrackItem.preview_url,
     })
     createNodeField({
       node,
       name: `duration`,
-      value: matchingTrackItem.track.duration_ms,
+      value: matchingTrackItem.duration_ms,
     })
     createNodeField({
       node,
       name: `popularity`,
-      value: matchingTrackItem.track.popularity,
+      value: matchingTrackItem.popularity,
     })
   }
 }

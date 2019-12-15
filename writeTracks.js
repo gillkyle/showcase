@@ -2,6 +2,7 @@
 // it collects data for all tracks in the playlist with the id listed below which corresponds to my emotion. playlist
 const SpotifyWebApi = require("spotify-web-api-node")
 const fs = require("fs")
+const trackItems = require(`./data/tracks.json`)
 require("dotenv").config()
 
 const spotifyApi = new SpotifyWebApi({
@@ -12,7 +13,7 @@ const spotifyApi = new SpotifyWebApi({
 
 // set the access token (can get new one in UI here: https://developer.spotify.com/console/get-playlist/?playlist_id=&market=&fields=)
 // this needs to be replaced when used
-const REFRESH_TOKEN = `BQAuwvKFos_amNXiXKugGU0gAUJ6FHq4Ju4BdI-1NK4Hiw-OZHt2WPifS1e36DM5mb40IPwAZ9JwtJjT-VqJW9CVEhfYcJwt12W8j7g4pzdvrVwvYMSRU6bHtItjKHfmLcdhDjksFq2G34TF`
+const REFRESH_TOKEN = `BQBYgwCsVDpMeA25hfDByDM2pSX-7NONeJHK0iLWTn0qXw43588xGvHHH2nUI2TX9LI9tPc7SX5JeJL6QJxkZRsdLG6Lfy825Vfdp6MwBwFgt3TUPHE8ZV8YkG0eTgv7Qk5pQNLOCQAdSG8A`
 spotifyApi.setAccessToken(REFRESH_TOKEN)
 
 // get blog playlist
@@ -23,10 +24,14 @@ spotifyApi.getPlaylist(`6gJdqmvRKCIhqVctijLaak`).then(
         tracks: { items },
       },
     } = data
+    let count = 0
     console.log(`---- FOUND ${items.length} TRACKS ----`)
-    const pluckedItems = items.map(item => {
-      return {
-        track: {
+    let trackDictionary = trackItems
+    items.forEach(item => {
+      // add to dictionary if not already found
+      if (!trackDictionary[item.track.id]) {
+        count += 1
+        trackDictionary[item.track.id] = {
           id: item.track.id,
           name: item.track.name,
           aritst: item.track.artists[0].name,
@@ -35,11 +40,11 @@ spotifyApi.getPlaylist(`6gJdqmvRKCIhqVctijLaak`).then(
           duration_ms: item.track.duration_ms,
           explicit: item.track.explicit,
           album_art: item.track.album.images[0].url,
-        },
+        }
       }
     })
-    fs.writeFileSync("./data/tracks.json", JSON.stringify(pluckedItems))
-    console.log(`---- WROTE TRACKS SUCCESSFULLY ----`)
+    fs.writeFileSync("./data/tracks.json", JSON.stringify(trackDictionary))
+    console.log(`---- ADDED ${count} NEW TRACKS ----`)
   },
   err => {
     console.log("Something went wrong with your request:", err)
