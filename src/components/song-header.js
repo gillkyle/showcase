@@ -4,6 +4,7 @@ import { Fragment } from "react"
 import { formatDistance } from "date-fns"
 
 import AlbumArt from "./album-art"
+import ArtistLink from "./artist-link"
 import Tag from "./tag"
 import Clap from "./clap"
 import { useQueryClapsById } from "../hooks/useClaps"
@@ -45,14 +46,10 @@ const SongHeader = ({ song, tags, authorName }) => {
         >
           <div>
             <h1 sx={{ fontSize: `6`, mb: `1` }}>{song.song_title}</h1>
-            <div
-              sx={{
-                fontSize: `5`,
-                mb: `4`,
-                variant: `gradient.text`,
-              }}
-            >
-              {song.artist}
+            <div sx={{ mb: 4 }}>
+              <ArtistLink artistName={song.artist} fontSize={5}>
+                {song.artist}
+              </ArtistLink>
             </div>
             <div
               sx={{

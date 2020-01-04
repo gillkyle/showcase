@@ -235,9 +235,9 @@ const Post = ({ data, pageContext }) => {
                 </Link>
               )}
             </div>
-            <SignupCard sx={{ my: `5` }} />
           </div>
         </div>
+        <SignupCard sx={{ my: `5` }} />
       </div>
     </Layout>
   )
