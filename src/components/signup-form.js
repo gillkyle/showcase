@@ -3,14 +3,14 @@ import { jsx } from "theme-ui"
 import { useState } from "react"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import { FiSend } from "react-icons/fi"
-import { update } from "timm"
 
-const SignupForm = ({ nada }) => {
+const SignupForm = () => {
   const [email, setEmail] = useState(``)
   const [submitted, setSubmitted] = useState(false)
   const handleSubmit = async event => {
     event.preventDefault()
-    await addToMailchimp(email)
+    const result = await addToMailchimp(email)
+    console.log(result)
     setEmail(``)
     setSubmitted(true)
   }

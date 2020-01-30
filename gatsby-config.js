@@ -4,8 +4,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Song Showcase`,
-    description: `Best music in one place.`,
+    title: `Audio Vault`,
+    description: `Curated, emotional music.`,
     author: `Kyle Gill`,
   },
   plugins: [
@@ -58,5 +58,19 @@ module.exports = {
         endpoint: `https://gmail.us5.list-manage.com/subscribe/post?u=ce4a6fc187c7f93aa8657f35f&amp;id=79efa975eb`,
       },
     },
+    // PWA support
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Audio Vault`,
+        short_name: `Audio Vault`,
+        start_url: `/`,
+        background_color: `#111517`,
+        theme_color: `#389cff`,
+        display: `minimal-ui`,
+        icon: `src/app-icon.png`,
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 }
