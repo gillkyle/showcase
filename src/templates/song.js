@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { graphql, Link } from "gatsby"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { get } from "lodash"
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 
@@ -68,7 +67,9 @@ const Post = ({ data, pageContext }) => {
                 justifyContent: `center`,
               }}
             >
-              <PlayButton songPreview={spotifyData.previewUrl} />
+              {spotifyData?.previewUrl && (
+                <PlayButton songPreview={spotifyData.previewUrl} />
+              )}
               <div
                 sx={{
                   display: `flex`,
