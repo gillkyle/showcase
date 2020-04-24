@@ -13,7 +13,7 @@ const spotifyApi = new SpotifyWebApi({
 
 // set the access token (can get new one in UI here: https://developer.spotify.com/console/get-playlist/?playlist_id=&market=&fields=)
 // this needs to be replaced when used
-const REFRESH_TOKEN = `BQDi2bylV13gf0BOyraDz6pgnhjh8qOCbLgkRxScoEonhB4qiyyOYRPne348iQ84WrzXLJ6wSj8Rrt6ImIsEYRMxgCJIcQRtQ8Z4Jr2iBhwtUa0cdI9O8HPPRZ8OtS1tsWV8ErKc431hQWAT`
+const REFRESH_TOKEN = `BQCdy2icMlbYjiLQlAm4JNMmpQ2-YPGqP-UV-g377aVhqfEGcCgSUW3jiyO_1HYIyJ1kuizncQIRutkv_DFy-vyvigFJ7X5vJcV1m0d9_a2DzPw9DVqeR_5IJkmQi4yWifP0jc6nMLz_qpsi`
 spotifyApi.setAccessToken(REFRESH_TOKEN)
 
 // get blog playlist

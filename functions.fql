@@ -67,3 +67,11 @@ Update(
 // }
 
 // Get(Match(Index("topSongs")))
+
+// get all from a Collection
+// Map(
+//   Paginate(
+//     Match(Index("allSongStats"))
+//   ),
+//   Lambda("X", Get(Var("X")))
+// )
