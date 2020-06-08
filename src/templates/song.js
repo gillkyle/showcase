@@ -124,7 +124,7 @@ const Post = ({ data, pageContext }) => {
                   entryOffset={100}
                   duration={0.75}
                   bg="#232323"
-                  to={prev.uid}
+                  to={`/${prev.uid}`}
                   sx={{ textDecoration: `none` }}
                 >
                   <div
@@ -183,7 +183,7 @@ const Post = ({ data, pageContext }) => {
                   entryOffset={100}
                   duration={0.75}
                   bg="#232323"
-                  to={next.uid}
+                  to={`/${next.uid}`}
                   sx={{ textDecoration: `none` }}
                 >
                   <div
