@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Grid } from "@theme-ui/components"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
 import SongCard from "../components/song-card"
+import SongGrid from "../components/song-grid"
 import Underline from "../components/underlined-text"
 import SEO from "../components/seo"
 
@@ -30,11 +30,11 @@ export default ({ data }) => {
           >
             The latest tracks that have been reviewed and highlighted.
           </p>
-          <Grid width={160} columns={3} gap={[`3`, 48]}>
+          <SongGrid>
             {allPrismicSong.nodes.map(song => (
               <SongCard key={song.uid} songId={song.uid} songData={song.data} />
             ))}
-          </Grid>
+          </SongGrid>
         </div>
       </Container>
     </Layout>

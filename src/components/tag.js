@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 
 const Tag = ({ tag, small, ...props }) => (
   <Link
-    to={`tag/${tag.data.name.toLowerCase()}`}
+    to={`/tag/${tag.data.name.toLowerCase()}`}
     sx={{ textDecoration: `none` }}
   >
     <span

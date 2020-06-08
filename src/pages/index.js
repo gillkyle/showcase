@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Grid } from "@theme-ui/components"
 import { motion } from "framer-motion"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
@@ -11,6 +10,7 @@ import Layout from "../components/layout"
 import Container from "../components/container"
 import HeroGraphic from "../components/hero-graphic"
 import SongCard from "../components/song-card"
+import SongGrid from "../components/song-grid"
 import FeaturedTrack from "../components/featured-track"
 import SignupCard from "../components/signup-card"
 import Underline from "../components/underlined-text"
@@ -94,11 +94,11 @@ export default ({ data }) => {
           >
             The latest tracks that have been reviewed and highlighted.
           </p>
-          <Grid width={180} columns={3} gap={[`3`, 48]}>
+          <SongGrid>
             {allPrismicSong.nodes.map(song => (
               <SongCard key={song.uid} songId={song.uid} songData={song.data} />
             ))}
-          </Grid>
+          </SongGrid>
           <div sx={{ my: `4`, display: `flex`, placeContent: `center` }}>
             <motion.div whileHover={{ y: -2 }}>
               <Link

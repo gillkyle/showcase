@@ -36,7 +36,7 @@ export default {
       fontSize: `2`,
       py: `2`,
       px: `4`,
-      color: `text`,
+      color: `white`,
       borderRadius: `2`,
       display: `flex`,
       alignItems: `center`,

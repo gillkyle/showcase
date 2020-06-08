@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Grid } from "@theme-ui/components"
 import { graphql, Link } from "gatsby"
 import { motion } from "framer-motion"
 import { get } from "lodash"
@@ -14,6 +13,7 @@ import Layout from "../components/layout"
 import Container from "../components/container"
 import Tag from "../components/tag"
 import SongCard from "../components/song-card"
+import SongGrid from "../components/song-grid"
 import SmallClap from "../components/small-clap"
 import { getTags } from "../utils/get-tags"
 import Underline from "../components/underlined-text"
@@ -299,7 +299,7 @@ export default ({ data }) => {
                     </Link>
                   </motion.div>
                 </div>
-                <Grid width={180} columns={3} gap={[`3`, 48]}>
+                <SongGrid>
                   {tagBank[getTagName(tag)].map((song, index) => {
                     if (index > 3) {
                       return
@@ -313,7 +313,7 @@ export default ({ data }) => {
                       )
                     }
                   })}
-                </Grid>
+                </SongGrid>
               </div>
             ))}
           </section>
