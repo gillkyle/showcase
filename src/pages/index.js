@@ -107,7 +107,7 @@ export default ({ data }) => {
                   variant: `button.default`,
                 }}
               >
-                See All <FiChevronRight />
+                See All <FiChevronRight sx={{ ml: `1`, strokeWidth: 3 }} />
               </Link>
             </motion.div>
           </div>

@@ -30,9 +30,8 @@ export default {
     default: {
       variant: `gradient.button`,
       textDecoration: `none`,
-      letterSpacing: 2,
       textTransform: `uppercase`,
-      fontWeight: 700,
+      fontWeight: 600,
       fontSize: `2`,
       py: `2`,
       px: `4`,

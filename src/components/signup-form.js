@@ -42,7 +42,8 @@ const SignupForm = () => {
         value={email}
       ></input>
       <button sx={{ variant: `button.default`, border: 0 }}>
-        Subscribe <FiSend sx={{ transform: `rotate(45deg)` }} />
+        Subscribe{" "}
+        <FiSend sx={{ transform: `rotate(45deg)`, ml: 1, strokeWidth: 3 }} />
       </button>
     </form>
   )

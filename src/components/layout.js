@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
-import { FiHome, FiZap, FiAward, FiUpload } from "react-icons/fi"
+import { FiHome, FiZap, FiAward, FiUpload, FiTwitter } from "react-icons/fi"
 
 import theme from "../gatsby-plugin-theme-ui/index"
 import Container from "../components/container"
@@ -72,14 +72,14 @@ const Layout = ({ children }) => (
           >
             <FiAward size={16} sx={{ mr: `1` }} /> DISCOVER
           </Link>
-          <Link
-            activeStyle={{ color: theme.colors.primary }}
-            sx={{ variant: `button.link` }}
-            to="/submit"
+          <a
+            className="twitter-follow-button"
+            sx={{ variant: `button.default` }}
+            href="https://twitter.com/audio__vault"
           >
-            <FiUpload size={16} sx={{ mr: `1` }} />
-            SUBMIT
-          </Link>
+            <FiTwitter size={16} sx={{ mr: `1`, strokeWidth: 3 }} />
+            FOLLOW
+          </a>
         </div>
       </Container>
     </header>
@@ -120,13 +120,17 @@ const Layout = ({ children }) => (
         <div
           sx={{
             display: `grid`,
-            gridTemplateColumns: `repeat(4, auto)`,
+            gridTemplateColumns: `repeat(5, auto)`,
             gridGap: `2`,
             alignItems: `center`,
           }}
         >
           <Link sx={{ variant: `button.link.faint` }} to="/archive">
             ARCHIVE
+          </Link>
+          ·
+          <Link sx={{ variant: `button.link.faint` }} to="/submit">
+            SUBMIT
           </Link>
           ·
           <Link sx={{ variant: `button.link.faint` }} to="/about">
