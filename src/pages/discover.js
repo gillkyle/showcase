@@ -205,7 +205,7 @@ export default ({ data }) => {
                       </div>
                       <div sx={{ gridArea: `link`, my: [`2`, null] }}>
                         <Link
-                          to={song.uid}
+                          to={`/${song.uid}`}
                           sx={{
                             variant: `button.link`,
                             whiteSpace: `nowrap`,
