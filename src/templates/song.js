@@ -11,6 +11,7 @@ import SignupCard from "../components/signup-card"
 import SongHeader from "../components/song-header"
 import SongMenu from "../components/song-menu"
 import PlayButton from "../components/play-button"
+import SEO from "../components/seo"
 
 const Post = ({ data, pageContext }) => {
   const { data: song, fields: spotifyData } = data.prismicSong
@@ -20,6 +21,10 @@ const Post = ({ data, pageContext }) => {
 
   return (
     <Layout sx={{ bg: `red` }}>
+      <SEO
+        title={`${song.song_title} - ${song.artist} Review`}
+        description={song.excerpt}
+      />
       <div
         sx={{
           display: `flex`,

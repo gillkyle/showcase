@@ -7,6 +7,7 @@ import Container from "../components/container"
 import SongCard from "../components/song-card"
 import SongGrid from "../components/song-grid"
 import Underline from "../components/underlined-text"
+import SEO from "../components/seo"
 
 const TagTemplate = ({
   pageContext: { name: tagName },
@@ -14,6 +15,7 @@ const TagTemplate = ({
 }) => {
   return (
     <Layout>
+      <SEO title={`${tagName} Songs`} />
       <Container>
         <div sx={{ mt: `6`, mx: `3` }}>
           <h2 sx={{ fontSize: `6`, textAlign: `center`, mb: `4` }}>

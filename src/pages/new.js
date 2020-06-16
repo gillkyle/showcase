@@ -43,7 +43,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allPrismicSong(limit: 12, sort: { fields: data___timestamp, order: DESC }) {
+    allPrismicSong(sort: { fields: data___timestamp, order: DESC }) {
       nodes {
         uid
         data {
