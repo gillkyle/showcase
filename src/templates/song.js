@@ -72,8 +72,10 @@ const Post = ({ data, pageContext }) => {
                 justifyContent: `center`,
               }}
             >
-              {spotifyData?.previewUrl && (
+              {spotifyData?.previewUrl ? (
                 <PlayButton songPreview={spotifyData.previewUrl} />
+              ) : (
+                <div />
               )}
               <div
                 sx={{
