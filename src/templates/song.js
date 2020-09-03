@@ -85,7 +85,7 @@ const Post = ({ data, pageContext }) => {
                   color: `textMuted.1`,
                 }}
               >
-                {!!spotifyData?.previewUrl && `No `}Song Preview
+                {!spotifyData?.previewUrl && `No `}Song Preview
               </div>
             </div>
             <div
