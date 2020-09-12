@@ -48,7 +48,7 @@
     "theme-ui": "^0.2.44"
   },
   "devDependencies": {
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "prettier": "^1.18.2",
     "spotify-web-api-node": "^4.0.0"
   },
