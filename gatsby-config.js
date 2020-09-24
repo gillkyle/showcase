@@ -31,18 +31,24 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          {
-            family: `Cabin`,
-            variants: [`100`, `300`, `400`, `500`, `700`],
-          },
-          {
-            family: `Open Sans`,
-            variants: [`400`, `700`],
-          },
-        ],
+        fonts: {
+          google: [
+            {
+              family: `Cabin`,
+              variants: [`100`, `300`, `400`, `500`, `700`],
+            },
+            {
+              family: `Open Sans`,
+              variants: [`400`, `700`],
+            },
+            {
+              family: `Inter`,
+              variants: [`400`, `700`],
+            },
+          ],
+        },
       },
     },
     {

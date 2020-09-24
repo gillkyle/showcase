@@ -107,6 +107,8 @@ const Post = ({ data, pageContext }) => {
                   fontWeight: 700,
                 },
                 "& > pre": {
+                  maxWidth: [`42ch`, `57ch`],
+                  overflow: `scroll`,
                   fontFamily: `Cabin, Open Sans, sans-serif`,
                   letterSpacing: 1.1,
                   lineHeight: 1.5,
