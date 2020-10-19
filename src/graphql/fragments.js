@@ -5,10 +5,12 @@ export const tagFragment = graphql`
     tag_list {
       all_tags {
         document {
-          data {
-            bg_color
-            name
-            text_color
+          ... on PrismicTag {
+            data {
+              bg_color
+              name
+              text_color
+            }
           }
         }
       }

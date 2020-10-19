@@ -141,15 +141,17 @@ export const query = graphql`
           id
           uid
           document {
-            ...SongFieldsFragment
-            data {
-              song_title
-              spotify_id
-              artist
-              excerpt
-              timestamp
-              ...AlbumArtFragment
-              ...TagFragment
+            ... on PrismicSong {
+              ...SongFieldsFragment
+              data {
+                song_title
+                spotify_id
+                artist
+                excerpt
+                timestamp
+                ...AlbumArtFragment
+                ...TagFragment
+              }
             }
           }
         }

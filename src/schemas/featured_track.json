@@ -1,0 +1,27 @@
+{
+  "Main": {
+    "title": {
+      "type": "Text",
+      "config": {
+        "label": "Title",
+        "placeholder": "The text to show in the UI"
+      }
+    },
+    "featured_track": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["song"],
+        "label": "Featured Track",
+        "placeholder": "Track to display prominently on the homepage"
+      }
+    },
+    "featured_track_spotify_id": {
+      "type": "Text",
+      "config": {
+        "label": "Featured Track Spotify ID",
+        "placeholder": "Required field that allows Gatsby to query by the selected track above, use the preview features in Prismic to select the song and copy the id from that interface"
+      }
+    }
+  }
+}

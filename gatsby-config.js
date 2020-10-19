@@ -28,6 +28,12 @@ module.exports = {
         repositoryName: `songshowcase`,
         accessToken: `${process.env.GATSBY_PRISMIC_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+        schemas: {
+          author: require(`./src/schemas/author.json`),
+          song: require(`./src/schemas/song.json`),
+          tag: require(`./src/schemas/tag.json`),
+          featured_track: require(`./src/schemas/featured_track.json`),
+        },
       },
     },
     {

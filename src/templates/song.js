@@ -272,18 +272,22 @@ export const pageQuery = graphql`
         ...AlbumArtFragment
         author {
           document {
-            data {
-              name
+            ... on PrismicAuthor {
+              data {
+                name
+              }
             }
           }
         }
         tag_list {
           all_tags {
             document {
-              data {
-                bg_color
-                name
-                text_color
+              ... on PrismicTag {
+                data {
+                  bg_color
+                  name
+                  text_color
+                }
               }
             }
           }

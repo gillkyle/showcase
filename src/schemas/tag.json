@@ -1,0 +1,23 @@
+{
+  "Main": {
+    "name": {
+      "type": "Text",
+      "config": {
+        "label": "name",
+        "placeholder": "What title to give the tag"
+      }
+    },
+    "bg_color": {
+      "type": "Color",
+      "config": {
+        "label": "bg_color"
+      }
+    },
+    "text_color": {
+      "type": "Color",
+      "config": {
+        "label": "text_color"
+      }
+    }
+  }
+}

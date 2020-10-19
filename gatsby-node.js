@@ -47,6 +47,13 @@ exports.onCreateNode = ({ node, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  const artists = await graphql(`
+    query {
+      allPrismicSong {
+        distinct(field: data___artist)
+      }
+    }
+  `)
   const pages = await graphql(`
     query {
       allPrismicSong(sort: { fields: data___timestamp, order: DESC }) {
@@ -88,17 +95,10 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  const artists = await graphql(`
-    query {
-      allPrismicSong {
-        distinct(field: data___artist)
-      }
-    }
-  `)
 
+  const artistTemplate = path.resolve("src/templates/artist.js")
   const songTemplate = path.resolve("src/templates/song.js")
   const tagTemplate = path.resolve("src/templates/tag.js")
-  const artistTemplate = path.resolve("src/templates/artist.js")
 
   pages.data.allPrismicSong.nodes.forEach((node, index) => {
     createPage({
