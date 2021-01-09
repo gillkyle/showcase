@@ -1,15 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const AlbumArt = ({ fluid, ...props }) => (
-  <Img
+  <GatsbyImage
+    image={{ ...fluid, aspectRatio: 1 }}
     sx={{
       borderRadius: `1`,
     }}
-    fluid={{ ...fluid, aspectRatio: 1 }}
-    {...props}
-  />
+    {...props} />
 )
 
 export default AlbumArt

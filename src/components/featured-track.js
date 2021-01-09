@@ -61,7 +61,7 @@ const FeaturedTrack = ({ songId, song, tags }) => {
               sx={{
                 borderRadius: `3`,
               }}
-              fluid={songData.album_art.localFile.childImageSharp.fluid}
+              fluid={songData.album_art.localFile.childImageSharp.gatsbyImageData}
             />
           </motion.div>
         </Link>
@@ -110,7 +110,7 @@ const FeaturedTrack = ({ songId, song, tags }) => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default FeaturedTrack

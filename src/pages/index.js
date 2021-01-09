@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui"
 import { motion } from "framer-motion"
 import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import { get } from "lodash"
 import { FiChevronRight } from "react-icons/fi"
 
@@ -48,10 +48,9 @@ export default ({ data }) => {
             thoughts, and most of all moves us.
           </p>
           <HeroGraphic sx={{ mt: `4`, display: [`none`, `none`, `grid`] }} />
-          <Img
-            sx={{ mt: `4`, display: [`inherit`, `inherit`, `none`], mx: `3` }}
-            fluid={heroImage.childImageSharp.fluid}
-          />
+          <GatsbyImage
+            image={heroImage.childImageSharp.gatsbyImageData}
+            sx={{ mt: `4`, display: [`inherit`, `inherit`, `none`], mx: `3` }} />
         </div>
         <div>
           <h2
@@ -115,53 +114,50 @@ export default ({ data }) => {
         <SignupCard />
       </Container>
     </Layout>
-  )
+  );
 }
 
-export const query = graphql`
-  query {
-    allPrismicSong(limit: 4, sort: { fields: data___timestamp, order: DESC }) {
-      nodes {
-        uid
-        data {
-          artist
-          song_title
-          timestamp
-          spotify_id
-          ...AlbumArtFragment
-          ...TagFragment
-        }
+export const query = graphql`{
+  allPrismicSong(limit: 4, sort: {fields: data___timestamp, order: DESC}) {
+    nodes {
+      uid
+      data {
+        artist
+        song_title
+        timestamp
+        spotify_id
+        ...AlbumArtFragment
+        ...TagFragment
       }
     }
-    prismicFeaturedTrack {
-      id
-      data {
-        title
-        featured_track {
-          id
-          uid
-          document {
-            ...SongFieldsFragment
-            data {
-              song_title
-              spotify_id
-              artist
-              excerpt
-              timestamp
-              ...AlbumArtFragment
-              ...TagFragment
-            }
+  }
+  prismicFeaturedTrack {
+    id
+    data {
+      title
+      featured_track {
+        id
+        uid
+        document {
+          ...SongFieldsFragment
+          data {
+            song_title
+            spotify_id
+            artist
+            excerpt
+            timestamp
+            ...AlbumArtFragment
+            ...TagFragment
           }
         }
       }
     }
-    heroImage: file(relativePath: { eq: "mobile-hero-graphic.png" }) {
-      id
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
+  }
+  heroImage: file(relativePath: {eq: "mobile-hero-graphic.png"}) {
+    id
+    childImageSharp {
+      gatsbyImageData(placeholder: TRACED_SVG, layout: FLUID)
     }
   }
+}
 `

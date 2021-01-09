@@ -9,6 +9,7 @@ module.exports = {
     author: `Kyle Gill`,
   },
   plugins: [
+    `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-transition-link`,
     `gatsby-transformer-sharp`,

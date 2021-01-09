@@ -172,7 +172,7 @@ export default ({ data }) => {
                         }}
                       >
                         <AlbumArt
-                          fluid={song.album_art.localFile.childImageSharp.fluid}
+                          fluid={song.album_art.localFile.childImageSharp.gatsbyImageData}
                         />
                       </div>
 
@@ -219,7 +219,7 @@ export default ({ data }) => {
                         <SmallClap fill="textMuted.0" numClaps={song.claps} />
                       </div>
                     </div>
-                  )
+                  );
                 })
               : Array(10)
                   .fill()
@@ -320,7 +320,7 @@ export default ({ data }) => {
         </div>
       </Container>
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`

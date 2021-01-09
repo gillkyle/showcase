@@ -68,8 +68,8 @@ const Post = ({ data, pageContext }) => {
                 mb: `3`,
                 display: `grid`,
                 gridGap: `3`,
-                gridTemplateColumns: `auto auto 1fr`,
-                justifyContent: `center`,
+                gridTemplateColumns: [`auto auto`, `auto auto 1fr`],
+                justifyContent: [`flex-start`, `center`],
               }}
             >
               {spotifyData?.previewUrl ? (
@@ -79,7 +79,7 @@ const Post = ({ data, pageContext }) => {
               )}
               <div
                 sx={{
-                  display: `flex`,
+                  display: [`none`, `flex`],
                   alignItems: `center`,
                   fontSize: `1`,
                   letterSpacing: `2px`,
@@ -107,7 +107,7 @@ const Post = ({ data, pageContext }) => {
                   fontWeight: 700,
                 },
                 "& > pre": {
-                  maxWidth: [`42ch`, `57ch`],
+                  maxWidth: [`300px`, `420px`],
                   overflow: `scroll`,
                   fontFamily: `Cabin, Open Sans, sans-serif`,
                   letterSpacing: 1.1,
@@ -122,7 +122,7 @@ const Post = ({ data, pageContext }) => {
             <div
               sx={{
                 display: `grid`,
-                gridTemplateColumns: !!prev ? `1fr 1fr` : `1fr`,
+                gridTemplateColumns: !!prev ? [`1fr`, `1fr 1fr`] : `1fr`,
                 gridGap: `3`,
               }}
             >
@@ -178,7 +178,8 @@ const Post = ({ data, pageContext }) => {
                       <AlbumArt
                         sx={{ height: 60, width: 60 }}
                         fluid={
-                          prev.data.album_art.localFile.childImageSharp.fluid
+                          prev.data.album_art.localFile.childImageSharp
+                            .gatsbyImageData
                         }
                       />
                     </div>
@@ -213,7 +214,8 @@ const Post = ({ data, pageContext }) => {
                       <AlbumArt
                         sx={{ height: 60, width: 60 }}
                         fluid={
-                          next.data.album_art.localFile.childImageSharp.fluid
+                          next.data.album_art.localFile.childImageSharp
+                            .gatsbyImageData
                         }
                       />
                     </div>

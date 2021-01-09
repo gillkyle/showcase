@@ -27,7 +27,7 @@ const SongCard = ({ songData, songId, ...props }) => {
       <Link to={`/${songId}`} sx={{ textDecoration: `none` }}>
         <motion.div whileHover={{ y: -3 }} sx={{ mb: `2` }}>
           <AlbumArt
-            fluid={songData.album_art.localFile.childImageSharp.fluid}
+            fluid={songData.album_art.localFile.childImageSharp.gatsbyImageData}
           />
         </motion.div>
       </Link>
@@ -56,7 +56,7 @@ const SongCard = ({ songData, songId, ...props }) => {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default SongCard

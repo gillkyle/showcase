@@ -26,16 +26,13 @@ export const songFieldsFragment = graphql`
   }
 `
 
-export const albumArtFragment = graphql`
-  fragment AlbumArtFragment on PrismicSongData {
-    album_art {
-      localFile {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
+export const albumArtFragment = graphql`fragment AlbumArtFragment on PrismicSongData {
+  album_art {
+    localFile {
+      childImageSharp {
+        gatsbyImageData(layout: FLUID)
       }
     }
   }
+}
 `

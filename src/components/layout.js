@@ -110,7 +110,7 @@ const Layout = ({ children }) => (
               textDecoration: `none`,
               textTransform: `uppercase`,
               color: `white`,
-              fontSize: `2`,
+              fontSize: [`1`, `2`],
             }}
             to="/"
           >
@@ -121,19 +121,29 @@ const Layout = ({ children }) => (
           sx={{
             display: `grid`,
             gridTemplateColumns: `repeat(5, auto)`,
-            gridGap: `2`,
+            gridGap: [`1`, `2`],
             alignItems: `center`,
+            fontSize: [`1`, `2`],
           }}
         >
-          <Link sx={{ variant: `button.link.faint` }} to="/archive">
+          <Link
+            sx={{ variant: `button.link.faint`, px: [`1`, `2`] }}
+            to="/archive"
+          >
             ARCHIVE
           </Link>
           ·
-          <Link sx={{ variant: `button.link.faint` }} to="/submit">
+          <Link
+            sx={{ variant: `button.link.faint`, px: [`1`, `2`] }}
+            to="/submit"
+          >
             SUBMIT
           </Link>
           ·
-          <Link sx={{ variant: `button.link.faint` }} to="/about">
+          <Link
+            sx={{ variant: `button.link.faint`, px: [`1`, `2`] }}
+            to="/about"
+          >
             ABOUT
           </Link>
         </div>

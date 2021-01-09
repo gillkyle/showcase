@@ -29,7 +29,7 @@ const SpotifyEmbed = ({ id }) => (
     ></iframe>
     <div
       sx={{
-        display: `flex`,
+        display: [`none`, `flex`],
         alignItems: `center`,
         fontSize: `1`,
         letterSpacing: `2px`,

@@ -34,7 +34,7 @@ const SongHeader = ({ song, tags, authorName }) => {
         >
           <AlbumArt
             sx={{ borderRadius: `2` }}
-            fluid={song.album_art.localFile.childImageSharp.fluid}
+            fluid={song.album_art.localFile.childImageSharp.gatsbyImageData}
           />
         </div>
         <div
@@ -94,7 +94,7 @@ const SongHeader = ({ song, tags, authorName }) => {
                 justifySelf: `center`,
                 mb: `3`,
               }}
-              fluid={song.album_art.localFile.childImageSharp.fluid}
+              fluid={song.album_art.localFile.childImageSharp.gatsbyImageData}
             />
             <div
               sx={{
@@ -151,7 +151,7 @@ const SongHeader = ({ song, tags, authorName }) => {
         </div>
       </div>
     </Fragment>
-  )
+  );
 }
 
 export default SongHeader

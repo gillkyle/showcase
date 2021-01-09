@@ -47,33 +47,26 @@ exports.onCreateNode = ({ node, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const pages = await graphql(`
-    query {
-      allPrismicSong(sort: { fields: data___timestamp, order: DESC }) {
-        nodes {
-          id
-          uid
-          data {
-            song_title
-            artist
-            album_art {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    base64
-                    aspectRatio
-                    src
-                    srcSet
-                    sizes
-                  }
-                }
-              }
+  const pages = await graphql(`{
+  allPrismicSong(sort: {fields: data___timestamp, order: DESC}) {
+    nodes {
+      id
+      uid
+      data {
+        song_title
+        artist
+        album_art {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED, layout: FLUID)
             }
           }
         }
       }
     }
-  `)
+  }
+}
+`)
   const tags = await graphql(`
     query {
       allPrismicTag {
