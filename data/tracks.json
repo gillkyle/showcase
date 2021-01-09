@@ -1198,5 +1198,35 @@
     "duration_ms": 274322,
     "explicit": false,
     "album_art": "https://i.scdn.co/image/ab67616d0000b273f7b69bb1db06fec7f326d6f7"
+  },
+  "2WU4ET9r25IVZGQkWOM2UL": {
+    "id": "2WU4ET9r25IVZGQkWOM2UL",
+    "name": "Human - Acoustic",
+    "aritst": "Jon Bellion",
+    "popularity": 57,
+    "preview_url": "https://p.scdn.co/mp3-preview/d82187f98f2f913cffac20f169f6a8acfd76d328?cid=774b29d4f13844c495f206cafdad9c86",
+    "duration_ms": 247838,
+    "explicit": false,
+    "album_art": "https://i.scdn.co/image/ab67616d0000b273c634899ffa7cf987c49069d1"
+  },
+  "4wCmqSrbyCgxEXROQE6vtV": {
+    "id": "4wCmqSrbyCgxEXROQE6vtV",
+    "name": "Somebody That I Used To Know",
+    "aritst": "Gotye",
+    "popularity": 78,
+    "preview_url": "https://p.scdn.co/mp3-preview/f49b7e845254dd4b3001ed8bda2b643bb1a9c69c?cid=774b29d4f13844c495f206cafdad9c86",
+    "duration_ms": 244973,
+    "explicit": false,
+    "album_art": "https://i.scdn.co/image/ab67616d0000b273e1d47c00ddecbfb810c807ed"
+  },
+  "2dp6jD600HDkcKEAHyJKZJ": {
+    "id": "2dp6jD600HDkcKEAHyJKZJ",
+    "name": "Fly While You're Still Free",
+    "aritst": "Mat Zo",
+    "popularity": 37,
+    "preview_url": "https://p.scdn.co/mp3-preview/2b33c29224186fc44997a66ed43ca7c0d68e41bf?cid=774b29d4f13844c495f206cafdad9c86",
+    "duration_ms": 316815,
+    "explicit": false,
+    "album_art": "https://i.scdn.co/image/ab67616d0000b2733ac109f858809266e3e8b882"
   }
 }
